@@ -1,0 +1,10 @@
+input {
+    height: 50px;
+    border: 1px solid #cacaca;
+    border-radius: 5px;
+    padding: 0 2rem;
+    display: grid;
+}
+.search {
+    display: grid;
+}

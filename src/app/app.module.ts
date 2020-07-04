@@ -7,6 +7,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SvgComponent } from './components/svg/svg.component';
 import { ButtonComponent } from './components/button/button.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ButtonComponent } from './components/button/button.component';
     HeaderComponent,
     HomeComponent,
     SvgComponent,
-    ButtonComponent
+    ButtonComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
