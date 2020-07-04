@@ -1,0 +1,53 @@
+.header {
+    /* padding: 1rem 3rem; */
+}
+.header_top {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    font-size: 14px;
+}
+.header_top__left {
+    background-color: #f7f7f7;
+    padding: 1rem 4rem;
+}
+.header_top__right {
+    background-color: #ebebeb;
+    padding: 1rem 4rem;
+    grid-gap: 1rem;
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+.logo::ng-deep {
+    /* height: 20px; */
+}
+.header_bottom {
+    display: grid;
+    padding: 2rem 4rem;
+    grid-template-columns: auto auto 1fr auto;
+    grid-gap: 1rem;
+    align-items: center;
+}
+.logo {
+    font-size: 14px;
+    display: grid;
+    grid-template-rows: auto auto;
+}
+strong {
+    font-weight: 500;
+    color: #9ACE8D;
+}
+.header_bottom__tabs {
+    justify-content: end;
+    padding: 0 3rem;
+    grid-gap: 4rem;
+    font-size: 14px;
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+}
+.tab {
+    cursor: pointer;
+    color: rgb(109, 109, 109);
+}
+.tab:hover {
+    color: #000;
+}

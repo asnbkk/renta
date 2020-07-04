@@ -1,0 +1,27 @@
+<div class="header">
+    <div class="header_top">
+        <div class="header_top__left">Уральск</div>
+        <div class="header_top__right">
+            <div class="login">Войти</div>
+            |
+            <div class="registration">Регистрация</div>
+        </div>
+    </div>
+    <div class="header_bottom">
+        <app-svg [name]="'logo'"></app-svg>
+        <div class="logo">
+            <span><strong>renta.</strong> — сервис</span>
+            <span>по аренде вещей</span>
+        </div>
+        <div class="header_bottom__tabs">
+            <div class="tab">Каталог</div>
+            <div class="tab">Доставка и оплата</div>
+            <div class="tab">Отзывы</div>
+            <div class="tab">О сервисе</div>
+            <div class="tab">Контакты</div>
+        </div>
+        <div class="header_bottom__new">
+            <app-button [text]="'Подать объявление'" [type]="'primary'"></app-button>
+        </div>
+    </div>
+</div>
