@@ -9,6 +9,8 @@ import { SvgComponent } from './components/svg/svg.component';
 import { ButtonComponent } from './components/button/button.component';
 import { SearchComponent } from './components/search/search.component';
 import { CategoryComponent } from './pages/category/category.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegistrationComponent } from './pages/registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { CategoryComponent } from './pages/category/category.component';
     SvgComponent,
     ButtonComponent,
     SearchComponent,
-    CategoryComponent
+    CategoryComponent,
+    LoginComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,

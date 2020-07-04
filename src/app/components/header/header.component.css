@@ -8,14 +8,28 @@
 }
 .header_top__left {
     background-color: #f7f7f7;
+    color: #696969;
     padding: 1rem 4rem;
+}
+.header_top__left span {
+    cursor: pointer;
+}
+.header_top__left span:hover {
+    color: #000;
 }
 .header_top__right {
     background-color: #ebebeb;
     padding: 1rem 4rem;
     grid-gap: 1rem;
     display: grid;
+    cursor: default;
+    color: #696969;
     grid-template-columns: auto auto auto;
+}
+.login:hover,
+.registration:hover {
+    cursor: pointer;
+    color: #000;
 }
 .logo::ng-deep {
     /* height: 20px; */
