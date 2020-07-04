@@ -2,3 +2,10 @@
     padding: 2rem 15%;
     display: grid;
 }
+.home_title {
+    font-size: 24px;
+    margin-top: 4rem;
+}
+strong {
+    color: #9ACE8D;
+}
