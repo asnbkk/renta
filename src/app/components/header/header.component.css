@@ -48,6 +48,12 @@ strong {
     cursor: pointer;
     color: rgb(109, 109, 109);
 }
-.tab:hover {
+.tab:hover:not(.active) {
     color: #000;
+}
+.logo-svg {
+    cursor: pointer;
+}
+.active {
+    color: #9ACE8D;
 }

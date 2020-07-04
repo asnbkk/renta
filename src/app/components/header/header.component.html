@@ -8,13 +8,15 @@
         </div>
     </div>
     <div class="header_bottom">
-        <app-svg [name]="'logo'"></app-svg>
+        <div class="logo-svg" routerLink="/">
+            <app-svg [name]="'logo'"></app-svg>
+        </div>
         <div class="logo">
             <span><strong>renta.</strong> — сервис</span>
             <span>по аренде вещей</span>
         </div>
         <div class="header_bottom__tabs">
-            <div class="tab">Каталог</div>
+            <div class="tab" routerLink="/category" routerLinkActive="active">Категории</div>
             <div class="tab">Доставка и оплата</div>
             <div class="tab">Отзывы</div>
             <div class="tab">О сервисе</div>

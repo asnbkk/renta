@@ -8,6 +8,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { SvgComponent } from './components/svg/svg.component';
 import { ButtonComponent } from './components/button/button.component';
 import { SearchComponent } from './components/search/search.component';
+import { CategoryComponent } from './pages/category/category.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SearchComponent } from './components/search/search.component';
     HomeComponent,
     SvgComponent,
     ButtonComponent,
-    SearchComponent
+    SearchComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,
