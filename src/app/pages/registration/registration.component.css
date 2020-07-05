@@ -70,6 +70,7 @@ input {
     /* grid-gap: 1rem; */
     grid-template-rows: auto auto 1fr;
     grid-gap: 2rem;
+    margin-top: 34px;
 }
 .logo-svg {
     cursor: pointer;
