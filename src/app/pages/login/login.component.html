@@ -6,16 +6,16 @@
     </div>
     <div class="input-item">
       <div class="label">Электронная почта</div>
-      <input type="text" placeholder="abc@example.com">
+      <input type="text" placeholder="abc@example.com" name="email" [(ngModel)]="loginModel.email" >
     </div>
     <div class="input-item">
       <div class="label">Пароль</div>
-      <input type="password">
+      <input type="password" [(ngModel)]="loginModel.password" name="password">
     </div>
     <div class="input-item">
       <div></div>
       <div class="button">
-        <app-button [type]="'primary'" [text]="'Войти'"></app-button>
+        <app-button [type]="'primary'" [text]="'Войти'" (click)="onSubmit()"></app-button>
         <div>Не могу вспомнить пароль</div>
         <div class="switch" routerLink="/registration">Зарегистрироваться</div>
       </div>
