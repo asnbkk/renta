@@ -1,1 +1,59 @@
-<p>registration works!</p>
+<div class="login">
+    <div class="input-group">
+      <div class="input-item">
+        <div></div>
+        <div class="title">Присоединяйся</div>
+      </div>
+      <div class="input-item">
+        <div class="label">Электронная почта</div>
+        <input type="text" placeholder="abc@example.com">
+      </div>
+      <div class="input-item">
+        <div class="label">Пароль</div>
+        <input type="password">
+      </div>
+      <div class="input-item">
+        <div class="label">Подтверждение</div>
+        <input type="password">
+      </div>
+      <div class="input-item">
+        <div></div>
+        <div class="button">
+          <app-button [type]="'primary'" [text]="'Зарегистрироваться'"></app-button>
+          <div>Не могу вспомнить пароль</div>
+          <div class="switch" routerLink="/login">Войти</div>
+        </div>
+      </div>
+    </div>
+    <div class="promotion">
+      <div class="logo-wrapper">
+        <div class="logo-svg" routerLink="/">
+          <app-svg [name]="'logo'"></app-svg>
+        </div>
+        <div class="logo">
+          <span><strong>renta.</strong> — сервис</span>
+          <span>по аренде вещей</span>
+        </div>
+      </div>
+      <div class="promotion_text">
+          Мы - сервис аренды без залога. Помогаем владельцам и арендаторам находить друг друга и совершать безопасные сделки онлайн.
+      </div>
+      <div class="social">
+          <div class="social_text">Будь в курсе выгодных сделок:</div>
+          <div class="social_icons">
+              <div class="icon">
+                  <app-svg [name]="'facebook'"></app-svg>
+              </div>
+              <div class="icon">
+                  <app-svg [name]="'instagram'"></app-svg>
+              </div>
+              <div class="icon">
+                  <app-svg [name]="'telegram'"></app-svg>
+              </div>
+              <div class="icon">
+                  <app-svg [name]="'vk'"></app-svg>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
