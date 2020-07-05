@@ -108,6 +108,6 @@ strong {
     transition: 0.1s;
 }
 .icon:hover {
-    opacity: 1;
+    opacity: 0.7;
     transition: 0.1s;
 }
