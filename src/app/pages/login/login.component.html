@@ -1,1 +1,25 @@
-<p>login works!</p>
+<div class="login">
+    <div class="input-group">
+        <div class="input-item">
+            <div></div>
+            <div class="title">Добро пожаловать</div>
+        </div>
+        <div class="input-item">
+            <div class="label">Электронная почта</div>
+            <input type="text" placeholder="abc@example.com">
+        </div>
+        <div class="input-item">
+            <div class="label">Пароль</div>
+            <input type="password">
+        </div>
+        <div class="input-item">
+            <div></div>
+            <div class="button">
+                <app-button [type]="'primary'" [text]="'Войти'"></app-button>
+                <div>Не могу вспомнить пароль</div>
+                <div class="switch">Зарегистрироваться</div>
+            </div>
+        </div>
+    </div>
+    <div class="promotion"></div>
+</div>
