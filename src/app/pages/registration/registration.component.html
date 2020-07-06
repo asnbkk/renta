@@ -6,20 +6,24 @@
       </div>
       <div class="input-item">
         <div class="label">Электронная почта</div>
-        <input type="text" placeholder="abc@example.com">
+        <input type="text" placeholder="abc@example.com" name="email" [(ngModel)]="regModel.email">
+      </div>
+      <div class="input-item">
+        <div class="label">Имя</div>
+        <input type="text" name="name" [(ngModel)]="regModel.name">
       </div>
       <div class="input-item">
         <div class="label">Пароль</div>
-        <input type="password">
+        <input type="password" name="password" [(ngModel)]="regModel.password">
       </div>
       <div class="input-item">
         <div class="label">Подтверждение</div>
-        <input type="password">
+        <input type="password" name="password2" [(ngModel)]="password2">
       </div>
       <div class="input-item">
         <div></div>
         <div class="button">
-          <app-button [type]="'primary'" [text]="'Зарегистрироваться'"></app-button>
+          <app-button [type]="'primary'" [text]="'Зарегистрироваться'" (click)="onSubmit()"></app-button>
           <div routerLink="/login">У меня уже есть аккаунт</div>
           <!-- <div class="switch" >Войти</div> -->
         </div>
