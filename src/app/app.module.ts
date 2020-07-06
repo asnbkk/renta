@@ -14,6 +14,7 @@ import { SearchComponent } from './components/search/search.component';
 import { CategoryComponent } from './pages/category/category.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
+import { NewsCardComponent } from './components/news-card/news-card.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { RegistrationComponent } from './pages/registration/registration.compone
     SearchComponent,
     CategoryComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    NewsCardComponent
   ],
   imports: [
     BrowserModule,

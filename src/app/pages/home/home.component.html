@@ -27,6 +27,11 @@
         </div>
         <div class="home_popular__right">
             <div class="home_subtitle">Акции и новости</div>
+        <div class="home_popular__right___content">
+                <div *ngFor="let n of news">
+                    <app-news-card [text]="n.text" [img]="n.img"></app-news-card>
+                </div>
+            </div>
         </div>
     </div>
 </div>

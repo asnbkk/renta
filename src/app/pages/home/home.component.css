@@ -39,3 +39,8 @@ strong {
 .home_subtitle {
     color: #3D3D3D;
 }
+.home_popular__right___content {
+    margin-top: 2rem;
+    display: grid;
+    grid-gap: 25px;
+}
