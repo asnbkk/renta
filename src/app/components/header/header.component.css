@@ -7,7 +7,7 @@
     display: grid;
     grid-template-columns: 1fr auto;
     font-size: 14px;
-    padding: 0 10%;
+    padding: 0 5%;
     background-color: #f7f7f7;
 }
 .header_top__left {
@@ -39,7 +39,7 @@
 }
 .header_bottom {
     display: grid;
-    padding: 1rem 10%;
+    padding: 1rem 5%;
     grid-template-columns: auto auto 1fr auto;
     grid-gap: 1rem;
     align-items: center;
@@ -51,7 +51,7 @@
 }
 strong {
     font-weight: 500;
-    color: #9ACE8D;
+    color: #1400FF;
 }
 .header_bottom__tabs {
     justify-content: end;

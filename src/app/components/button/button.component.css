@@ -1,20 +1,19 @@
 .primary-button {
     font-size: 14px;
     padding: 0 2rem;
-    background: #9ACE8D;
     height: 50px;
     display: grid;
     align-items: center;
     color: #ffffff;
     border-radius: 5px;
-    background: #9ACE8D;
+    background: #1400FF;
     cursor: pointer;
     transition: 0.1s;
 }
 .primary-button:hover {
-    background: #79a36e;
+    background: #1100c7;
     transition: 0.1s;
 }
 .primary-button:active {
-    background: #678b5e;
+    background: #0d009c;
 }
