@@ -5,10 +5,23 @@
 }
 .header_top {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr auto  auto;
+    align-items: center;
+    grid-gap: 7rem;
     font-size: 14px;
     padding: 0 5%;
     background-color: #f7f7f7;
+}
+.header_top__middle {
+    color: #696969;
+    display: grid;
+    justify-self: start;
+    cursor: pointer;
+    transition: 0.1s;
+}
+.header_top__middle:hover {
+    color: #000;
+    transition: 0.1s;
 }
 .header_top__left {
     color: #696969;

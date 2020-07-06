@@ -11,7 +11,8 @@ strong {
 }
 .home_search {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 5fr 2fr;
+    grid-gap: 3rem;
 }
 .social {
     display: grid;
@@ -28,4 +29,13 @@ strong {
 .icon:hover {
     opacity: 0.7;
     transition: 0.1s;
+}
+.home_popular {
+    margin-top: 51px;
+    display: grid;
+    grid-template-columns: 5fr 2fr;
+    grid-gap: 3rem;
+}
+.home_subtitle {
+    color: #3D3D3D;
 }
