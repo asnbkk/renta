@@ -34,16 +34,18 @@ strong {
     margin-top: 51px;
     display: grid;
     grid-template-columns: 5fr 2fr;
-    grid-gap: 3rem;
+    grid-gap: 1rem;
 }
 .home_subtitle {
     color: #3D3D3D;
+    font-size: 16px;
 }
 .home_popular__right {
     width: 90%;
     display: grid;
     justify-self: end;
 }
+
 .home_popular__right___content {
     margin-top: 2rem;
     display: grid;
@@ -59,5 +61,21 @@ strong {
     display: grid;
     /* grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); */
     grid-template-columns: auto auto auto;
-    justify-content: space-between  ;
+    justify-content: space-between;
+}
+
+.home_about {
+    margin-top: 106px;
+}
+.home_about__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 136px;
+}
+.home_about__content___item {
+    font-size: 14px;
+    color: #7D7D7D;
+    line-height: 20.5px;
+    display: grid;
+    grid-gap: 1rem;
 }

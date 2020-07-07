@@ -16,6 +16,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
 import { NewsCardComponent } from './components/news-card/news-card.component';
 import { ActionCardComponent } from './components/action-card/action-card.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ActionCardComponent } from './components/action-card/action-card.compon
     LoginComponent,
     RegistrationComponent,
     NewsCardComponent,
-    ActionCardComponent
+    ActionCardComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
