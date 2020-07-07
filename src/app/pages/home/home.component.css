@@ -39,6 +39,11 @@ strong {
 .home_subtitle {
     color: #3D3D3D;
 }
+.home_popular__right {
+    width: 90%;
+    display: grid;
+    justify-self: end;
+}
 .home_popular__right___content {
     margin-top: 2rem;
     display: grid;

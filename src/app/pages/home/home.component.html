@@ -27,7 +27,7 @@
         </div>
         <div class="home_popular__right">
             <div class="home_subtitle">Акции и новости</div>
-        <div class="home_popular__right___content">
+            <div class="home_popular__right___content">
                 <div *ngFor="let n of news">
                     <app-news-card [text]="n.text" [img]="n.img"></app-news-card>
                 </div>
@@ -37,23 +37,17 @@
     <div class="home_how">
         <div class="home_title">Как пользоваться?</div>
         <div class="home_how__content">
-            <app-action-card 
-            [img]="'assets/img/action1.png'"
-            [title]="'Возьмите на время'" 
-            [text]="'Аренда - лучшее решение, когда нужна вещь на короткое время'"
-            [action]="'Найти ваш товар'"></app-action-card>
+            <app-action-card [img]="'assets/img/action1.png'" [title]="'Возьмите на время'"
+                [text]="'Аренда - лучшее решение, когда нужна вещь на короткое время'" [action]="'Найти ваш товар'">
+            </app-action-card>
 
-            <app-action-card 
-            [img]="'assets/img/action2.png'"
-            [title]="'Одолжите другим'" 
-            [text]="'Сдайте в аренду то, что не нужно сейчас, но пригодится позже'"
-            [action]="'Сдать в аренду'"></app-action-card>
+            <app-action-card [img]="'assets/img/action2.png'" [title]="'Одолжите другим'"
+                [text]="'Сдайте в аренду то, что не нужно сейчас, но пригодится позже'" [action]="'Сдать в аренду'">
+            </app-action-card>
 
-            <app-action-card 
-            [img]="'assets/img/action3.png'"
-            [title]="'Возьмите на время'" 
-            [text]="'Мы приведем новых клиентов. Оплата только за сделку'"
-            [action]="'Стать партнером'"></app-action-card>
+            <app-action-card [img]="'assets/img/action3.png'" [title]="'Возьмите на время'"
+                [text]="'Мы приведем новых клиентов. Оплата только за сделку'" [action]="'Стать партнером'">
+            </app-action-card>
         </div>
     </div>
 </div>
