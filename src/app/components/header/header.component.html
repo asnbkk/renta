@@ -1,32 +1,36 @@
 <div class="header">
+  <div class="header_top__wrapper">
     <div class="header_top">
-        <div class="header_top__left">
-            <span>Уральск</span>
-        </div>
-        <div class="header_top__middle">hello@arend.kz</div>
-        <div class="header_top__right">
-            <div class="login" routerLink="/login">Войти</div>
-            |
-            <div class="registration" routerLink="/registration">Регистрация</div>
-        </div>
+      <div class="header_top__left">
+        <span>Уральск</span>
+      </div>
+      <div class="header_top__middle">hello@arend.kz</div>
+      <div class="header_top__right">
+        <div class="login" routerLink="/login">Войти</div>
+        |
+        <div class="registration" routerLink="/registration">Регистрация</div>
+      </div>
     </div>
+  </div>
+  <div class="header_bottom__wrapper">
     <div class="header_bottom">
-        <div class="logo-svg" routerLink="/">
-            <app-svg [name]="'logo'"></app-svg>
-        </div>
-        <div class="logo">
-            <span><strong>arend.</strong> — сервис</span>
-            <span>по аренде вещей</span>
-        </div>
-        <div class="header_bottom__tabs">
-            <div class="tab" routerLink="/category" routerLinkActive="active">Категории</div>
-            <div class="tab">Как пользоваться?</div>
-            <!-- <div class="tab">Отзывы</div> -->
-            <div class="tab">О сервисе</div>
-            <!-- <div class="tab">Контакты</div> -->
-        </div>
-        <div class="header_bottom__new">
-            <app-button [text]="'Подать объявление'" [type]="'primary'"></app-button>
-        </div>
+      <div class="logo-svg" routerLink="/">
+        <app-svg [name]="'logo'"></app-svg>
+      </div>
+      <div class="logo">
+        <span><strong>arend.</strong> — сервис</span>
+        <span>по аренде вещей</span>
+      </div>
+      <div class="header_bottom__tabs">
+        <div class="tab" routerLink="/category" routerLinkActive="active">Категории</div>
+        <div class="tab">Как пользоваться?</div>
+        <!-- <div class="tab">Отзывы</div> -->
+        <div class="tab">О сервисе</div>
+        <!-- <div class="tab">Контакты</div> -->
+      </div>
+      <div class="header_bottom__new">
+        <app-button [text]="'Подать объявление'" [type]="'primary'"></app-button>
+      </div>
     </div>
+  </div>
 </div>

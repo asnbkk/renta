@@ -2,6 +2,7 @@
     /* box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.07); */
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
     /* padding: 1rem 3rem; */
+    display: grid;
 }
 .header_top {
     display: grid;
@@ -9,7 +10,12 @@
     align-items: center;
     grid-gap: 7rem;
     font-size: 14px;
-    padding: 0 5%;
+    /* padding: 0 5%; */
+    width: 1420px;
+}
+.header_top__wrapper {
+    display: grid;
+    justify-content: center;
     background-color: #f7f7f7;
 }
 .header_top__middle {
@@ -50,12 +56,17 @@
 .logo::ng-deep {
     /* height: 20px; */
 }
+.header_bottom__wrapper {
+    display: grid;
+    justify-content: center;
+}
 .header_bottom {
     display: grid;
-    padding: 1rem 5%;
+    padding: 1rem 0;
     grid-template-columns: auto auto 1fr auto;
     grid-gap: 1rem;
     align-items: center;
+    width: 1420px;
 }
 .logo {
     font-size: 14px;

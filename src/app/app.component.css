@@ -1,3 +1,10 @@
 .outlet-wrapper {
-    padding: 2rem 10%;
+    width: 1310px;
+    display: grid;
+    justify-items: center;
+    padding: 2rem 0;
+}
+.wrapper-wrapper {
+    display: grid;
+    justify-content: center;
 }
