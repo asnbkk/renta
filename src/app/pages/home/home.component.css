@@ -66,6 +66,7 @@ strong {
 
 .home_about {
     margin-top: 106px;
+    margin-bottom: 15vh;
 }
 .home_about__content {
     display: grid;

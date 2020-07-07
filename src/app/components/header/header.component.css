@@ -3,6 +3,10 @@
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
     /* padding: 1rem 3rem; */
     display: grid;
+    position: sticky;
+    top: -49px;
+    z-index: 10;
+    left: 0;
 }
 .header_top {
     display: grid;
@@ -59,8 +63,10 @@
 .header_bottom__wrapper {
     display: grid;
     justify-content: center;
+    /* position: sticky; */
 }
 .header_bottom {
+    background-color: #fff;
     display: grid;
     padding: 1rem 0;
     grid-template-columns: auto auto 1fr auto;
