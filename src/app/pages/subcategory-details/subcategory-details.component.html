@@ -1,3 +1,36 @@
 <div class="detail">
     <div class="title">{{title}}</div>
+    <div class="detail_list">
+        <div *ngFor="let p of products">
+            <div class="item">
+                <img src="{{p.image}}" alt="">
+                <div class="col-col">
+                    <div class="rating">{{p.rating}}</div>
+                    <div class="reviews">Отзывы({{p.reviews.lenght}})</div>
+                </div>
+                <div class="name">{{p.name}}</div>
+                <div class="description">{{p.description}}</div>
+                <div class="category">Категория: {{p.category}}</div>
+                <div class="col-col">
+                    <div class="rent-type">{{p.typeOfRent}}</div>
+                    <div class="price">{{p.price}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<!-- category: "5f0cc0ec0280f43c8aa6c3be"
+description: "Даю в аренду консоли по часам и на сутки. Все игры есть."
+image: "https://pluspng.com/img-png/ps4-png-ps4-png-900.png"
+information: "Даю в аренду консоли по часам и на сутки. Все игры есть."
+keywords: []
+name: "Аренда игровых консолей на сутки"
+price: 10000
+rating: 0
+reviews: []
+subcategory: "5f0cc1110280f43c8aa6c3bf"
+typeOfRent: "посуточно"
+user: "5f0ccfbf11af9b3f7d692e96"
+__v: 0
+_id: "5f0ccfd911af9b3f7d692e97" -->
