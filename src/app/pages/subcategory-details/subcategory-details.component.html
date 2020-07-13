@@ -2,20 +2,7 @@
     <div class="title">{{title}}</div>
     <div class="detail_list">
         <div *ngFor="let p of products">
-            <div class="item">
-                <img src="{{p.image}}" alt="">
-                <div class="col-col">
-                    <div class="rating">{{p.rating}}</div>
-                    <div class="reviews">Отзывы({{p.reviews.lenght}})</div>
-                </div>
-                <div class="name">{{p.name}}</div>
-                <div class="description">{{p.description}}</div>
-                <div class="category">Категория: {{p.category}}</div>
-                <div class="col-col">
-                    <div class="rent-type">{{p.typeOfRent}}</div>
-                    <div class="price">{{p.price}}</div>
-                </div>
-            </div>
+            <app-product-card [data]="p"></app-product-card>
         </div>
     </div>
 </div>

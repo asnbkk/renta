@@ -18,6 +18,7 @@ import { NewsCardComponent } from './components/news-card/news-card.component';
 import { ActionCardComponent } from './components/action-card/action-card.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SubcategoryDetailsComponent } from './pages/subcategory-details/subcategory-details.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { SubcategoryDetailsComponent } from './pages/subcategory-details/subcate
     NewsCardComponent,
     ActionCardComponent,
     FooterComponent,
-    SubcategoryDetailsComponent
+    SubcategoryDetailsComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,
