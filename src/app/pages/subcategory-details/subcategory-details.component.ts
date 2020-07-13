@@ -17,13 +17,22 @@ export class SubcategoryDetailsComponent implements OnInit {
   public title
   public products = []
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id').split('$')[0]
-    this.title = this.route.snapshot.paramMap.get('id').split('$')[1]
 
-    this.productService.getProducts(this.id).subscribe(data => {
-      this.products = data
-      console.log(data)
-    })
+      this.route.params.subscribe(params => {
+        this.id = params.id.split('$')[0]
+        this.title = params.id.split('$')[1]
+
+        console.log(params.id.split('$')[1])
+        
+        this.productService.getProducts(this.id).subscribe(data => {
+          this.products = data
+          console.log(data)
+        })
+      });
+
+    
+
+    
   }
 
 }

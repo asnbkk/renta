@@ -12,6 +12,7 @@
     padding: 1rem;
     display: grid;
     grid-template-columns: auto 1fr;
+    padding-bottom: 2rem;
     /* grid-gap: 2rem; */
 }
 .category_content__left___list {
