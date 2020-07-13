@@ -22,7 +22,7 @@
         <span>по аренде вещей</span>
       </div>
       <div class="header_bottom__tabs">
-        <div class="tab" routerLink="/category" routerLinkActive="active">Категории</div>
+        <div class="tab" (click)="category = !category" [ngStyle]="{'color':category == true ? 'blue' : 'rgb(109, 109, 109)' }">Категории</div>
         <div class="tab">Как пользоваться?</div>
         <!-- <div class="tab">Отзывы</div> -->
         <div class="tab">О сервисе</div>
@@ -32,5 +32,8 @@
         <app-button [text]="'Подать объявление'" [type]="'primary'"></app-button>
       </div>
     </div>
+  </div>
+  <div class="category" *ngIf="category">
+    <app-category></app-category>
   </div>
 </div>

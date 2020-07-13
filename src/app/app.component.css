@@ -7,4 +7,5 @@
 .wrapper-wrapper {
     display: grid;
     justify-content: center;
+    min-height: 100vh;
 }
