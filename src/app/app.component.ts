@@ -12,6 +12,5 @@ export class AppComponent implements AfterContentChecked {
   ngAfterContentChecked() {  
     let arr = (window.location.href.split('/'))
     this.path = arr[arr.length - 1]  
-    console.log(this.path)
   }
 }

@@ -17,7 +17,6 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   login(user): Observable<any> {
-    console.log('hello')
     return this.http.post(this._url + '/api/user/login', { user: user }, this.httpHeaders)
   }
 

@@ -13,10 +13,11 @@ export class CategoryService {
       'Content-Type': 'application/json'
     })
   }
-  public _url: string = api_url + 'api/categories/'
+  public _url: string = api_url
   constructor(private http: HttpClient) { }
 
   getCategories(): Observable<any> {
-    return this.http.get(this._url)
+    console.log('hello from service')
+    return this.http.get(this._url + 'api/categories')
   }
 }
