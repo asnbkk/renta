@@ -11,7 +11,7 @@
             <div class="title">{{selectedCategory.name}}</div>
             <div class="subcategory_list">
                 <div *ngFor="let sub of selectedCategory.subcategories">
-                    <div class="subcategory_item" (click)="onRouteChange(sub.name)">
+                    <div class="subcategory_item" (click)="onRouteChange(sub)">
                         {{sub.name}}
                     </div>
                 </div>

@@ -28,8 +28,8 @@ export class CategoryComponent implements OnInit {
     this.selectedCategory = category
   }
   onRouteChange(path) {
-    
-    this.router.navigate(["/subcategory-details", path])
+
+    this.router.navigate(["/subcategory-details", path._id + "$" + path.name])
   }
 
 }
