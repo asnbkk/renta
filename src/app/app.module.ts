@@ -17,6 +17,7 @@ import { RegistrationComponent } from './pages/registration/registration.compone
 import { NewsCardComponent } from './components/news-card/news-card.component';
 import { ActionCardComponent } from './components/action-card/action-card.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { SubcategoryDetailsComponent } from './pages/subcategory-details/subcategory-details.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { FooterComponent } from './components/footer/footer.component';
     RegistrationComponent,
     NewsCardComponent,
     ActionCardComponent,
-    FooterComponent
+    FooterComponent,
+    SubcategoryDetailsComponent
   ],
   imports: [
     BrowserModule,

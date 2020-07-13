@@ -1,11 +1,12 @@
 .outlet-wrapper {
+    /* display: grid; */
+    /* justify-items: center; */
     width: 1310px;
-    display: grid;
-    justify-items: center;
-    padding: 2rem 0;
+    padding-top: 120px;
 }
 .wrapper-wrapper {
     display: grid;
     justify-content: center;
     min-height: 100vh;
+    margin-top: -100px;
 }

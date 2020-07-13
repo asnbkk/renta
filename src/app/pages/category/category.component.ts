@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from 'src/app/services/category.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-category',
@@ -8,17 +9,27 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class CategoryComponent implements OnInit {
 
-  constructor(private categoryService: CategoryService) { }
+  constructor(
+    private categoryService: CategoryService,
+    private router: Router
+    ) { }
   public categories = []
+  public selectedCategory 
   ngOnInit(): void {
     this.categoryService.getCategories().subscribe(data => {
       console.log(data)
       this.categories = data
+      this.selectedCategory = this.categories[0]
     })
+
   }
 
-  getCategories() {
+  onSelect(category) {
+    this.selectedCategory = category
+  }
+  onRouteChange(path) {
     
+    this.router.navigate(["/subcategory-details", path])
   }
 
 }

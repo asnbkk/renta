@@ -1,5 +1,21 @@
 <div class="category">
     <div class="category_content">
-        hello
+        <div class="category_content__left">
+            <div class="category_content__left___list">
+                <div *ngFor="let c of categories">
+                    <div class="category_item" [ngStyle]="{'background-color': c.name == selectedCategory.name ? '#F1F0FF' : '#fff' }" (click)="onSelect(c)">{{c.name}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="category_content__right">
+            <div class="title">{{selectedCategory.name}}</div>
+            <div class="subcategory_list">
+                <div *ngFor="let sub of selectedCategory.subcategories">
+                    <div class="subcategory_item" (click)="onRouteChange(sub.name)">
+                        {{sub.name}}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
