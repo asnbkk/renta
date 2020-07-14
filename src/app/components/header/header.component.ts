@@ -8,10 +8,12 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   public category: boolean = false
+  public token = localStorage.getItem('token')
   constructor(private router: Router) { 
     router.events.subscribe((val) => {
       this.category = false
   });
+
   }
 
   ngOnInit(): void {
