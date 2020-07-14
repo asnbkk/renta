@@ -15,7 +15,7 @@ export class ProductCreateComponent implements OnInit {
   public categories = []
   public subcategories = []
   public productModel = {
-    name: '',
+    name: '', 
     information: '',
     description: '',
     category: '',
@@ -23,6 +23,7 @@ export class ProductCreateComponent implements OnInit {
     typeOfRent: '',
     price: 0,
     keywords: '',
+    image: ''
   }
   ngOnInit(): void {
     this.categoryService.getCategories().subscribe(data => {
