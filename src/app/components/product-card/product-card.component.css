@@ -1,9 +1,11 @@
 .item {
-    padding: 1rem;
+    padding: 1.5rem;
     border: 1px solid #bebebe;
     border-radius: 10px;
     width: 250px;
     display: grid;
+    grid-gap: 1rem;
+    position: relative;
 }
 img {
     display: grid;
@@ -15,9 +17,80 @@ img {
     display: grid;
     grid-template-columns: auto 1fr;
 }
+.rating {
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto 1fr;
+    justify-items: start;
+}
+.rating span {
+    color: #FFAA0D;
+}
 .reviews {
     display: grid;
     justify-content: end;
     font-size: 13px;
     align-items: center;
+    color: #696969;
+}
+.description {
+    font-size: 14px;
+    color: #696969;
+}
+.category {
+    font-size: 14px;
+    color: #696969;
+}
+strong {
+    font-weight: 500;
+    color: #000;
+}
+.rent-type {
+    background-color: #F1F1F1;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #1400FF;
+    padding: 0 1rem;
+}
+.price {
+    display: grid;
+    justify-self: end;
+    font-weight: bold;
+}
+.buttons {
+    display: grid;
+    grid-gap: .5rem;
+    position: absolute;
+    right: -23px;
+    bottom: 52px;
+}
+.like {
+    background-color: #F2F2F2;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+.like span {
+    color: #1400FF;
+    opacity: 0.4;
+}
+.like:hover span {
+    opacity: 0.7;
+}
+.chat {
+    background-color: #FFA500;
+    cursor: pointer;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%; 
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+.chat span {
+    color: #fff;
 }
