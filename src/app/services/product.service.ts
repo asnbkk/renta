@@ -17,4 +17,9 @@ export class ProductService {
   getProducts(subcategory_id): Observable<any> {
     return this.http.post(this._url + 'api/products/subcategory', {subcategory_id: subcategory_id}, this.httpHeaders)
   }
+
+  setProduct(product): Observable<any> {
+    return this.http.post(this._url + 'api/products/', product, this.httpHeaders)
+  }
+  
 }

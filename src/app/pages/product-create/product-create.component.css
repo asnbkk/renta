@@ -1,0 +1,113 @@
+.login {
+    position: absolute;    
+    height: 100vh;
+    width: calc(100vw - 30%);
+    background: #ffffff;
+    left: 0;
+    top: 0;
+    padding: 0 15%;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    /* align-items: center; */
+    align-content: center;
+}
+.input-group {
+    /* margin: 15%; */
+    display: grid;
+    /* margin-top: -52px; */
+    grid-gap: 1rem;
+    padding: 2rem 4rem 4rem 0;
+    /* padding-right: 4rem; */
+    border-right: 1px solid  #d8d8d8;
+    /* margin-right: 30%; */
+}
+.input-item {
+    align-items: center;
+    font-size: 14px;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-gap: 2rem;
+}
+.label {
+    color: #575757;
+}
+.title {
+    font-size: 30px;
+}
+.button {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    position: relative;
+}
+.switch {
+    position: absolute;
+    margin-top: 5rem;
+}
+.button div {
+    display: grid;
+    align-items: center;
+    align-self: center;
+    color: #808080;
+    cursor: pointer;
+    justify-self: end;
+    transition: 0.1s;
+}
+.button div:hover {
+    color: #000000;
+    transition: 0.1s;
+}
+input {
+    height: 50px;
+    border: 1px solid #cacaca;
+    border-radius: 5px;
+    padding: 0 2rem;
+    display: grid;
+}
+.promotion {
+    display: grid;
+    padding: 2rem 0 2rem 4rem;   
+    align-items: flex-start;
+    /* grid-gap: 1rem; */
+    grid-template-rows: auto auto 1fr;
+    grid-gap: 2rem;
+}
+.logo-svg {
+    cursor: pointer;
+}
+.logo-wrapper {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: auto 1fr;
+}
+.logo {
+    font-size: 14px;
+    display: grid;
+    grid-template-rows: auto auto;
+}
+strong {
+    font-weight: 500;
+    color: #1400FF;
+}
+.promotion_text,
+.social_text {
+    line-height: 1.5;
+    color: #575757;
+    font-size: 14px;
+}
+.social_icons {
+    display: grid;
+    grid-template-columns: auto auto auto auto 1fr;
+    grid-gap: 1rem;
+    margin-top: 1rem;
+}
+.icon {
+    cursor: pointer;
+    display: grid;
+    justify-self: start;
+    opacity: 0.3;
+    transition: 0.1s;
+}
+.icon:hover {
+    opacity: 0.7;
+    transition: 0.1s;
+}

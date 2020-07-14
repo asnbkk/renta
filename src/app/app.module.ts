@@ -19,6 +19,7 @@ import { ActionCardComponent } from './components/action-card/action-card.compon
 import { FooterComponent } from './components/footer/footer.component';
 import { SubcategoryDetailsComponent } from './pages/subcategory-details/subcategory-details.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
+import { ProductCreateComponent } from './pages/product-create/product-create.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ProductCardComponent } from './components/product-card/product-card.com
     ActionCardComponent,
     FooterComponent,
     SubcategoryDetailsComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    ProductCreateComponent
   ],
   imports: [
     BrowserModule,

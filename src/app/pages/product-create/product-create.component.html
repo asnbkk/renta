@@ -1,0 +1,54 @@
+<div class="input-group">
+    <div class="input-item">
+        <div></div>
+        <div class="title">Создание объявления</div>
+    </div>
+    <div class="input-item">
+        <div class="label">Титул</div>
+        <input type="text" name="email" [(ngModel)]="productModel.email" >
+    </div>
+    <div class="input-item">
+        <div class="label">Краткое описание</div>
+        <input type="text" [(ngModel)]="productModel.password" name="password">
+    </div>
+    <div class="input-item">
+        <div class="label">Подробное описание</div>
+        <input type="text" [(ngModel)]="productModel.password" name="password">
+    </div>
+    <div class="input-item">
+        <div class="label">Категория</div>
+        <input type="text" [(ngModel)]="productModel.password" name="password">
+    </div>
+    <div class="input-item">
+        <div class="label">Подкатегория</div>
+        <input type="text" [(ngModel)]="productModel.password" name="password">
+    </div>
+    <div class="input-item">
+        <div class="label">Тип аренды</div>
+        <input type="text" [(ngModel)]="productModel.password" name="password">
+    </div>
+    <div class="input-item">
+        <div class="label">Цена</div>
+        <input type="text" [(ngModel)]="productModel.password" name="password">
+    </div>
+    <div class="input-item">
+        <div class="label">Изображение</div>
+        <input type="text" [(ngModel)]="productModel.password" name="password">
+    </div>
+    <div class="input-item">
+        <div class="label">Ключевые слова</div>
+        <input type="text" [(ngModel)]="productModel.password" name="password">
+    </div>
+
+
+    <div class="input-item">
+        <div></div>
+        <div class="button">
+            <app-button [type]="'primary'" [text]="'Создать объявление'" (click)="onSubmit()"></app-button>
+        </div>
+    </div>
+
+
+
+    
+</div>
