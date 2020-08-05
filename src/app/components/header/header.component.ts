@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-header',
@@ -9,11 +10,14 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   public category: boolean = false
   public token = localStorage.getItem('token')
-  constructor(private router: Router) { 
+  constructor(private router: Router, private categoryService: CategoryService) { 
     router.events.subscribe((val) => {
       this.category = false
   });
+  }
 
+  toggleCategory() {
+    this.categoryService.toggleCategoryVisibility()
   }
 
   ngOnInit(): void {

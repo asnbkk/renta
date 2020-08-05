@@ -18,7 +18,7 @@
     grid-gap: 1rem;
     padding: 2rem 4rem 4rem 0;
     /* padding-right: 4rem; */
-    border-right: 1px solid  #d8d8d8;
+    /* border-right: 1px solid  #d8d8d8; */
     /* margin-right: 30%; */
 }
 .input-item {
@@ -32,7 +32,7 @@
     color: #575757;
 }
 .title {
-    font-size: 30px;
+    font-size: 20px;
 }
 .button {
     display: grid;
