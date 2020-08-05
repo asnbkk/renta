@@ -20,6 +20,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SubcategoryDetailsComponent } from './pages/subcategory-details/subcategory-details.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductCreateComponent } from './pages/product-create/product-create.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ProductCreateComponent } from './pages/product-create/product-create.co
     FooterComponent,
     SubcategoryDetailsComponent,
     ProductCardComponent,
-    ProductCreateComponent
+    ProductCreateComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

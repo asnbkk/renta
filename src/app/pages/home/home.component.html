@@ -1,4 +1,4 @@
-<div class="home">
+<div class="home" *ngIf="isLoaded">
     <div class="home_title">Главное</div>
     <div class="home_search">
         <!-- <input type="text"> -->
@@ -70,3 +70,5 @@
         </div>
     </div>
 </div>
+
+<div *ngIf="!isLoaded"><app-loader></app-loader></div>
