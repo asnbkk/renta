@@ -99,7 +99,7 @@ strong {
     cursor: pointer;
     color: rgb(109, 109, 109);
 }
-.tab:hover:not(.active) {
+.tab:hover{
     color: #000;
 }
 .logo-svg {

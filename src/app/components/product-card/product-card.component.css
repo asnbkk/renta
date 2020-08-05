@@ -1,12 +1,13 @@
 .item {
     padding: 1.5rem;
-    border: 1px solid #bebebe;
+    border: 1px solid #8b8b8b;
     border-radius: 10px;
     width: 250px;
     display: grid;
     grid-gap: 1rem;
     position: relative;
     cursor: pointer;
+    background: #fff;
 }
 .item:hover {
     border: 1px solid #494949;

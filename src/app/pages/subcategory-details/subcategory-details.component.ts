@@ -26,7 +26,6 @@ export class SubcategoryDetailsComponent implements OnInit {
         
         this.productService.getProducts(this.id).subscribe(data => {
           this.products = data
-          console.log(data)
         })
       });
 
