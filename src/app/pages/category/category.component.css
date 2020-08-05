@@ -1,7 +1,7 @@
 .category {
     position: absolute;
     /* border-bottom: 1px solid #d3d3d3; */
-    top: 130px;
+    top: 115px;
     left: 0;
     grid-template-rows: auto 1fr;
     overflow: hidden;

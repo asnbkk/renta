@@ -5,23 +5,26 @@
     /* padding: 1rem 3rem; */
     display: grid;
     position: sticky;
-    top: -49px;
+    top: -33px;
     z-index: 10;
     left: 0;
 }
 .header_top {
     display: grid;
-    grid-template-columns: 1fr auto  auto;
+    grid-template-columns: 1fr auto auto;
     align-items: center;
     grid-gap: 7rem;
     font-size: 14px;
     /* padding: 0 5%; */
     width: 1420px;
 }
+.header_top * {
+    color: rgb(207, 207, 207);
+}
 .header_top__wrapper {
     display: grid;
     justify-content: center;
-    background-color: #f7f7f7;
+    background-color: #333333;
 }
 .header_top__middle {
     color: #696969;
@@ -31,22 +34,22 @@
     transition: 0.1s;
 }
 .header_top__middle:hover {
-    color: #000;
+    color: rgb(255, 255, 255);
     transition: 0.1s;
 }
 .header_top__left {
     color: #696969;
-    padding: 1rem 0;
+    padding: 0.5rem 0;
 }
 .header_top__left span {
     cursor: pointer;
 }
 .header_top__left span:hover {
-    color: #000;
+    color: #fff;
 }
 .header_top__right {
     /* background-color: #ebebeb; */
-    padding: 1rem 0;
+    padding: 0.5rem 0;
     grid-gap: 1rem;
     display: grid;
     cursor: default;
@@ -56,7 +59,7 @@
 .login:hover,
 .registration:hover {
     cursor: pointer;
-    color: #000;
+    color: rgb(255, 255, 255);
 }
 .logo::ng-deep {
     /* height: 20px; */
@@ -64,10 +67,10 @@
 .header_bottom__wrapper {
     display: grid;
     justify-content: center;
+    background: #fff;
     /* position: sticky; */
 }
 .header_bottom {
-    background-color: #fff;
     display: grid;
     padding: 1rem 0;
     grid-template-columns: auto auto 1fr auto;
