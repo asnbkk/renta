@@ -14,8 +14,8 @@
 
 .wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 3rem;
+    grid-template-columns: 3fr 2fr;
+    grid-gap: 7rem;
 }
 .img {
     background: #fff;
@@ -39,4 +39,40 @@
     background: blue;
     color: #fff;
     border-radius: 10px;
+}
+
+.button-group {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    grid-gap: 1rem;
+}
+.total {
+    padding: 0 0 2rem 0;
+    display: grid;
+    grid-gap: 1rem;
+}
+.total-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-gap: 1rem;
+    border-bottom: 1px solid #c2c2c2;
+}
+.total-item p {
+    margin-top: 0;
+    color: rgb(94, 94, 94);
+}
+.total-bottom {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: 1fr auto;
+}
+.total-bottom p {
+    font-weight: bold;
+    margin: 0;
+    font-size: 20px;
+}
+
+.landlor {
+    margin-top: 2rem;
+    border-top: 1px solid silver;
 }

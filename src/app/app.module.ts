@@ -22,7 +22,11 @@ import { ProductCardComponent } from './components/product-card/product-card.com
 import { ProductCreateComponent } from './pages/product-create/product-create.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
+// import {MatDatepickerModule} from '@angular/material/datepicker';
+// import {MatFormFieldModule} from '@angular/material/form-field';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +51,9 @@ import { ProductDetailsComponent } from './components/product-details/product-de
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
