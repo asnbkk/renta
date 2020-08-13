@@ -1,3 +1,27 @@
-<div class="wrapper">
+<div *ngIf="!loader">
+    <div class="smalltitle">Категория продукта - Подкатегория продукта</div>
     <div class="title">{{prod.name}}</div>
+    <div class="wrapper">
+        <div class="left">
+            <div class="img">
+                <img src="{{prod.image}}" alt="">
+                <div class="rentType">{{prod.typeOfRent}}</div>
+            </div>
+            <div class="price-list">
+                <div class="subtitle">Прайс-лист</div>
+            </div>
+            <div class="desc">
+                <div class="subtitle">Описание</div>
+                {{prod.description}}
+            </div>
+            <div class="comments">
+                <div class="subtitle">Отзывы</div>
+            </div>
+        </div>
+        <div class="right">its me</div>
+    </div>
+</div>
+
+<div class="loader" *ngIf="loader">
+    <app-loader></app-loader>
 </div>
