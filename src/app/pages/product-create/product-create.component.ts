@@ -34,8 +34,15 @@ export class ProductCreateComponent implements OnInit {
     })
   }
 
-  onSubmit(): void {
-
+  
+  onBlur(): void {
+    if (this.productModel.category !== '') {
+      let category = this.categories.find(c => c._id === this.productModel.category)
+      this.subcategories = [...category.subcategories]
+    }
   }
-
+  
+  onSubmit(): void {
+    console.log(this.productModel.category)
+  }
 }

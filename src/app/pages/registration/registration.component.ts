@@ -28,6 +28,7 @@ export class RegistrationComponent implements OnInit {
       this.userService.registration(this.regModel).subscribe(res => {
         localStorage.setItem('token', res.token)
         localStorage.setItem('username', this.regModel.name)
+        localStorage.setItem('email', res.email)
       if(res.token) {
         this.router.navigate(['/'])
       }
