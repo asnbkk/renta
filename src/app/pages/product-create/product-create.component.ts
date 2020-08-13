@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from 'src/app/services/category.service';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-product-create',
@@ -10,6 +11,7 @@ export class ProductCreateComponent implements OnInit {
 
   constructor(
     private categoryService: CategoryService,
+    private productService: ProductService
   ) { }
 
   public categories = []
@@ -23,7 +25,8 @@ export class ProductCreateComponent implements OnInit {
     typeOfRent: '',
     price: 0,
     keywords: '',
-    image: ''
+    image: '',
+    email: ''
   }
   ngOnInit(): void {
     this.categoryService.getCategories().subscribe(data => {
@@ -31,11 +34,20 @@ export class ProductCreateComponent implements OnInit {
       data.forEach(cat => {
         this.subcategories.push(...cat.subcategories)
       });
+      let email = localStorage.getItem('email')
+      if (email) this.productModel.email = email
     })
   }
 
-  onSubmit(): void {
-
+  
+  onBlur(): void {
+    if (this.productModel.category !== '') {
+      let category = this.categories.find(c => c._id === this.productModel.category)
+      this.subcategories = [...category.subcategories]
+    }
   }
-
+  
+  onSubmit(): void {
+    this.productService.setProduct(this.productModel).subscribe()
+  }
 }

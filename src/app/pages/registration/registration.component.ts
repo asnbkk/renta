@@ -27,8 +27,13 @@ export class RegistrationComponent implements OnInit {
     if(this.regModel.password == this.password2){
       this.userService.registration(this.regModel).subscribe(res => {
         localStorage.setItem('token', res.token)
+<<<<<<< HEAD
         // localStorage.setItem('username', this.regModel.name)
         localStorage.setItem('username', this.regModel.email)
+=======
+        localStorage.setItem('username', res.user.name)
+        localStorage.setItem('email', res.user.email)
+>>>>>>> 56fda11f184a5a16a906564377add1630c835f8f
       if(res.token) {
         this.userService.isAuthorizedChange.next(this.regModel.email)
         console.log(this.userService.isAuthorized)

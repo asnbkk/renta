@@ -17,11 +17,17 @@
     </div>
     <div class="input-item">
         <div class="label">Категория</div>
-        <input type="text" [(ngModel)]="productModel.category" name="category">
+        <select name="categories" [(ngModel)]="productModel.category" (change)="onBlur()">
+            <option value="" disabled>Выберите категорию</option>
+            <option [value]="c._id" *ngFor="let c of categories">{{c.name}}</option>
+        </select>
     </div>
     <div class="input-item">
         <div class="label">Подкатегория</div>
-        <input type="text" [(ngModel)]="productModel.subcategory" name="subcategory">
+        <select name="subcategories" [(ngModel)]="productModel.subcategory">
+            <option value="" disabled>Выберите подкатегорию</option>
+            <option [value]="s._id" *ngFor="let s of subcategories">{{s.name}}</option>
+        </select>
     </div>
     <div class="input-item">
         <div class="label">Тип аренды</div>
@@ -39,16 +45,10 @@
         <div class="label">Ключевые слова</div>
         <input type="text" [(ngModel)]="productModel.keywords" name="keywords">
     </div>
-
-
     <div class="input-item">
         <div></div>
         <div class="button">
             <app-button [type]="'primary'" [text]="'Создать объявление'" (click)="onSubmit()"></app-button>
         </div>
     </div>
-
-
-
-    
 </div>
