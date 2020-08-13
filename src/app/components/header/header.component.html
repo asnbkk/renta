@@ -5,10 +5,16 @@
         <span>Уральск</span>
       </div>
       <div class="header_top__middle">hello@arend.kz</div>
-      <div class="header_top__right">
+      <div class="header_top__right" *ngIf="username == null">
         <div class="login" routerLink="/login">Войти</div>
         |
         <div class="registration" routerLink="/registration">Регистрация</div>
+      </div>
+      <div class="header_top__right" *ngIf="username != null">
+        <div></div>
+        <div class="registration" (click)="onLogout()">
+          {{username}}
+        </div>
       </div>
     </div>
   </div>

@@ -24,7 +24,10 @@ export class LoginComponent implements OnInit {
     console.log(this.loginModel.email, this.loginModel.password)
     this.userService.login(this.loginModel).subscribe(res => {
       localStorage.setItem('token', res.token)
+      localStorage.setItem('username', this.loginModel.email)
       if(res.token) {
+        this.userService.isAuthorizedChange.next(this.loginModel.email)
+        //response name
         this.router.navigate(['/'])
       }
     })
