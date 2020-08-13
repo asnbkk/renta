@@ -80,3 +80,6 @@ strong {
     display: grid;
     grid-gap: 1rem;
 }
+.loader {
+    transition: 0.2s;
+}

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, AfterViewInit, Renderer2 } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-card',
@@ -6,10 +7,17 @@ import { Component, OnInit, Input, AfterViewInit, Renderer2 } from '@angular/cor
   styleUrls: ['./product-card.component.css']
 })
 export class ProductCardComponent implements OnInit {
-  @Input() data
-  constructor() { }
-
+  constructor(private router: Router) { }
+  private _data
   ngOnInit(): void {
   }
 
+  @Input()
+  set data(value) {
+    this._data = value
+  }
+  
+  get data() {
+    return this._data
+  }
 }

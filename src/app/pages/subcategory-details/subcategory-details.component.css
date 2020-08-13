@@ -4,6 +4,7 @@
 }
 .detail_list {
     margin-top: 2rem;
+    transition: 0.2s;
 }
 .loader {
     transition: 0.2s;

@@ -12,15 +12,16 @@ export class SubcategoryDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
-    private renderer: Renderer2
-  ) { }
+  ) { 
+    this.loader = true
+  }
   public id
   public title
   public products = []
 
-  public loader = true
+  public loader
   ngOnInit(): void {
-
+    this.loader = true
     this.route.params.subscribe(params => {
       this.id = params.id.split('$')[0]
       this.title = params.id.split('$')[1]

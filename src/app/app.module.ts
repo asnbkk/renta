@@ -21,6 +21,7 @@ import { SubcategoryDetailsComponent } from './pages/subcategory-details/subcate
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductCreateComponent } from './pages/product-create/product-create.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { LoaderComponent } from './components/loader/loader.component';
     SubcategoryDetailsComponent,
     ProductCardComponent,
     ProductCreateComponent,
-    LoaderComponent
+    LoaderComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,

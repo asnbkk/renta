@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
-  isLoaded: boolean = false
+export class HomeComponent implements OnInit, AfterViewInit {
+  // public loader = true
   public news = [
     {"img": "assets/img/image 3.png", "text": "Как построить бизнес на аренде товара?"},
     {"img": "assets/img/image 4.png", "text": "ТОП 5 советов при выборе товара"},
@@ -14,13 +14,13 @@ export class HomeComponent implements OnInit {
     {"img": "assets/img/image 4.png", "text": "ТОП 5 советов при выборе товара"}
   ]
   constructor() {
-    this.isLoaded = false
   }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.isLoaded = true
-    }, 1000)
+  }
+
+  ngAfterViewInit() {
+    // this.loader = false
   }
   
 }
