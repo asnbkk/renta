@@ -37,3 +37,6 @@
     transition: 0.1s;
     background: #ebe9ff;
 }
+.secondary-button:active {
+    background: #dedbff;
+}

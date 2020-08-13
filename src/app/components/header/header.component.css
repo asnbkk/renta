@@ -15,6 +15,7 @@
     align-items: center;
     grid-gap: 7rem;
     font-size: 14px;
+    
     /* padding: 0 5%; */
     width: 1420px;
 }
@@ -24,7 +25,7 @@
 .header_top__wrapper {
     display: grid;
     justify-content: center;
-    background-color: #333333;
+    background-color: rgb(39, 39, 39);
 }
 .header_top__middle {
     color: #696969;
