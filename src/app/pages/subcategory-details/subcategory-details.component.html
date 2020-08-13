@@ -1,9 +1,9 @@
 <div class="detail">
     <div class="title">{{title}}</div>
-    <div class="detail_list">
+    <div class="detail_list" *ngIf="!loader">
         <div *ngFor="let p of products">
             <app-product-card [data]="p"></app-product-card>
         </div>
     </div>
-    <!-- <div *ngIf="products == null">loading</div> -->
+    <div class="loader" [ngStyle]="{'opacity': (loader) ? '1' : '0'}"><app-loader></app-loader></div>
 </div>
