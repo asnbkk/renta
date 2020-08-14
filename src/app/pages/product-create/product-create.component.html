@@ -26,7 +26,7 @@
         <div class="label">Подкатегория</div>
         <select name="subcategories" [(ngModel)]="productModel.subcategory">
             <option value="" disabled>Выберите подкатегорию</option>
-            <option [value]="s.name" *ngFor="let s of subcategories">{{s.name}}</option>
+            <option [value]="s._id" *ngFor="let s of subcategories">{{s.name}}</option>
         </select>
     </div>
     <div class="input-item">
