@@ -24,13 +24,9 @@ export class LoginComponent implements OnInit {
     console.log(this.loginModel.email, this.loginModel.password)
     this.userService.login(this.loginModel).subscribe(res => {
       localStorage.setItem('token', res.token)
-<<<<<<< HEAD
-      localStorage.setItem('username', this.loginModel.email)
-=======
       localStorage.setItem('username', res.user.name)
       localStorage.setItem('email', res.user.email)
 
->>>>>>> 56fda11f184a5a16a906564377add1630c835f8f
       if(res.token) {
         this.userService.isAuthorizedChange.next(this.loginModel.email)
         //response name
