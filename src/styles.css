@@ -7,6 +7,9 @@ input {
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
 }
+:focus {
+    outline: none;
+}
 /* input:focus {
     border:1px solid #9ACE8D;
 } */

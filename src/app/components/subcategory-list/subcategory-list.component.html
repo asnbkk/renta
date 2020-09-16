@@ -1,0 +1,18 @@
+<div class="subcategory">
+    <div class="subcategory_title">
+        <span>{{title}}</span>
+        <div class="subcategory_title__counter">
+            {{subcategories.length}}
+        </div>
+    </div>
+    <div class="subcategory_content">
+        <div *ngFor="let s of subcategories">
+            <div class="subcategory_content__item" routerLink="/subcategory-details/{{s._id}}">
+                <span>{{s.name}}</span>
+                <div class="subcategory_content__item___counter">
+                    {{s.counter}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

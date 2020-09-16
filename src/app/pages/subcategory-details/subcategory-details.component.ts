@@ -15,21 +15,22 @@ export class SubcategoryDetailsComponent implements OnInit {
   ) { 
     this.loader = true
   }
-  public id
+  public id = this.route.snapshot.paramMap.get('id')
   public title
+  public categoryName
   public products = []
 
   public loader
   ngOnInit(): void {
     this.loader = true
-    this.route.params.subscribe(params => {
-      this.id = params.id.split('$')[0]
-      this.title = params.id.split('$')[1]
+    this.productService.getProducts(this.id).subscribe(data => {
+      this.products = data
+      console.log(data)
+      this.categoryName = data[0].category.name
+      this.title = data[0].subcategory.name
+      // console.log(this.title)
 
-      this.productService.getProducts(this.id).subscribe(data => {
-        this.products = data
-      })
-    });
+    })
   }
 
 

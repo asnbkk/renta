@@ -7,46 +7,21 @@ import { Router } from '@angular/router';
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.css']
 })
-export class CategoryComponent implements OnInit, AfterViewInit {
+export class CategoryComponent implements OnInit {
 
   constructor(
     private categoryService: CategoryService,
     private router: Router,
     ) {}
 
-    @ViewChild('content') elementView: ElementRef;
-    contentHeight: number
-    screenHeight: number
-
-    ngAfterViewInit() {
-      this.screenHeight = window.innerHeight
-      this.contentHeight = this.elementView.nativeElement.offsetHeight;
-  }
-
-    get isCategoryVisible(): boolean {
-      return this.categoryService.isCategoryVisivle
-    }
-
-    toggleCategory() {
-      this.categoryService.toggleCategoryVisibility()
-    }
-
   public categories = []
   public selectedCategory 
   ngOnInit(): void {
-    this.categoryService.getCategories().subscribe(data => {
-      console.log(data)
-      this.categories = data
-      this.selectedCategory = this.categories[0]
-    })
-
+    let categories = JSON.parse(localStorage.getItem('categories'))
+    if(categories.length != 0) this.categories = categories
+    else this.categoryService.getCategories().subscribe(data => { this.categories = data })
+    
+    let firstCategory = this.categories[0]
+    this.router.navigate(['category', firstCategory._id])
   }
-
-  onSelect(category) {
-    this.selectedCategory = category
-  }
-  onRouteChange(path) {
-    this.router.navigate(["/subcategory-details", path._id + "$" + path.name])
-  }
-
 }

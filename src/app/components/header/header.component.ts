@@ -21,10 +21,6 @@ export class HeaderComponent implements OnInit {
   // this.username = localStorage.getItem('username')
   }
 
-  toggleCategory() {
-    this.categoryService.toggleCategoryVisibility()
-  }
-
   ngOnInit(): void {
   }
 

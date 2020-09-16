@@ -7,12 +7,15 @@ import { RegistrationComponent } from './pages/registration/registration.compone
 import { SubcategoryDetailsComponent } from './pages/subcategory-details/subcategory-details.component';
 import { ProductCreateComponent } from './pages/product-create/product-create.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { SubcategoryListComponent } from './components/subcategory-list/subcategory-list.component';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
-  // { path: 'category', component: CategoryComponent },
-  { path: 'login', component: LoginComponent},
+  { path: 'category', component: CategoryComponent, children: [
+    {path: ':id', component: SubcategoryListComponent }
+  ]},
+  { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'subcategory-details/:id', component: SubcategoryDetailsComponent },
   { path: 'product-details/:product_id', component: ProductDetailsComponent },

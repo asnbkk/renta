@@ -1,28 +1,13 @@
-<div class="category" [ngStyle]="{'height': (isCategoryVisible) ? screenHeight + 'px' : '1px'}">
-    <div class="category-top_wrapper" #content>
-
-        <div class="header-title">Категории</div>
+<div class="category-wrapper">
+    <div class="category">
+        <div class="title">Категории</div>
         <div class="category_content">
-            <div class="category_content__left">
-                <div class="category_content__left___list">
-                    <div *ngFor="let c of categories">
-                    <div class="category_item"
-                    [ngStyle]="{'background-color': c.name == selectedCategory.name ? '#F1F0FF' : '#fff' }"
-                    (click)="onSelect(c)">{{c.name}}</div>
-                </div>
+            <div *ngFor="let c of categories">
+                <div class="category_content__item" routerLink="{{c._id}}" routerLinkActive="active">{{c.name}}</div>
             </div>
         </div>
-        <div class="category_content__right">
-            <div class="title">{{selectedCategory.name}}</div>
-            <div class="subcategory_list">
-                <div *ngFor="let sub of selectedCategory.subcategories">
-                    <div class="subcategory_item" (click)="onRouteChange(sub)" (click)="toggleCategory()">
-                        {{sub.name}}
-                    </div>
-                </div>
-            </div>
+        <div class="category_subcategory">
+            <router-outlet></router-outlet>
         </div>
     </div>
-</div>
-<div class="category-background" [ngStyle]="{'height': screenHeight - contentHeight + 'px'}" (click)="toggleCategory()"></div>
 </div>
