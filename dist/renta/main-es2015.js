@@ -2141,7 +2141,7 @@ class ProductService {
         return this.http.get(this._url + 'api/products/' + productId);
     }
     Search(query) {
-        return this.http.post(this._url + 'search/', { query }, this.httpHeaders);
+        return this.http.post(this._url + 'api/search/', { query }, this.httpHeaders);
     }
 }
 ProductService.ɵfac = function ProductService_Factory(t) { return new (t || ProductService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"])); };

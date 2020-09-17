@@ -28,6 +28,6 @@ export class ProductService {
   }
 
   Search(query): Observable<any> {
-    return this.http.post(this._url + 'search/', { query }, this.httpHeaders)
+    return this.http.post(this._url + 'api/search/', { query }, this.httpHeaders)
   }
 }

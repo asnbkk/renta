@@ -4464,7 +4464,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "Search",
         value: function Search(query) {
-          return this.http.post(this._url + 'search/', {
+          return this.http.post(this._url + 'api/search/', {
             query: query
           }, this.httpHeaders);
         }
