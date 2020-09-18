@@ -26,4 +26,8 @@ export class ProductService {
   getProductInfo(productId): Observable<any> {
     return this.http.get(this._url + 'api/products/' + productId)
   }
+
+  Search(query): Observable<any> {
+    return this.http.post(this._url + 'api/search/', { query }, this.httpHeaders)
+  }
 }

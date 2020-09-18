@@ -1,4 +1,5 @@
 <div class="search">
-    <input type="text" placeholder="Хочу арендовать...">
-    <app-button [text]="'Найти'" [type]="'primary'"></app-button>
+    <input type="text" placeholder="Хочу арендовать..."
+    (input)="onSearchChange($event.target.value)">
+    <app-button [text]="'Найти'" [type]="'primary'" (click)="onSearch()"></app-button>
 </div>
