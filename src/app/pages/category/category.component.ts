@@ -22,6 +22,6 @@ export class CategoryComponent implements OnInit {
     else this.categoryService.getCategories().subscribe(data => { this.categories = data })
     
     let firstCategory = this.categories[0]
-    this.router.navigate(['category', firstCategory._id])
+    // this.router.navigate(['category', firstCategory._id])
   }
 }

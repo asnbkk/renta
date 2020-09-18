@@ -28,8 +28,6 @@ export class SubcategoryDetailsComponent implements OnInit {
       console.log(data)
       this.categoryName = data[0].category.name
       this.title = data[0].subcategory.name
-      // console.log(this.title)
-
     })
   }
 

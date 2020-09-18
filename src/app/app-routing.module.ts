@@ -13,6 +13,7 @@ import { SubcategoryListComponent } from './components/subcategory-list/subcateg
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'category', component: CategoryComponent, children: [
+    {path: '', redirectTo: '/category/5f0cc0310280f43c8aa6c3ba', pathMatch: 'full'},
     {path: ':id', component: SubcategoryListComponent }
   ]},
   { path: 'login', component: LoginComponent },
