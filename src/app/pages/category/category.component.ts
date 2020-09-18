@@ -20,8 +20,5 @@ export class CategoryComponent implements OnInit {
     let categories = JSON.parse(localStorage.getItem('categories'))
     if(categories.length != 0) this.categories = categories
     else this.categoryService.getCategories().subscribe(data => { this.categories = data })
-    
-    let firstCategory = this.categories[0]
-    // this.router.navigate(['category', firstCategory._id])
   }
 }

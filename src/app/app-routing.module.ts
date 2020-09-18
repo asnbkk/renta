@@ -18,7 +18,7 @@ const routes: Routes = [
   ]},
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
-  { path: 'subcategory-details/:id', component: SubcategoryDetailsComponent },
+  { path: 'subcategory-details/:category/:subcategory/:id', component: SubcategoryDetailsComponent },
   { path: 'product-details/:product_id', component: ProductDetailsComponent },
   { path: 'product-create', component: ProductCreateComponent}
 ];
