@@ -17,14 +17,15 @@
     font-size: 14px;
     
     /* padding: 0 5%; */
-    width: 1420px;
+    /* width: 1420px; */
+    padding: 0 10%;
 }
 .header_top * {
     color: rgb(207, 207, 207);
 }
 .header_top__wrapper {
     display: grid;
-    justify-content: center;
+    /* justify-content: center; */
     background-color: rgb(39, 39, 39);
 }
 .header_top__middle {
@@ -67,17 +68,17 @@
 }
 .header_bottom__wrapper {
     display: grid;
-    justify-content: center;
+    /* justify-content: center; */
     background: #fff;
     /* position: sticky; */
 }
 .header_bottom {
     display: grid;
-    padding: 1rem 0;
+    padding: 1rem 10%;
     grid-template-columns: auto auto 1fr auto;
     grid-gap: 1rem;
     align-items: center;
-    width: 1420px;
+    /* width: 1420px; */
 }
 .logo {
     font-size: 14px;

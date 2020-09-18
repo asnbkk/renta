@@ -1,9 +1,25 @@
 <div class="detail">
-    <div class="smalltitle">{{categoryName}}</div>
-    <div class="title">{{title}}</div>
-    <div class="detail_list" [ngStyle]="{'opacity': (loader) ? '0' : '1'}">
-        <div *ngFor="let p of products">
-            <app-product-card [data]="p"></app-product-card>
+    <div class="smalltitle">
+        <span routerLink="/">Главная</span>
+        -
+        <span routerLink="/category">
+            {{categoryName}}
+        </span>
+    </div>
+    <div class="title">
+        <span>
+            {{title}}
+        </span>
+        <div class="title_counter">{{products.length}}</div>
+    </div>
+    <div class="detail_content">
+        <div class="detail_content__filter">
+            типа фильтр, понял да?
+        </div>
+        <div class="detail_list" [ngStyle]="{'opacity': (loader) ? '0' : '1'}">
+            <div *ngFor="let p of products">
+                <app-product-card [data]="p"></app-product-card>
+            </div>
         </div>
     </div>
     <div class="loader" *ngIf="loader"><app-loader></app-loader></div>
