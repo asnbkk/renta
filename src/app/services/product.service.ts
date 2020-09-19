@@ -13,14 +13,25 @@ export class ProductService {
       'Content-Type': 'application/json'
     })
   }
+
+  public selectedProduct
+  
   public _url: string = api_url
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    let selectedProduct = localStorage.getItem('selectedProduct')
+    if(selectedProduct) this.selectedProduct = JSON.parse(selectedProduct)
+  }
   getProducts(subcategory_id): Observable<any> {
     return this.http.post(this._url + 'api/products/subcategory', {subcategory_id: subcategory_id}, this.httpHeaders)
   }
 
   setProduct(product): Observable<any> {
     return this.http.post(this._url + 'api/products/', product, this.httpHeaders)
+  }
+
+  onProductSelect(product) {
+    this.selectedProduct = product
+    localStorage.setItem('selectedProduct', JSON.stringify(product))
   }
   
   getProductInfo(productId): Observable<any> {

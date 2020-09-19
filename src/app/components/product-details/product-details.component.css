@@ -10,8 +10,15 @@
 }
 .smalltitle {
     color: #9e9e9e;
+    cursor: default;
 }
-
+.smalltitle span {
+    cursor: pointer;
+}
+.smalltitle span:hover {
+    color: #000;
+    transition: 0.2s;
+}
 .wrapper {
     display: grid;
     grid-template-columns: 3fr 2fr;
@@ -28,6 +35,9 @@
 }
 .img img {
     height: 250px;
+}
+.desc {
+    line-height: 1.5;
 }
 .rentType {
     position: absolute;
@@ -75,4 +85,27 @@
 .landlor {
     margin-top: 2rem;
     border-top: 1px solid silver;
+}
+.landor_wrapper {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 1rem;
+}
+.landor_wrapper__img img {
+    height: 70px;
+    width: 70px;
+}
+.landor_wrapper__text {
+    display: grid;
+    align-items: center;
+    grid-template-rows: auto auto 1fr;
+}
+.landor_text {
+    font-size: 14px;
+    color: #666666;
+}
+.landor_wrapper__text___top {
+    display: grid;
+    grid-template-columns: auto 1fr ;
+    grid-gap: 1rem;
 }

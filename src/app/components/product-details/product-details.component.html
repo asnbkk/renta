@@ -1,5 +1,15 @@
 <div *ngIf="!loader">
-    <div class="smalltitle">Категория продукта - Подкатегория продукта</div>
+    <div class="smalltitle">
+        <span routerLink="/">Главная</span>
+        -
+        <span routerLink="/category">
+            {{prod.category.name}}
+        </span>
+        -
+        <span (click)="goBack()">
+            {{prod.subcategory.name}}
+        </span>
+    </div>
     <div class="title">{{prod.name}}</div>
     <div class="wrapper">
         <div class="left">
@@ -40,7 +50,27 @@
             </div>
             <div class="landlor">
                 <div class="subtitle">Арендодатель</div>
-
+                <div class="landor_wrapper">
+                    <div class="landor_wrapper__img">
+                        <img src="../../../assets/img/user.png" alt="">
+                        <!-- надо добавить картинку для пользователя -->
+                    </div>
+                    <div class="landor_wrapper__text">
+                        <div class="landor_wrapper__text___top">
+                            <div class="landor_name">{{prod.user.name}}</div>
+                            <div class="landor_status">
+                                {{prod.user.role}}
+                            </div>
+                        </div>
+                        <div class="landor_text">
+                            {{prod.information}}
+                            <!-- надо будет поменять на текст пользователя -->
+                        </div>
+                        <div class="landor_rating">
+                            <!-- рейтингл пользователя -->
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

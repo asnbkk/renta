@@ -2,7 +2,7 @@
     <div class="smalltitle">
         <span routerLink="/">Главная</span>
         -
-        <span routerLink="/category">
+        <span (click)="goBack()">
             {{categoryName}}
         </span>
     </div>
@@ -19,7 +19,7 @@
         <div class="detail_list">
             <div *ngIf="products.length > 0">
                 <div *ngFor="let p of products">
-                    <app-product-card [data]="p"></app-product-card>
+                    <app-product-card (click)="onRedirect(p)" [data]="p"></app-product-card>
                 </div>
             </div>
             <div *ngIf="products.length < 1">

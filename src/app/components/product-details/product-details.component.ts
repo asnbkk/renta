@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-product-details',
@@ -9,20 +10,18 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductDetailsComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private productService: ProductService) { }
+  constructor(private route: ActivatedRoute, private productService: ProductService, private location: Location) { }
   public id
   public prod
-  public loader = true
+  public loader = false
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('product_id')
-    this.productService.getProductInfo(this.id).subscribe(data => {
-    this.prod = data
-    console.log(this.prod)
-    })
+    let prod = this.productService.selectedProduct
+    if (prod) this.prod = prod
+    else this.productService.getProductInfo(this.id).subscribe(data => {this.prod = data})
+    console.log(prod)
   }
-
-  ngAfterViewInit() {
-    this.loader = false
+  goBack() {
+    this.location.back()
   }
-
 }
