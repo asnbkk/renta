@@ -24,6 +24,7 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SubcategoryListComponent } from './components/subcategory-list/subcategory-list.component';
+import { SearchPageComponent } from './pages/search-page/search-page.component';
 
 
 // import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -47,7 +48,8 @@ import { SubcategoryListComponent } from './components/subcategory-list/subcateg
     ProductCreateComponent,
     LoaderComponent,
     ProductDetailsComponent,
-    SubcategoryListComponent
+    SubcategoryListComponent,
+    SearchPageComponent
   ],
   imports: [
     BrowserModule,

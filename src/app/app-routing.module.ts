@@ -8,6 +8,7 @@ import { SubcategoryDetailsComponent } from './pages/subcategory-details/subcate
 import { ProductCreateComponent } from './pages/product-create/product-create.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { SubcategoryListComponent } from './components/subcategory-list/subcategory-list.component';
+import { SearchPageComponent } from './pages/search-page/search-page.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
     {path: '', redirectTo: '/category/5f0cc0310280f43c8aa6c3ba', pathMatch: 'full'},
     {path: ':id', component: SubcategoryListComponent }
   ]},
+  { path: 'search', component: SearchPageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'subcategory-details/:category/:subcategory/:id', component: SubcategoryDetailsComponent },

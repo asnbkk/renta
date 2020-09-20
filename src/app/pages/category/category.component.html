@@ -1,6 +1,9 @@
 <div class="category-wrapper">
     <div class="category">
-        <div class="title">Категории</div>
+        <div class="title">
+            <span routerLink="/">Главная</span>
+            Категории
+        </div>
         <div class="category_content">
             <div *ngFor="let c of categories">
                 <div class="category_content__item" routerLink="{{c._id}}" routerLinkActive="active">{{c.name}}</div>
