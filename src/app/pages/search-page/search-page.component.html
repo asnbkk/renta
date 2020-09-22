@@ -17,4 +17,9 @@
             </div>
         </div>
     </div>
+    <div class="search_content">
+        <div *ngFor="let res of searchRes">
+            <app-product-card [data]="res" (click)="onRedirect(res)"></app-product-card>
+        </div>
+    </div>
 </div>

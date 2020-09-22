@@ -9,7 +9,6 @@ import { ProductService } from 'src/app/services/product.service';
 export class SearchComponent implements OnInit {
 
   constructor(private productService: ProductService) { }
-
   public searchVal = ''
   @Input() dummy: boolean
   ngOnInit(): void {
@@ -28,6 +27,8 @@ export class SearchComponent implements OnInit {
   onSearch(): void {
     this.productService.Search(this.searchVal).subscribe(res => {
       console.log(res)
+      this.productService.searchRes = res
+      // this.productService.onSearchResUpdate(res)
     })
   }
 

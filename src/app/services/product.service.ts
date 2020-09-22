@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { api_url } from '../../assets/env'
 import { ThrowStmt } from '@angular/compiler';
 
@@ -17,10 +17,17 @@ export class ProductService {
   public selectedProduct
   
   public _url: string = api_url
+  searchRes
+  searchResChange: Subject<any> = new Subject<any>()
   constructor(private http: HttpClient) { 
     let selectedProduct = localStorage.getItem('selectedProduct')
     if(selectedProduct) this.selectedProduct = JSON.parse(selectedProduct)
+
+    this.searchResChange.subscribe(data => {
+      this.searchRes = data
+    })
   }
+  
   getProducts(subcategory_id): Observable<any> {
     return this.http.post(this._url + 'api/products/subcategory', {subcategory_id: subcategory_id}, this.httpHeaders)
   }
@@ -41,4 +48,7 @@ export class ProductService {
   Search(query): Observable<any> {
     return this.http.post(this._url + 'api/search/', { query }, this.httpHeaders)
   }
+  onSearchResUpdate(res) {
+    this.searchResChange.next(res)
+  } 
 }
