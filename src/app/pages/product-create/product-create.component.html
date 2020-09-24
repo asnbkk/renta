@@ -48,9 +48,24 @@
     <div class="input-item">
         <div class="label">Прайс-лист с периодом</div>
         <div class="input-item_row" [ngStyle]="{'grid-template-columns' : '1fr 1fr 1fr'}">
-            <input type="text" currencyMask [options]="{ align: 'left', prefix: '', precision: '0', suffix: ' ₸', thousands: ' ', decimal: '' }" placeholder="За час" [(ngModel)]="productModel.priceForHour" name="priceForHour">
-            <input type="text" currencyMask [options]="{ align: 'left', prefix: '', precision: '0', suffix: ' ₸', thousands: ' ', decimal: '' }" (change)="onPriceEnter('day', productModel.priceForDay)" placeholder="За день" [(ngModel)]="productModel.priceForDay" name="priceForDay">
-            <input type="text" currencyMask [options]="{ align: 'left', prefix: '', precision: '0', suffix: ' ₸', thousands: ' ', decimal: '' }" (change)="onPriceEnter('week', productModel.priceForWeek)" placeholder="За неделю" [(ngModel)]="productModel.priceForWeek" name="priceForWeek">
+            <input type="text" currencyMask 
+            [options]="{ align: 'left', prefix: '', precision: '0', suffix: ' ₸', thousands: ' ', decimal: '' }" 
+            placeholder="За час" [(ngModel)]="productModel.priceForHour" name="priceForHour"
+            #hourPrice="ngModel" [class.is-valid]="productModel.priceForHour">
+            <input type="text" currencyMask 
+            [options]="{ align: 'left', prefix: '', precision: '0', suffix: ' ₸', thousands: ' ', decimal: '' }" 
+            placeholder="За день" [(ngModel)]="productModel.priceForDay" name="priceForDay"
+            #dayPrice="ngModel" [class.is-valid]="productModel.priceForDay">
+            <input type="text" currencyMask 
+            [options]="{ align: 'left', prefix: '', precision: '0', suffix: ' ₸', thousands: ' ', decimal: '' }" 
+            placeholder="За неделю" [(ngModel)]="productModel.priceForWeek" name="priceForWeek"
+            #weekPrice="ngModel" [class.is-valid]="productModel.priceForWeek">
+        </div>
+        <!-- validate on submission -->
+        <!-- <div class="warning" *ngIf="!productModel.priceForDay && !productModel.priceForHour && !productModel.priceForWeek">
+            Укажите категорию и подкатегорию объявления</div> -->
+        <div class="valid" *ngIf="productModel.priceForDay || productModel.priceForHour || productModel.priceForWeek">
+            <span class="material-icons">done</span>
         </div>
     </div>
     <div class="input-item">
