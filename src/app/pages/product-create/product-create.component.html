@@ -8,10 +8,6 @@
         <input type="text" name="name" [(ngModel)]="productModel.name" >
     </div>
     <div class="input-item">
-        <div class="label">Краткое описание</div>
-        <input type="text" [(ngModel)]="productModel.information" name="information">
-    </div>
-    <div class="input-item">
         <div class="label">Подробное описание</div>
         <input type="text" [(ngModel)]="productModel.description" name="description">
     </div>
@@ -30,12 +26,16 @@
         </select>
     </div>
     <div class="input-item">
-        <div class="label">Тип аренды</div>
-        <input type="text" [(ngModel)]="productModel.typeOfRent" name="typeOfRent">
+        <div class="label">Цена</div>
+        <input type="text" [(ngModel)]="productModel.priceForHour" name="price">
     </div>
     <div class="input-item">
         <div class="label">Цена</div>
-        <input type="text" [(ngModel)]="productModel.price" name="price">
+        <input type="text" [(ngModel)]="productModel.priceForDay" name="price">
+    </div>
+    <div class="input-item">
+        <div class="label">Цена</div>
+        <input type="text" [(ngModel)]="productModel.priceForWeek" name="price">
     </div>
     <div class="input-item">
         <div class="label">Изображение</div>

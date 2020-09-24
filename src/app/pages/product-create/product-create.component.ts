@@ -18,16 +18,17 @@ export class ProductCreateComponent implements OnInit {
   public subcategories = []
   public productModel = {
     name: '', 
-    information: '',
     description: '',
     category: '',
     subcategory: '',
-    typeOfRent: '',
-    price: 0,
+    priceForHour: 0,
+    priceForDay: 0,
+    priceForWeek: 0,
     keywords: '',
     image: '',
     email: ''
   }
+
   ngOnInit(): void {
     this.categoryService.getCategories().subscribe(data => {
       this.categories = data
