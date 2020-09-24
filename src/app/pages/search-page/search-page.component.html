@@ -17,6 +17,7 @@
             </div> -->
         </div>
     </div>
+    <div class="subtitle" *ngIf="searchRes != null">Результат поиска</div>
     <div class="search_content">
         <div *ngFor="let res of searchRes">
             <app-product-card [data]="res" (click)="onRedirect(res)"></app-product-card>
