@@ -31,6 +31,7 @@ import { AdminCategoriesComponent } from './pages/admin-categories/admin-categor
 import { AdminSubcategoriesComponent } from './pages/admin-subcategories/admin-subcategories.component';
 import { AdminGroupsComponent } from './pages/admin-groups/admin-groups.component';
 import { AdminCitiesComponent } from './pages/admin-cities/admin-cities.component';
+import { AuthGuard } from './auth.guard';
 
 
 // import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -71,7 +72,7 @@ import { AdminCitiesComponent } from './pages/admin-cities/admin-cities.componen
     BrowserAnimationsModule,
 
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

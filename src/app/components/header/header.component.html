@@ -5,7 +5,7 @@
         <span>Уральск</span>
       </div>
       <div class="header_top__middle">hello@arend.kz</div>
-      <div class="header_top__right" *ngIf="username == null">
+      <div class="header_top__right" [ngStyle]="{'grid-gap': '1rem'}" *ngIf="username == null">
         <div class="login" routerLink="/login">Войти</div>
         |
         <div class="registration" routerLink="/registration">Регистрация</div>

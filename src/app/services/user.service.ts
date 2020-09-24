@@ -24,17 +24,19 @@ export class UserService {
   }
 
   login(user): Observable<any> {
-    // this.isAuthorizedChange.next(user)
     return this.http.post(this._url + '/api/user/login', { user: user }, this.httpHeaders)
   }
 
   registration(user): Observable<any> {
-    // this.isAuthorizedChange.next(user)
     return this.http.post(this._url + '/api/user/signup', { user: user }, this.httpHeaders)
   }
 
   logout() {
     this.isAuthorizedChange.next(null)
     localStorage.removeItem('username')
+  }
+
+  loggedIn() {
+    return !!localStorage.getItem('token')
   }
 }

@@ -1,41 +1,34 @@
 <div class="input-group">
-    <div class="input-item">
-        <div></div>
+        <!-- <div></div> -->
         <div class="title">Создание объявления</div>
-    </div>
     <div class="input-item">
-        <div class="label">Титул</div>
+        <div class="label">Название объявления</div>
         <input type="text" name="name" [(ngModel)]="productModel.name" >
     </div>
-    <div class="input-item">
-        <div class="label">Подробное описание</div>
-        <input type="text" [(ngModel)]="productModel.description" name="description">
+    <div class="input-item" [ngStyle]="{'align-items': 'start'}">
+        <div class="label" [ngStyle]="{'margin-top': '17px'}">Подробное описание</div>
+        <textarea name="description" [(ngModel)]="productModel.description" id="" cols="30" rows="5"></textarea>
     </div>
     <div class="input-item">
-        <div class="label">Категория</div>
-        <select name="categories" [(ngModel)]="productModel.category" (change)="onBlur()">
-            <option value="" disabled>Выберите категорию</option>
-            <option [value]="c._id" *ngFor="let c of categories">{{c.name}}</option>
-        </select>
+        <div class="label">Категория и подкатегория</div>
+        <div class="input-item_row">
+            <select name="categories" [(ngModel)]="productModel.category" (change)="onBlur()">
+                <option value="" disabled>Выберите категорию</option>
+                <option [value]="c._id" *ngFor="let c of categories">{{c.name}}</option>
+            </select>
+            <select name="subcategories" [(ngModel)]="productModel.subcategory">
+                <option value="" disabled>Выберите подкатегорию</option>
+                <option [value]="s._id" *ngFor="let s of subcategories">{{s.name}}</option>
+            </select>
+        </div>
     </div>
     <div class="input-item">
-        <div class="label">Подкатегория</div>
-        <select name="subcategories" [(ngModel)]="productModel.subcategory">
-            <option value="" disabled>Выберите подкатегорию</option>
-            <option [value]="s._id" *ngFor="let s of subcategories">{{s.name}}</option>
-        </select>
-    </div>
-    <div class="input-item">
-        <div class="label">Цена за час</div>
-        <input type="text" [(ngModel)]="productModel.priceForHour" name="priceForHour">
-    </div>
-    <div class="input-item">
-        <div class="label">Цена за день</div>
-        <input type="text" [(ngModel)]="productModel.priceForDay" name="priceForDay">
-    </div>
-    <div class="input-item">
-        <div class="label">Цена за неделю</div>
-        <input type="text" [(ngModel)]="productModel.priceForWeek" name="priceForWeek">
+        <div class="label">Прайс-лист с периодом</div>
+        <div class="input-item_row" [ngStyle]="{'grid-template-columns' : '1fr 1fr 1fr'}">
+            <input type="text" placeholder="За час" [(ngModel)]="productModel.priceForHour" name="priceForHour">
+            <input type="text" placeholder="За день" [(ngModel)]="productModel.priceForDay" name="priceForDay">
+            <input type="text" placeholder="За неделю" [(ngModel)]="productModel.priceForWeek" name="priceForWeek">
+        </div>
     </div>
     <div class="input-item">
         <div class="label">Изображение</div>
@@ -45,10 +38,11 @@
         <div class="label">Ключевые слова</div>
         <input type="text" [(ngModel)]="productModel.keywords" name="keywords">
     </div> -->
-    <div class="input-item">
+    <div class="button-group">
         <div></div>
         <div class="button">
             <app-button [type]="'primary'" [text]="'Создать объявление'" (click)="onSubmit()"></app-button>
+            <app-button [type]="'secondary'" [text]="'Предварительный просмотр'" (click)="onSubmit()"></app-button>
         </div>
     </div>
 </div>
