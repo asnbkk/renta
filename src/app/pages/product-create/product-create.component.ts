@@ -38,7 +38,6 @@ export class ProductCreateComponent implements OnInit {
   }
 
   mask: any[] = ['+', '7', ' ', '(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
-
   phonenumber(inputtxt) {
     let phoneno = /^(\+7|7|8)?[\s\-]?\(?[789][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/gm;
     if (inputtxt.match(phoneno)) return true;
@@ -66,11 +65,19 @@ export class ProductCreateComponent implements OnInit {
     }
   }
 
+  onPriceEnter(type, val) {
+    // if(type == 'hour' && val != '') this.productModel.priceForHour = this.productModel.priceForHour + ' ₸'
+    // if(type == 'day' && val != '') this.productModel.priceForDay = this.productModel.priceForDay + ' ₸'
+    // if(type == 'week' && val != '') this.productModel.priceForWeek = this.productModel.priceForWeek + ' ₸'
+  }
+  // ₸
+
   onSubmit(): void {
-    let isPhoneValid = this.phonenumber(this.productModel.phone)
-    if(isPhoneValid) {
-      this.productService.setProduct(this.productModel).subscribe()
-    }
-    else console.log('phone is not valid')
+    // let isPhoneValid = this.phonenumber(this.productModel.phone)
+    // if(isPhoneValid) {
+    //   this.productService.setProduct(this.productModel).subscribe()
+    // }
+    // else console.log('phone is not valid')
+    console.log(this.productModel)
   }
 }

@@ -48,9 +48,9 @@
     <div class="input-item">
         <div class="label">Прайс-лист с периодом</div>
         <div class="input-item_row" [ngStyle]="{'grid-template-columns' : '1fr 1fr 1fr'}">
-            <input type="text" placeholder="За час" [(ngModel)]="productModel.priceForHour" name="priceForHour">
-            <input type="text" placeholder="За день" [(ngModel)]="productModel.priceForDay" name="priceForDay">
-            <input type="text" placeholder="За неделю" [(ngModel)]="productModel.priceForWeek" name="priceForWeek">
+            <input type="text" currencyMask [options]="{ align: 'left', prefix: '', precision: '0', suffix: ' ₸', thousands: ' ', decimal: '' }" placeholder="За час" [(ngModel)]="productModel.priceForHour" name="priceForHour">
+            <input type="text" currencyMask [options]="{ align: 'left', prefix: '', precision: '0', suffix: ' ₸', thousands: ' ', decimal: '' }" (change)="onPriceEnter('day', productModel.priceForDay)" placeholder="За день" [(ngModel)]="productModel.priceForDay" name="priceForDay">
+            <input type="text" currencyMask [options]="{ align: 'left', prefix: '', precision: '0', suffix: ' ₸', thousands: ' ', decimal: '' }" (change)="onPriceEnter('week', productModel.priceForWeek)" placeholder="За неделю" [(ngModel)]="productModel.priceForWeek" name="priceForWeek">
         </div>
     </div>
     <div class="input-item">

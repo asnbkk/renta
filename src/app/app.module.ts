@@ -33,6 +33,7 @@ import { AdminGroupsComponent } from './pages/admin-groups/admin-groups.componen
 import { AdminCitiesComponent } from './pages/admin-cities/admin-cities.component';
 import { AuthGuard } from './auth.guard';
 import {TextMaskModule} from 'angular2-text-mask'
+import { CurrencyMaskModule } from "ng2-currency-mask";
 
 
 // import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -71,7 +72,8 @@ import {TextMaskModule} from 'angular2-text-mask'
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    TextMaskModule
+    TextMaskModule,
+    CurrencyMaskModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
