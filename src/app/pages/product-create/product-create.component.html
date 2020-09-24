@@ -101,7 +101,7 @@
             <div class="warning" *ngIf="phone.invalid && phone.touched">Введите Ваш номер телефона</div>
             <div class="warning" *ngIf="phone.touched && !phonenumber(productModel.phone) && productModel.phone">Проверьте правильность номера телефона</div>
             <div class="warning" *ngIf="email.invalid && email.touched">Введите Ваш E-mail</div>
-            <div class="warning" *ngIf="email.touched && !emailValidation(productModel.email)">Проверьте правильность электронной почты</div>
+            <div class="warning" *ngIf="email.touched && !emailValidation(productModel.email) && productModel.email">Проверьте правильность электронной почты</div>
             <div class="valid" *ngIf="(phone.valid && phone.touched && phonenumber(productModel.phone) && (email.valid && emailValidation(productModel.email)))">
                 <span class="material-icons">done</span>
             </div>
