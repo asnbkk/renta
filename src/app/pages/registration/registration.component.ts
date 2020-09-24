@@ -13,6 +13,8 @@ export class RegistrationComponent implements OnInit {
     name: '',
     password: ''
   }
+
+  errors = []
   public password2: ''
 
   constructor(
@@ -24,16 +26,26 @@ export class RegistrationComponent implements OnInit {
   }
 
   onSubmit() {
-    if(this.regModel.password == this.password2){
-      this.userService.registration(this.regModel).subscribe(res => {
-        localStorage.setItem('token', res.token)
-        localStorage.setItem('username', res.user.name)
-        localStorage.setItem('email', res.user.email)
-      if(res.token) {
-        this.userService.isAuthorizedChange.next(this.regModel.email)
-        console.log(this.userService.isAuthorized)
-        this.router.navigate(['/'])
-      }
+    this.errors = []
+
+    if(this.regModel.password !== this.password2) this.errors.push('Пароли не совпадают!')
+
+    else{
+      let re = /\S+@\S+\.\S+/;
+      if (!re.test(this.regModel.email)) this.errors.push('Введите корректный email!')
+      else this.userService.registration(this.regModel).subscribe(res => {
+        if (res.error == 'Email already registered') this.errors.push('Пользователь с таким адресом электронной почты уже зарегистрирован!')
+        
+        if(!res.error){
+          localStorage.setItem('token', res.token)
+          localStorage.setItem('username', res.user.name)
+          localStorage.setItem('email', res.user.email)
+        }
+        if(res.token) {
+          this.userService.isAuthorizedChange.next(this.regModel.email)
+          console.log(this.userService.isAuthorized)
+          this.router.navigate(['/'])
+        }
       })
     }
   }

@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
     email: '',
     password: ''
   }
+  errors = []
   constructor(
     private userService: UserService,
     private router: Router
@@ -22,7 +23,10 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     console.log(this.loginModel.email, this.loginModel.password)
-    this.userService.login(this.loginModel).subscribe(res => {
+    let re = /\S+@\S+\.\S+/;
+    if (!re.test(this.loginModel.email)) this.errors.push('Введите корректный email!')
+    else this.userService.login(this.loginModel).subscribe(res => {
+      if(res.error == 'incorrect credentials') this.errors.push('Пожалуйста, проверьте правильность введенных данных!')      
       localStorage.setItem('token', res.token)
       localStorage.setItem('username', res.user.name)
       localStorage.setItem('email', res.user.email)

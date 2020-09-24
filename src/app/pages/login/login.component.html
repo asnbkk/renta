@@ -12,6 +12,10 @@
       <div class="label">Пароль</div>
       <input type="password" [(ngModel)]="loginModel.password" name="password">
     </div>
+
+    <div *ngFor='let error of errors'>
+      {{error}}
+    </div>
     <div class="input-item">
       <div></div>
       <div class="button">
@@ -46,9 +50,9 @@
             <div class="icon">
                 <app-svg [name]="'telegram'"></app-svg>
             </div>
-            <div class="icon">
+            <!-- <div class="icon">
                 <app-svg [name]="'vk'"></app-svg>
-            </div>
+            </div> -->
         </div>
     </div>
   </div>
