@@ -43,6 +43,11 @@ export class ProductCreateComponent implements OnInit {
     if (inputtxt.match(phoneno)) return true;
     return false;
   }
+  emailValidation(email) {
+    let _email = /\S+@\S+\.\S+/
+    if(!_email.test(email)) return false
+    else return true
+  }
 
   ngOnInit(): void {
     this.categoryService.getCategories().subscribe(data => {
