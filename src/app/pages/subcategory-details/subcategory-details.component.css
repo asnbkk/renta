@@ -24,8 +24,8 @@
 .detail_list div{
     transition: 0.2s;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-    grid-gap: 2rem;
+    grid-template-columns: repeat(auto-fill, 350px);
+    grid-gap: 3rem;
 }
 .detail_content {
     margin-top: 2rem;

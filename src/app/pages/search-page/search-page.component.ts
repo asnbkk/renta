@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -7,8 +7,7 @@ import { ProductService } from 'src/app/services/product.service';
   templateUrl: './search-page.component.html',
   styleUrls: ['./search-page.component.css']
 })
-export class SearchPageComponent implements OnInit {
-
+export class SearchPageComponent implements OnInit, OnDestroy {
   constructor(private productService: ProductService,
               private router: Router) { }
 
@@ -16,12 +15,16 @@ export class SearchPageComponent implements OnInit {
   }
 
   get searchRes() {
-    // console.log(this.productService.searchRes)
     return this.productService.searchRes
   }
 
   onRedirect(data) {
     this.router.navigate(['product-details', data._id])
     this.productService.onProductSelect(data)
+    // this.productService.onDeleteSearchRes()
+  }
+
+  ngOnDestroy() {
+    this.productService.onDeleteSearchRes()
   }
 }

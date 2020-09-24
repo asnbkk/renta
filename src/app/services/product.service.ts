@@ -17,7 +17,7 @@ export class ProductService {
   public selectedProduct
   
   public _url: string = api_url
-  searchRes
+  searchRes: [] = []
   searchResChange: Subject<any> = new Subject<any>()
   constructor(private http: HttpClient) { 
     let selectedProduct = localStorage.getItem('selectedProduct')
@@ -51,4 +51,7 @@ export class ProductService {
   onSearchResUpdate(res) {
     this.searchResChange.next(res)
   } 
+  onDeleteSearchRes() {
+    this.searchResChange.next(null)
+  }
 }
