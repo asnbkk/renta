@@ -17,7 +17,7 @@ export class ProductCreateComponent implements OnInit {
     private userService: UserService,
     private router: Router
   ) {
-    
+
   }
 
   public categories = []
@@ -32,7 +32,17 @@ export class ProductCreateComponent implements OnInit {
     priceForWeek: null,
     keywords: '',
     image: '',
-    email: ''
+    email: '',
+    username: '',
+    phone: ''
+  }
+
+  mask: any[] = ['+', '7', ' ', '(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
+
+  phonenumber(inputtxt) {
+    let phoneno = /^(\+7|7|8)?[\s\-]?\(?[789][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/gm;
+    if (inputtxt.match(phoneno)) return true;
+    return false;
   }
 
   ngOnInit(): void {
@@ -42,7 +52,9 @@ export class ProductCreateComponent implements OnInit {
         this.subcategories.push(...cat.subcategories)
       });
       let email = localStorage.getItem('email')
+      let username = localStorage.getItem('username')
       if (email) this.productModel.email = email
+      if (username) this.productModel.username = username
     })
   }
 
@@ -55,7 +67,10 @@ export class ProductCreateComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.productModel)
-    // this.productService.setProduct(this.productModel).subscribe()
+    let isPhoneValid = this.phonenumber(this.productModel.phone)
+    if(isPhoneValid) {
+      this.productService.setProduct(this.productModel).subscribe()
+    }
+    else console.log('phone is not valid')
   }
 }

@@ -14,9 +14,14 @@
 .title {
     font-size: 24px;
     font-weight: bold;
-    padding-bottom: 1rem;
+    /* padding-bottom: 1rem; */
+}
+.subtitle {
+    font-size: 20px;
+    font-weight: bold;
 }
 .input-group {
+    padding: 1rem 0;
     /* margin: 15%; */
     display: grid;
     /* margin-top: -52px; */
@@ -127,4 +132,5 @@ strong {
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
     grid-gap: 2rem;
+    margin-top: 2rem;
 }

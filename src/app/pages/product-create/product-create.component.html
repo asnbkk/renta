@@ -1,6 +1,6 @@
+<div class="title">Создание объявления</div>
+<div class="subtitle">Основная информация</div>
 <div class="input-group">
-        <!-- <div></div> -->
-        <div class="title">Создание объявления</div>
     <div class="input-item">
         <div class="label">Название объявления</div>
         <input type="text" name="name" [(ngModel)]="productModel.name" >
@@ -33,16 +33,26 @@
     <div class="input-item">
         <div class="label">Изображение</div>
         <input type="text" [(ngModel)]="productModel.image" name="image">
+    </div>    
+</div>
+<div class="subtitle" [ngStyle]="{'margin-top': '2rem'}">Контактные данные</div>
+<div class="input-group">
+    <div class="input-item">
+        <div class="label">Ваше имя</div>
+        <input type="text" name="username" [(ngModel)]="productModel.username" >
     </div>
-    <!-- <div class="input-item">
-        <div class="label">Ключевые слова</div>
-        <input type="text" [(ngModel)]="productModel.keywords" name="keywords">
-    </div> -->
-    <div class="button-group">
-        <div></div>
-        <div class="button">
-            <app-button [type]="'primary'" [text]="'Создать объявление'" (click)="onSubmit()"></app-button>
-            <app-button [type]="'secondary'" [text]="'Предварительный просмотр'" (click)="onSubmit()"></app-button>
+    <div class="input-item">
+        <div class="label">Номер телефона и e-mail</div>
+        <div class="input-item_row">
+            <input type="text" name="phone" [textMask]="{mask: mask}" placeholder="+7 (___) ___-____" [(ngModel)]="productModel.phone" >
+            <input type="text" name="email" placeholder="Е-mail" [(ngModel)]="productModel.email" >
         </div>
+    </div>
+</div>
+<div class="button-group">
+    <div></div>
+    <div class="button">
+        <app-button [type]="'primary'" [text]="'Создать объявление'" (click)="onSubmit()"></app-button>
+        <app-button [type]="'secondary'" [text]="'Предварительный просмотр'" (click)="onSubmit()"></app-button>
     </div>
 </div>

@@ -32,6 +32,7 @@ import { AdminSubcategoriesComponent } from './pages/admin-subcategories/admin-s
 import { AdminGroupsComponent } from './pages/admin-groups/admin-groups.component';
 import { AdminCitiesComponent } from './pages/admin-cities/admin-cities.component';
 import { AuthGuard } from './auth.guard';
+import {TextMaskModule} from 'angular2-text-mask'
 
 
 // import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -70,7 +71,7 @@ import { AuthGuard } from './auth.guard';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-
+    TextMaskModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
