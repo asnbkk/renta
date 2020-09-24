@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-admin-categories',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminCategoriesComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private categoryService: CategoryService) { }
+  nameModel = {
+    name: ''
+  }
   ngOnInit(): void {
+  }
+
+  onSubmit() {
+
+    this.categoryService.setCategory(this.nameModel.name).subscribe()
   }
 
 }

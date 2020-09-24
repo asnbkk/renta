@@ -1,0 +1,23 @@
+.subtitle {
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 1rem;
+}
+.input-item {
+    align-items: center;
+    font-size: 14px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-gap: 2rem;
+    padding-bottom: 1rem;
+}
+.label {
+    color: #575757;
+}
+input {
+    height: 50px;
+    border: 1px solid #cacaca;
+    border-radius: 5px;
+    padding: 0 2rem;
+    display: grid;
+}

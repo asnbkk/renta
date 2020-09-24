@@ -1,1 +1,15 @@
-<p>admin-subcategories works!</p>
+<div class="subtitle">Подкатегории</div>
+<div class="content">
+    <div class="input-item">
+        <div class="label">Подкатегория</div>
+        <select name="categories" [(ngModel)]="subcategoryModel.category">
+            <option value="" disabled>Выберите подкатегорию</option>
+            <option [value]="cat._id" *ngFor="let cat of categories">{{cat.name}}</option>
+        </select>
+    </div>
+    <div class="input-item">
+        <div class="label">Название</div>
+        <input type="text" placeholder="Пример: Спорт и активный отдых" name="name" [(ngModel)]="subcategoryModel.name">
+    </div>
+    <app-button [text]="'Создать'" [type]="'primary'" (click)="onSubmit()"></app-button>
+</div>

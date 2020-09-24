@@ -1,1 +1,6 @@
-<p>admin-categories works!</p>
+<div class="subtitle">Категории</div>
+<div class="input-item">
+    <div class="label">Название</div>
+    <input type="text" placeholder="Пример: Спорт и активный отдых" name="name" [(ngModel)]="nameModel.name">
+    <app-button [text]="'Создать'" [type]="'primary'" (click)="onSubmit()"></app-button>
+</div>

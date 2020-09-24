@@ -26,4 +26,10 @@ export class CategoryService {
   setCategory(category): Observable<any> {
     return this.http.post(this._url + 'api/categories', { category },this.httpHeaders)
   }
+
+  //////////////////////////
+
+  setSubcategory(category_id, name): Observable<any> {
+    return this.http.post('https://arend.kz/api/subcategories', {category_id, name}, this.httpHeaders)
+  }
 }
