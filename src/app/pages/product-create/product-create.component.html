@@ -3,23 +3,46 @@
 <div class="input-group">
     <div class="input-item">
         <div class="label">Название объявления</div>
-        <input type="text" name="name" [(ngModel)]="productModel.name" >
+        <input type="text" name="name" required [(ngModel)]="productModel.name" 
+        #name="ngModel" [class.is-invalid]="name.invalid && name.touched"
+        [class.is-valid]="name.valid && name.touched">
+        <div class="warning" *ngIf="name.invalid && name.touched">Введите название объявления</div>
+        <div class="valid" *ngIf="name.valid && name.touched">
+            <span class="material-icons">done</span>
+        </div>
     </div>
     <div class="input-item" [ngStyle]="{'align-items': 'start'}">
         <div class="label" [ngStyle]="{'margin-top': '17px'}">Подробное описание</div>
-        <textarea name="description" [(ngModel)]="productModel.description" id="" cols="30" rows="5"></textarea>
+        <textarea name="description" required [(ngModel)]="productModel.description"
+        rows="5" #description="ngModel" [class.is-invalid]="description.invalid && description.touched"
+        [class.is-valid]="description.valid && description.touched"></textarea>
+        <div class="warning" 
+        *ngIf="description.invalid && description.touched"
+        [ngStyle]="{'margin-top' : '17px'}">Введите подробное описание</div>
+        <div class="valid" [ngStyle]="{'margin-top' : '10px'}" *ngIf="description.valid && description.touched">
+            <span class="material-icons">done</span>
+        </div>
     </div>
     <div class="input-item">
         <div class="label">Категория и подкатегория</div>
         <div class="input-item_row">
-            <select name="categories" [(ngModel)]="productModel.category" (change)="onBlur()">
+            <select name="categories" required [(ngModel)]="productModel.category" (change)="onBlur()"
+            #category="ngModel" [class.is-invalid]="category.invalid && category.touched"
+            [class.is-valid]="category.valid && category.dirty">
                 <option value="" disabled>Выберите категорию</option>
                 <option [value]="c._id" *ngFor="let c of categories">{{c.name}}</option>
             </select>
-            <select name="subcategories" [(ngModel)]="productModel.subcategory">
+            <select name="subcategories" required [(ngModel)]="productModel.subcategory"
+            #subcategory="ngModel" [class.is-invalid]="subcategory.invalid && subcategory.touched"
+            [class.is-valid]="subcategory.valid && subcategory.dirty">
                 <option value="" disabled>Выберите подкатегорию</option>
                 <option [value]="s._id" *ngFor="let s of subcategories">{{s.name}}</option>
             </select>
+        </div>
+        <div class="warning" *ngIf="(category.invalid && category.touched) || (subcategory.invalid && subcategory.touched)">
+            Укажите категорию и подкатегорию объявления</div>
+        <div class="valid" *ngIf="(category.valid && category.dirty) && (subcategory.valid && subcategory.dirty)">
+            <span class="material-icons">done</span>
         </div>
     </div>
     <div class="input-item">

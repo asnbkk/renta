@@ -77,6 +77,18 @@ input {
     padding: 0 2rem;
     display: grid;
 }
+.is-invalid {
+    border: 1px solid red;
+}
+.is-valid {
+    border: 1px solid blue
+}
+.valid {
+    color: blue;
+}
+.warning {
+    color: red;
+}
 textarea {
     resize: none;
 }
