@@ -51,8 +51,8 @@
 }
 .header_top__right {
     /* background-color: #ebebeb; */
-    padding: 0.5rem 0;
-    grid-gap: 1rem;
+    /* padding: 0.5rem 0; */
+    /* grid-gap: 1rem; */
     display: grid;
     cursor: default;
     color: #696969;

@@ -1,0 +1,15 @@
+<div class="wrapper">
+    <div class="sidebar">
+        <div class="sidebar_content">
+            <div class="sidebar_item" routerLink="/admin" routerLinkActive="active">Объявления</div>
+            <div class="sidebar_item" routerLink="categories" routerLinkActive="active">Категории</div>
+            <div class="sidebar_item" routerLink="subcategories" routerLinkActive="active">Подкатегории</div>
+            <div class="sidebar_item" routerLink="groups" routerLinkActive="active">Группы</div>
+            <div class="sidebar_item" routerLink="cities" routerLinkActive="active">Города</div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="title">Панель админа</div>
+        <div class="content_content"><router-outlet></router-outlet></div>
+    </div>
+</div>

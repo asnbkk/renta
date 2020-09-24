@@ -13,7 +13,7 @@ export class UserService {
     })
   }
 
-  isAuthorized
+  isAuthorized = localStorage.getItem('email') || null
   isAuthorizedChange: Subject<any> = new Subject<any>()      
 
   public _url: string = api_url
@@ -35,7 +35,6 @@ export class UserService {
 
   logout() {
     this.isAuthorizedChange.next(null)
-    console.log(this.isAuthorized)
     localStorage.removeItem('username')
   }
 }

@@ -9,6 +9,12 @@ import { ProductCreateComponent } from './pages/product-create/product-create.co
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { SubcategoryListComponent } from './components/subcategory-list/subcategory-list.component';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { AdminProductsComponent } from './pages/admin-products/admin-products.component';
+import { AdminCategoriesComponent } from './pages/admin-categories/admin-categories.component';
+import { AdminSubcategoriesComponent } from './pages/admin-subcategories/admin-subcategories.component';
+import { AdminGroupsComponent } from './pages/admin-groups/admin-groups.component';
+import { AdminCitiesComponent } from './pages/admin-cities/admin-cities.component';
 
 
 const routes: Routes = [
@@ -22,7 +28,14 @@ const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
   { path: 'subcategory-details/:category/:subcategory/:id', component: SubcategoryDetailsComponent },
   { path: 'product-details/:product_id', component: ProductDetailsComponent },
-  { path: 'product-create', component: ProductCreateComponent}
+  { path: 'product-create', component: ProductCreateComponent},
+  { path: 'admin', component: AdminComponent, children: [
+    {path: '', component: AdminProductsComponent},
+    {path: 'categories', component: AdminCategoriesComponent},
+    {path: 'subcategories', component: AdminSubcategoriesComponent},
+    {path: 'groups', component: AdminGroupsComponent},
+    {path: 'cities', component: AdminCitiesComponent}
+  ] }
 ];
 
 @NgModule({

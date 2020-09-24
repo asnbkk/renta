@@ -25,6 +25,12 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SubcategoryListComponent } from './components/subcategory-list/subcategory-list.component';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { AdminProductsComponent } from './pages/admin-products/admin-products.component';
+import { AdminCategoriesComponent } from './pages/admin-categories/admin-categories.component';
+import { AdminSubcategoriesComponent } from './pages/admin-subcategories/admin-subcategories.component';
+import { AdminGroupsComponent } from './pages/admin-groups/admin-groups.component';
+import { AdminCitiesComponent } from './pages/admin-cities/admin-cities.component';
 
 
 // import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -49,7 +55,13 @@ import { SearchPageComponent } from './pages/search-page/search-page.component';
     LoaderComponent,
     ProductDetailsComponent,
     SubcategoryListComponent,
-    SearchPageComponent
+    SearchPageComponent,
+    AdminComponent,
+    AdminProductsComponent,
+    AdminCategoriesComponent,
+    AdminSubcategoriesComponent,
+    AdminGroupsComponent,
+    AdminCitiesComponent,
   ],
   imports: [
     BrowserModule,

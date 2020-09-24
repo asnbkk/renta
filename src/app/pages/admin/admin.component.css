@@ -1,0 +1,9 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-gap: 1rem;
+}
+.title {
+    font-size: 24px;
+    font-weight: bold;
+}
