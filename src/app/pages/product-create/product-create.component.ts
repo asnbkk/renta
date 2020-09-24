@@ -21,9 +21,9 @@ export class ProductCreateComponent implements OnInit {
     description: '',
     category: '',
     subcategory: '',
-    priceForHour: 0,
-    priceForDay: 0,
-    priceForWeek: 0,
+    priceForHour: null,
+    priceForDay: null,
+    priceForWeek: null,
     keywords: '',
     image: '',
     email: ''
@@ -49,6 +49,7 @@ export class ProductCreateComponent implements OnInit {
   }
   
   onSubmit(): void {
-    this.productService.setProduct(this.productModel).subscribe()
+    console.log(this.productModel)
+    // this.productService.setProduct(this.productModel).subscribe()
   }
 }

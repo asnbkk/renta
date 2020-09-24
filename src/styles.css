@@ -16,3 +16,15 @@ input {
 /* input:focus {
     border:1px solid #9ACE8D;
 } */
+select {
+    height: 50px;
+    border: 1px solid #cacaca;
+    border-radius: 5px;
+    padding: 0 2rem;
+
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
