@@ -16,6 +16,7 @@
     display: grid;
     /* margin-top: -52px; */
     grid-gap: 1rem;
+    position: relative;
     padding: 2rem 4rem 4rem 0;
     /* padding-right: 4rem; */
     border-right: 1px solid  #d8d8d8;
@@ -111,4 +112,22 @@ strong {
 .icon:hover {
     opacity: 0.7;
     transition: 0.1s;
+}
+.warning {
+    position: absolute;
+    bottom: -1rem;
+    /* background: orange; */
+    left: 0;
+    right: 0;
+    margin: 0 4rem 0 0;
+    grid-gap: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+.warning_content {
+    /* background: orange; */
+    border: 1px solid red;
+    border-radius: 5px;
+    padding: 1rem 2rem;
+    font-size: 14px;
 }

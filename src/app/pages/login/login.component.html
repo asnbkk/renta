@@ -13,15 +13,23 @@
       <input type="password" [(ngModel)]="loginModel.password" name="password">
     </div>
 
-    <div *ngFor='let error of errors'>
-      {{error}}
-    </div>
+    
     <div class="input-item">
       <div></div>
       <div class="button">
         <app-button [type]="'primary'" [text]="'Войти'" (click)="onSubmit()"></app-button>
         <div>Не могу вспомнить пароль</div>
         <div class="switch" routerLink="/registration">Зарегистрироваться</div>
+      </div>
+    </div>
+    <div class="warning" *ngIf="errors.length > 0">
+      <div></div>
+      <div class="warning_content">
+        <div *ngFor='let error of errors'>
+          <span>
+            {{error}}
+          </span>
+        </div>
       </div>
     </div>
   </div>
