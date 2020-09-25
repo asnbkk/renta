@@ -70,12 +70,10 @@ export class ProductCreateComponent implements OnInit {
     }
   }
 
-  onPriceEnter(type, val) {
-    // if(type == 'hour' && val != '') this.productModel.priceForHour = this.productModel.priceForHour + ' ₸'
-    // if(type == 'day' && val != '') this.productModel.priceForDay = this.productModel.priceForDay + ' ₸'
-    // if(type == 'week' && val != '') this.productModel.priceForWeek = this.productModel.priceForWeek + ' ₸'
+  onPreview() {
+    this.router.navigate(['preview'])
+    this.productService.onProductSelect(this.productModel)
   }
-  // ₸
 
   onSubmit(): void {
     let isPhoneValid = this.phonenumber(this.productModel.phone)

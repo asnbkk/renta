@@ -123,6 +123,6 @@
         <ng-template #disabledButton>
             <app-button [type]="'primary'" [text]="'Создать объявление'" [isDisabled]="true"></app-button>
         </ng-template>
-        <app-button [type]="'secondary'" [text]="'Предварительный просмотр'"></app-button>
+        <app-button (click)="onPreview()" [type]="'secondary'" [text]="'Предварительный просмотр'"></app-button>
     </div>
 </div>

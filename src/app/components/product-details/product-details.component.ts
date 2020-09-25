@@ -19,7 +19,6 @@ export class ProductDetailsComponent implements OnInit {
     let prod = this.productService.selectedProduct
     if (prod) this.prod = prod
     else this.productService.getProductInfo(this.id).subscribe(data => {this.prod = data})
-    console.log(prod)
   }
   goBack() {
     this.location.back()

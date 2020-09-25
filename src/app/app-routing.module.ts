@@ -30,6 +30,7 @@ const routes: Routes = [
   { path: 'subcategory-details/:category/:subcategory/:id', component: SubcategoryDetailsComponent },
   { path: 'product-details/:product_id', component: ProductDetailsComponent },
   { path: 'product-create', component: ProductCreateComponent, canActivate: [AuthGuard]},
+  { path: 'preview', component: ProductDetailsComponent },
   { path: 'admin', component: AdminComponent, children: [
     {path: '', component: AdminProductsComponent},
     {path: 'categories', component: AdminCategoriesComponent},
