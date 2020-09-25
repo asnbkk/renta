@@ -5,9 +5,9 @@
         <div class="label">Название объявления</div>
         <input type="text" name="name" required [(ngModel)]="productModel.name" 
         #name="ngModel" [class.is-invalid]="name.invalid && name.touched"
-        [class.is-valid]="name.valid && name.touched">
+        [class.is-valid]="name.valid">
         <div class="warning" *ngIf="name.invalid && name.touched">Введите название объявления</div>
-        <div class="valid" *ngIf="name.valid && name.touched">
+        <div class="valid" *ngIf="name.valid">
             <span class="material-icons">done</span>
         </div>
     </div>
@@ -15,11 +15,11 @@
         <div class="label" [ngStyle]="{'margin-top': '17px'}">Подробное описание</div>
         <textarea name="description" required [(ngModel)]="productModel.description"
         rows="5" #description="ngModel" [class.is-invalid]="description.invalid && description.touched"
-        [class.is-valid]="description.valid && description.touched"></textarea>
+        [class.is-valid]="description.valid"></textarea>
         <div class="warning" 
         *ngIf="description.invalid && description.touched"
         [ngStyle]="{'margin-top' : '17px'}">Введите подробное описание</div>
-        <div class="valid" [ngStyle]="{'margin-top' : '10px'}" *ngIf="description.valid && description.touched">
+        <div class="valid" [ngStyle]="{'margin-top' : '10px'}" *ngIf="description.valid">
             <span class="material-icons">done</span>
         </div>
     </div>
@@ -28,20 +28,20 @@
         <div class="input-item_row">
             <select name="categories" required [(ngModel)]="productModel.category._id" (change)="onBlur()"
             #category="ngModel" [class.is-invalid]="category.invalid && category.touched"
-            [class.is-valid]="category.valid && category.dirty">
+            [class.is-valid]="category.valid">
                 <option value="" disabled>Выберите категорию</option>
                 <option [value]="c._id" *ngFor="let c of categories">{{c.name}}</option>
             </select>
             <select name="subcategories" required [(ngModel)]="productModel.subcategory._id"
             #subcategory="ngModel" [class.is-invalid]="subcategory.invalid && subcategory.touched"
-            [class.is-valid]="subcategory.valid && subcategory.dirty">
+            [class.is-valid]="subcategory.valid">
                 <option value="" disabled>Выберите подкатегорию</option>
                 <option [value]="s._id" *ngFor="let s of subcategories">{{s.name}}</option>
             </select>
         </div>
         <div class="warning" *ngIf="(category.invalid && category.touched) || (subcategory.invalid && subcategory.touched)">
             Укажите категорию и подкатегорию объявления</div>
-        <div class="valid" *ngIf="(category.valid && category.dirty) && (subcategory.valid && subcategory.dirty)">
+        <div class="valid" *ngIf="(category.valid) && (subcategory.valid)">
             <span class="material-icons">done</span>
         </div>
     </div>
@@ -112,10 +112,10 @@
     <div></div>
     <div class="button">
         <app-button [type]="'primary'" [text]="'Создать объявление'" 
-        *ngIf="(name.valid && name.touched) &&
-        (description.valid && description.touched) &&
+        *ngIf="(name.valid) &&
+        (description.valid) &&
         (productModel.priceForDay || productModel.priceForHour || productModel.priceForWeek) &&
-        (category.valid && category.dirty) && (subcategory.valid && subcategory.dirty) &&
+        (category.valid) && (subcategory.valid) &&
         (username.valid) &&
         (phone.valid && phonenumber(productModel.user.phone) && (email.valid && emailValidation(productModel.user.email)));
         else disabledButton"
