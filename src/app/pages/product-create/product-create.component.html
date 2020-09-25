@@ -26,13 +26,13 @@
     <div class="input-item">
         <div class="label">Категория и подкатегория</div>
         <div class="input-item_row">
-            <select name="categories" required [(ngModel)]="productModel.category" (change)="onBlur()"
+            <select name="categories" required [(ngModel)]="productModel.category._id" (change)="onBlur()"
             #category="ngModel" [class.is-invalid]="category.invalid && category.touched"
             [class.is-valid]="category.valid && category.dirty">
                 <option value="" disabled>Выберите категорию</option>
                 <option [value]="c._id" *ngFor="let c of categories">{{c.name}}</option>
             </select>
-            <select name="subcategories" required [(ngModel)]="productModel.subcategory"
+            <select name="subcategories" required [(ngModel)]="productModel.subcategory._id"
             #subcategory="ngModel" [class.is-invalid]="subcategory.invalid && subcategory.touched"
             [class.is-valid]="subcategory.valid && subcategory.dirty">
                 <option value="" disabled>Выберите подкатегорию</option>
@@ -78,7 +78,7 @@
     <div class="input-item">
         <div class="label">Ваше имя</div>
         <input type="text" name="username" required #username="ngModel" 
-        [(ngModel)]="productModel.username" [class.is-invalid]="username.invalid && username.touched"
+        [(ngModel)]="productModel.user.name" [class.is-invalid]="username.invalid && username.touched"
         [class.is-valid]="username.valid">
         <div class="warning" *ngIf="username.invalid && username.touched">Введите Ваше имя</div>
         <div class="valid" *ngIf="username.valid">
@@ -90,19 +90,19 @@
         <div class="input-item_row">
             <!-- validate on submission -->
             <input type="text" name="phone" [textMask]="{mask: mask}" required
-            placeholder="+7 (___) ___-____" [(ngModel)]="productModel.phone" #phone="ngModel"
-            [class.is-invalid]="phone.touched && !phonenumber(productModel.phone)"
-            [class.is-valid]="phone.valid && phonenumber(productModel.phone)">
-            <input type="text" name="email" placeholder="Е-mail" [(ngModel)]="productModel.email" 
-            #email="ngModel" required [class.is-invalid]="email.touched && !emailValidation(productModel.email)"
-            [class.is-valid]="email.valid && emailValidation(productModel.email)">
+            placeholder="+7 (___) ___-____" [(ngModel)]="productModel.user.phone" #phone="ngModel"
+            [class.is-invalid]="phone.touched && !phonenumber(productModel.user.phone)"
+            [class.is-valid]="phone.valid && phonenumber(productModel.user.phone)">
+            <input type="text" name="email" placeholder="Е-mail" [(ngModel)]="productModel.user.email" 
+            #email="ngModel" required [class.is-invalid]="email.touched && !emailValidation(productModel.user.email)"
+            [class.is-valid]="email.valid && emailValidation(productModel.user.email)">
         </div>
         <div>
             <div class="warning" *ngIf="phone.invalid && phone.touched">Введите Ваш номер телефона</div>
-            <div class="warning" *ngIf="phone.touched && !phonenumber(productModel.phone) && productModel.phone">Проверьте правильность номера телефона</div>
+            <div class="warning" *ngIf="phone.touched && !phonenumber(productModel.user.phone) && productModel.user.phone">Проверьте правильность номера телефона</div>
             <div class="warning" *ngIf="email.invalid && email.touched">Введите Ваш E-mail</div>
-            <div class="warning" *ngIf="email.touched && !emailValidation(productModel.email) && productModel.email">Проверьте правильность электронной почты</div>
-            <div class="valid" *ngIf="(phone.valid && phonenumber(productModel.phone) && (email.valid && emailValidation(productModel.email)))">
+            <div class="warning" *ngIf="email.touched && !emailValidation(productModel.user.email) && productModel.user.email">Проверьте правильность электронной почты</div>
+            <div class="valid" *ngIf="(phone.valid && phonenumber(productModel.user.phone) && (email.valid && emailValidation(productModel.user.email)))">
                 <span class="material-icons">done</span>
             </div>
         </div>
@@ -117,7 +117,7 @@
         (productModel.priceForDay || productModel.priceForHour || productModel.priceForWeek) &&
         (category.valid && category.dirty) && (subcategory.valid && subcategory.dirty) &&
         (username.valid) &&
-        (phone.valid && phonenumber(productModel.phone) && (email.valid && emailValidation(productModel.email)));
+        (phone.valid && phonenumber(productModel.user.phone) && (email.valid && emailValidation(productModel.user.email)));
         else disabledButton"
         (click)="onSubmit()"></app-button>
         <ng-template #disabledButton>

@@ -25,16 +25,27 @@ export class ProductCreateComponent implements OnInit {
   public productModel = {
     name: '',
     description: '',
-    category: '',
-    subcategory: '',
+    category: {
+      name: '',
+      _id: ''
+    },
+    subcategory: {
+      name: '',
+      _id: ''
+    },
     priceForHour: null,
     priceForDay: null,
     priceForWeek: null,
     keywords: '',
     image: '',
-    email: '',
-    username: '',
-    phone: ''
+    user: {
+      email: '', 
+      name: '', 
+      phone: ''
+    }
+    // email: '',
+    // username: '',
+    // phone: ''
   }
 
   mask: any[] = ['+', '7', ' ', '(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
@@ -57,31 +68,42 @@ export class ProductCreateComponent implements OnInit {
       });
       let email = localStorage.getItem('email')
       let username = localStorage.getItem('username')
-      if (email) this.productModel.email = email
-      if (username) this.productModel.username = username
+      if (email) this.productModel.user.email = email
+      if (username) this.productModel.user.name = username
+      console.log(this.productModel.user.name)
     })
   }
 
 
   onBlur(): void {
-    if (this.productModel.category !== '') {
-      let category = this.categories.find(c => c._id === this.productModel.category)
+    if (this.productModel.category._id !== '') {
+      let category = this.categories.find(c => c._id === this.productModel.category._id)
       this.subcategories = [...category.subcategories]
     }
   }
 
   onPreview() {
+    let category = this.productModel.category._id
+    let categoryList = JSON.parse(localStorage.getItem('categories'))
+    let selectedCategory = categoryList.find(o => o._id == category)
+    this.productModel.category.name = selectedCategory.name
+
+    let subcategory = this.productModel.subcategory._id
+    let selectedSubcategory = selectedCategory.subcategories.find(o => o._id == subcategory)
+    this.productModel.subcategory.name = selectedSubcategory.name
+    // console.log(this.productModel)
     this.router.navigate(['preview'])
     this.productService.onProductSelect(this.productModel)
   }
 
   onSubmit(): void {
-    let isPhoneValid = this.phonenumber(this.productModel.phone)
+    let isPhoneValid = this.phonenumber(this.productModel.user.phone)
     if(isPhoneValid) {
-      this.productService.setProduct(this.productModel)
-      .subscribe(
-        res => console.log('success', res))
-        error => console.log('error', error)
+      console.log(this.productModel)
+      // this.productService.setProduct(this.productModel)
+      // .subscribe(
+      //   res => console.log('success', res))
+      //   error => console.log('error', error)
     }
   }
 }
