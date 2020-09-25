@@ -84536,6 +84536,822 @@ const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Version"]('9.1.1
 
 /***/ }),
 
+/***/ "./node_modules/angular2-text-mask/__ivy_ngcc__/dist/angular2TextMask.js":
+/*!*******************************************************************************!*\
+  !*** ./node_modules/angular2-text-mask/__ivy_ngcc__/dist/angular2TextMask.js ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+var forms_1 = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
+var platform_browser_1 = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/__ivy_ngcc__/fesm2015/platform-browser.js");
+var textMaskCore_1 = __webpack_require__(/*! text-mask-core/dist/textMaskCore */ "./node_modules/text-mask-core/dist/textMaskCore.js");
+var ɵngcc0 = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+var TextMaskConfig = /** @class */ (function () {
+    function TextMaskConfig() {
+    }
+    return TextMaskConfig;
+}());
+exports.TextMaskConfig = TextMaskConfig;
+exports.MASKEDINPUT_VALUE_ACCESSOR = {
+    provide: forms_1.NG_VALUE_ACCESSOR,
+    useExisting: core_1.forwardRef(function () { return MaskedInputDirective; }),
+    multi: true
+};
+/**
+ * We must check whether the agent is Android because composition events
+ * behave differently between iOS and Android.
+ */
+function _isAndroid() {
+    var userAgent = platform_browser_1.ɵgetDOM() ? platform_browser_1.ɵgetDOM().getUserAgent() : '';
+    return /android (\d+)/.test(userAgent.toLowerCase());
+}
+var MaskedInputDirective = /** @class */ (function () {
+    function MaskedInputDirective(_renderer, _elementRef, _compositionMode) {
+        this._renderer = _renderer;
+        this._elementRef = _elementRef;
+        this._compositionMode = _compositionMode;
+        this.textMaskConfig = {
+            mask: [],
+            guide: true,
+            placeholderChar: '_',
+            pipe: undefined,
+            keepCharPositions: false,
+        };
+        this.onChange = function (_) { };
+        this.onTouched = function () { };
+        /** Whether the user is creating a composition string (IME events). */
+        this._composing = false;
+        if (this._compositionMode == null) {
+            this._compositionMode = !_isAndroid();
+        }
+    }
+    MaskedInputDirective.prototype.ngOnChanges = function (changes) {
+        this._setupMask(true);
+        if (this.textMaskInputElement !== undefined) {
+            this.textMaskInputElement.update(this.inputElement.value);
+        }
+    };
+    MaskedInputDirective.prototype.writeValue = function (value) {
+        this._setupMask();
+        // set the initial value for cases where the mask is disabled
+        var normalizedValue = value == null ? '' : value;
+        this._renderer.setProperty(this.inputElement, 'value', normalizedValue);
+        if (this.textMaskInputElement !== undefined) {
+            this.textMaskInputElement.update(value);
+        }
+    };
+    MaskedInputDirective.prototype.registerOnChange = function (fn) { this.onChange = fn; };
+    MaskedInputDirective.prototype.registerOnTouched = function (fn) { this.onTouched = fn; };
+    MaskedInputDirective.prototype.setDisabledState = function (isDisabled) {
+        this._renderer.setProperty(this._elementRef.nativeElement, 'disabled', isDisabled);
+    };
+    MaskedInputDirective.prototype._handleInput = function (value) {
+        if (!this._compositionMode || (this._compositionMode && !this._composing)) {
+            this._setupMask();
+            if (this.textMaskInputElement !== undefined) {
+                this.textMaskInputElement.update(value);
+                // get the updated value
+                value = this.inputElement.value;
+                this.onChange(value);
+            }
+        }
+    };
+    MaskedInputDirective.prototype._setupMask = function (create) {
+        if (create === void 0) { create = false; }
+        if (!this.inputElement) {
+            if (this._elementRef.nativeElement.tagName.toUpperCase() === 'INPUT') {
+                // `textMask` directive is used directly on an input element
+                this.inputElement = this._elementRef.nativeElement;
+            }
+            else {
+                // `textMask` directive is used on an abstracted input element, `md-input-container`, etc
+                this.inputElement = this._elementRef.nativeElement.getElementsByTagName('INPUT')[0];
+            }
+        }
+        if (this.inputElement && create) {
+            this.textMaskInputElement = textMaskCore_1.createTextMaskInputElement(Object.assign({ inputElement: this.inputElement }, this.textMaskConfig));
+        }
+    };
+    MaskedInputDirective.prototype._compositionStart = function () { this._composing = true; };
+    MaskedInputDirective.prototype._compositionEnd = function (value) {
+        this._composing = false;
+        this._compositionMode && this._handleInput(value);
+    };
+    /** @nocollapse */
+    MaskedInputDirective.ctorParameters = function () { return [
+        { type: core_1.Renderer2, },
+        { type: core_1.ElementRef, },
+        { type: undefined, decorators: [{ type: core_1.Optional }, { type: core_1.Inject, args: [forms_1.COMPOSITION_BUFFER_MODE,] },] },
+    ]; };
+    MaskedInputDirective.propDecorators = {
+        'textMaskConfig': [{ type: core_1.Input, args: ['textMask',] },],
+    };
+MaskedInputDirective.ɵfac = function MaskedInputDirective_Factory(t) { return new (t || MaskedInputDirective)(ɵngcc0.ɵɵdirectiveInject(ɵngcc0.Renderer2), ɵngcc0.ɵɵdirectiveInject(ɵngcc0.ElementRef), ɵngcc0.ɵɵdirectiveInject(forms_1.COMPOSITION_BUFFER_MODE, 8)); };
+MaskedInputDirective.ɵdir = ɵngcc0.ɵɵdefineDirective({ type: MaskedInputDirective, selectors: [["", "textMask", ""]], hostBindings: function MaskedInputDirective_HostBindings(rf, ctx) { if (rf & 1) {
+        ɵngcc0.ɵɵlistener("input", function MaskedInputDirective_input_HostBindingHandler($event) { return ctx._handleInput($event.target.value); })("blur", function MaskedInputDirective_blur_HostBindingHandler() { return ctx.onTouched(); })("compositionstart", function MaskedInputDirective_compositionstart_HostBindingHandler() { return ctx._compositionStart(); })("compositionend", function MaskedInputDirective_compositionend_HostBindingHandler($event) { return ctx._compositionEnd($event.target.value); });
+    } }, inputs: { textMaskConfig: ["textMask", "textMaskConfig"] }, exportAs: ["textMask"], features: [ɵngcc0.ɵɵProvidersFeature([exports.MASKEDINPUT_VALUE_ACCESSOR]), ɵngcc0.ɵɵNgOnChangesFeature] });
+/*@__PURE__*/ (function () { ɵngcc0.ɵsetClassMetadata(MaskedInputDirective, [{
+        type: core_1.Directive,
+        args: [{
+                host: {
+                    '(input)': '_handleInput($event.target.value)',
+                    '(blur)': 'onTouched()',
+                    '(compositionstart)': '_compositionStart()',
+                    '(compositionend)': '_compositionEnd($event.target.value)'
+                },
+                selector: '[textMask]',
+                exportAs: 'textMask',
+                providers: [exports.MASKEDINPUT_VALUE_ACCESSOR]
+            }]
+    }], function () { return [{ type: ɵngcc0.Renderer2 }, { type: ɵngcc0.ElementRef }, { type: undefined, decorators: [{
+                type: core_1.Optional
+            }, {
+                type: core_1.Inject,
+                args: [forms_1.COMPOSITION_BUFFER_MODE]
+            }] }]; }, { textMaskConfig: [{
+            type: core_1.Input,
+            args: ['textMask']
+        }] }); })();
+    return MaskedInputDirective;
+}());
+exports.MaskedInputDirective = MaskedInputDirective;
+var TextMaskModule = /** @class */ (function () {
+    function TextMaskModule() {
+    }
+    /** @nocollapse */
+    TextMaskModule.ctorParameters = function () { return []; };
+TextMaskModule.ɵmod = ɵngcc0.ɵɵdefineNgModule({ type: TextMaskModule });
+TextMaskModule.ɵinj = ɵngcc0.ɵɵdefineInjector({ factory: function TextMaskModule_Factory(t) { return new (t || TextMaskModule)(); } });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && ɵngcc0.ɵɵsetNgModuleScope(TextMaskModule, { declarations: [MaskedInputDirective], exports: [MaskedInputDirective] }); })();
+/*@__PURE__*/ (function () { ɵngcc0.ɵsetClassMetadata(TextMaskModule, [{
+        type: core_1.NgModule,
+        args: [{
+                declarations: [MaskedInputDirective],
+                exports: [MaskedInputDirective]
+            }]
+    }], function () { return []; }, null); })();
+    return TextMaskModule;
+}());
+exports.TextMaskModule = TextMaskModule;
+var textMaskCore_2 = __webpack_require__(/*! text-mask-core/dist/textMaskCore */ "./node_modules/text-mask-core/dist/textMaskCore.js");
+exports.conformToMask = textMaskCore_2.conformToMask;
+
+//# sourceMappingURL=angular2TextMask.js.map
+
+/***/ }),
+
+/***/ "./node_modules/ng2-currency-mask/__ivy_ngcc__/fesm2015/ng2-currency-mask.js":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/ng2-currency-mask/__ivy_ngcc__/fesm2015/ng2-currency-mask.js ***!
+  \***********************************************************************************/
+/*! exports provided: CURRENCYMASKDIRECTIVE_VALUE_ACCESSOR, CURRENCY_MASK_CONFIG, CurrencyMaskDirective, CurrencyMaskModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CURRENCYMASKDIRECTIVE_VALUE_ACCESSOR", function() { return CURRENCYMASKDIRECTIVE_VALUE_ACCESSOR; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CURRENCY_MASK_CONFIG", function() { return CURRENCY_MASK_CONFIG; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CurrencyMaskDirective", function() { return CurrencyMaskDirective; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CurrencyMaskModule", function() { return CurrencyMaskModule; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+
+
+
+
+
+
+let CURRENCY_MASK_CONFIG = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]("currency.mask.config");
+
+class InputManager {
+    constructor(htmlInputElement) {
+        this.htmlInputElement = htmlInputElement;
+    }
+    setCursorAt(position) {
+        if (this.htmlInputElement.setSelectionRange) {
+            this.htmlInputElement.focus();
+            this.htmlInputElement.setSelectionRange(position, position);
+        }
+        else if (this.htmlInputElement.createTextRange) {
+            let textRange = this.htmlInputElement.createTextRange();
+            textRange.collapse(true);
+            textRange.moveEnd("character", position);
+            textRange.moveStart("character", position);
+            textRange.select();
+        }
+    }
+    updateValueAndCursor(newRawValue, oldLength, selectionStart) {
+        this.rawValue = newRawValue;
+        let newLength = newRawValue.length;
+        selectionStart = selectionStart - (oldLength - newLength);
+        this.setCursorAt(selectionStart);
+    }
+    get canInputMoreNumbers() {
+        let haventReachedMaxLength = !(this.rawValue.length >= this.htmlInputElement.maxLength && this.htmlInputElement.maxLength >= 0);
+        let selectionStart = this.inputSelection.selectionStart;
+        let selectionEnd = this.inputSelection.selectionEnd;
+        let haveNumberSelected = (selectionStart != selectionEnd && this.htmlInputElement.value.substring(selectionStart, selectionEnd).match(/\d/)) ? true : false;
+        let startWithZero = (this.htmlInputElement.value.substring(0, 1) == "0");
+        return haventReachedMaxLength || haveNumberSelected || startWithZero;
+    }
+    get inputSelection() {
+        let selectionStart = 0;
+        let selectionEnd = 0;
+        if (typeof this.htmlInputElement.selectionStart == "number" && typeof this.htmlInputElement.selectionEnd == "number") {
+            selectionStart = this.htmlInputElement.selectionStart;
+            selectionEnd = this.htmlInputElement.selectionEnd;
+        }
+        else {
+            let range = document.getSelection().anchorNode;
+            if (range && range.firstChild == this.htmlInputElement) {
+                let lenght = this.htmlInputElement.value.length;
+                let normalizedValue = this.htmlInputElement.value.replace(/\r\n/g, "\n");
+                let startRange = this.htmlInputElement.createTextRange();
+                let endRange = this.htmlInputElement.createTextRange();
+                endRange.collapse(false);
+                if (startRange.compareEndPoints("StartToEnd", endRange) > -1) {
+                    selectionStart = selectionEnd = lenght;
+                }
+                else {
+                    selectionStart = -startRange.moveStart("character", -lenght);
+                    selectionStart += normalizedValue.slice(0, selectionStart).split("\n").length - 1;
+                    if (startRange.compareEndPoints("EndToEnd", endRange) > -1) {
+                        selectionEnd = lenght;
+                    }
+                    else {
+                        selectionEnd = -startRange.moveEnd("character", -lenght);
+                        selectionEnd += normalizedValue.slice(0, selectionEnd).split("\n").length - 1;
+                    }
+                }
+            }
+        }
+        return {
+            selectionStart: selectionStart,
+            selectionEnd: selectionEnd
+        };
+    }
+    get rawValue() {
+        return this.htmlInputElement && this.htmlInputElement.value;
+    }
+    set rawValue(value) {
+        this._storedRawValue = value;
+        if (this.htmlInputElement) {
+            this.htmlInputElement.value = value;
+        }
+    }
+    get storedRawValue() {
+        return this._storedRawValue;
+    }
+}
+
+class InputService {
+    constructor(htmlInputElement, options) {
+        this.htmlInputElement = htmlInputElement;
+        this.options = options;
+        this.inputManager = new InputManager(htmlInputElement);
+    }
+    addNumber(keyCode) {
+        if (!this.rawValue) {
+            this.rawValue = this.applyMask(false, "0");
+        }
+        let keyChar = String.fromCharCode(keyCode);
+        let selectionStart = this.inputSelection.selectionStart;
+        let selectionEnd = this.inputSelection.selectionEnd;
+        this.rawValue = this.rawValue.substring(0, selectionStart) + keyChar + this.rawValue.substring(selectionEnd, this.rawValue.length);
+        this.updateFieldValue(selectionStart + 1);
+    }
+    applyMask(isNumber, rawValue) {
+        let { allowNegative, decimal, precision, prefix, suffix, thousands } = this.options;
+        rawValue = isNumber ? new Number(rawValue).toFixed(precision) : rawValue;
+        let onlyNumbers = rawValue.replace(/[^0-9]/g, "");
+        if (!onlyNumbers) {
+            return "";
+        }
+        let integerPart = onlyNumbers.slice(0, onlyNumbers.length - precision).replace(/^0*/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, thousands);
+        if (integerPart == "") {
+            integerPart = "0";
+        }
+        let newRawValue = integerPart;
+        let decimalPart = onlyNumbers.slice(onlyNumbers.length - precision);
+        if (precision > 0) {
+            decimalPart = "0".repeat(precision - decimalPart.length) + decimalPart;
+            newRawValue += decimal + decimalPart;
+        }
+        let isZero = parseInt(integerPart) == 0 && (parseInt(decimalPart) == 0 || decimalPart == "");
+        let operator = (rawValue.indexOf("-") > -1 && allowNegative && !isZero) ? "-" : "";
+        return operator + prefix + newRawValue + suffix;
+    }
+    clearMask(rawValue) {
+        if (rawValue == null || rawValue == "") {
+            return null;
+        }
+        let value = rawValue.replace(this.options.prefix, "").replace(this.options.suffix, "");
+        if (this.options.thousands) {
+            value = value.replace(new RegExp("\\" + this.options.thousands, "g"), "");
+        }
+        if (this.options.decimal) {
+            value = value.replace(this.options.decimal, ".");
+        }
+        return parseFloat(value);
+    }
+    changeToNegative() {
+        if (this.options.allowNegative && this.rawValue != "" && this.rawValue.charAt(0) != "-" && this.value != 0) {
+            let selectionStart = this.inputSelection.selectionStart;
+            this.rawValue = "-" + this.rawValue;
+            this.updateFieldValue(selectionStart + 1);
+        }
+    }
+    changeToPositive() {
+        let selectionStart = this.inputSelection.selectionStart;
+        this.rawValue = this.rawValue.replace("-", "");
+        this.updateFieldValue(selectionStart - 1);
+    }
+    fixCursorPosition(forceToEndPosition) {
+        let currentCursorPosition = this.inputSelection.selectionStart;
+        //if the current cursor position is after the number end position, it is moved to the end of the number, ignoring the prefix or suffix. this behavior can be forced with forceToEndPosition flag
+        if (currentCursorPosition > this.getRawValueWithoutSuffixEndPosition() || forceToEndPosition) {
+            this.inputManager.setCursorAt(this.getRawValueWithoutSuffixEndPosition());
+            //if the current cursor position is before the number start position, it is moved to the start of the number, ignoring the prefix or suffix
+        }
+        else if (currentCursorPosition < this.getRawValueWithoutPrefixStartPosition()) {
+            this.inputManager.setCursorAt(this.getRawValueWithoutPrefixStartPosition());
+        }
+    }
+    getRawValueWithoutSuffixEndPosition() {
+        return this.rawValue.length - this.options.suffix.length;
+    }
+    getRawValueWithoutPrefixStartPosition() {
+        return this.value != null && this.value < 0 ? this.options.prefix.length + 1 : this.options.prefix.length;
+    }
+    removeNumber(keyCode) {
+        let { decimal, thousands } = this.options;
+        let selectionEnd = this.inputSelection.selectionEnd;
+        let selectionStart = this.inputSelection.selectionStart;
+        if (selectionStart > this.rawValue.length - this.options.suffix.length) {
+            selectionEnd = this.rawValue.length - this.options.suffix.length;
+            selectionStart = this.rawValue.length - this.options.suffix.length;
+        }
+        //there is no selection
+        if (selectionEnd == selectionStart) {
+            //delete key and the target digit is a number
+            if ((keyCode == 46 || keyCode == 63272) && /^\d+$/.test(this.rawValue.substring(selectionStart, selectionEnd + 1))) {
+                selectionEnd = selectionEnd + 1;
+            }
+            //delete key and the target digit is the decimal or thousands divider
+            if ((keyCode == 46 || keyCode == 63272) && (this.rawValue.substring(selectionStart, selectionEnd + 1) == decimal || this.rawValue.substring(selectionStart, selectionEnd + 1) == thousands)) {
+                selectionEnd = selectionEnd + 2;
+                selectionStart = selectionStart + 1;
+            }
+            //backspace key and the target digit is a number
+            if (keyCode == 8 && /^\d+$/.test(this.rawValue.substring(selectionStart - 1, selectionEnd))) {
+                selectionStart = selectionStart - 1;
+            }
+            //backspace key and the target digit is the decimal or thousands divider
+            if (keyCode == 8 && (this.rawValue.substring(selectionStart - 1, selectionEnd) == decimal || this.rawValue.substring(selectionStart - 1, selectionEnd) == thousands)) {
+                selectionStart = selectionStart - 2;
+                selectionEnd = selectionEnd - 1;
+            }
+        }
+        this.rawValue = this.rawValue.substring(0, selectionStart) + this.rawValue.substring(selectionEnd, this.rawValue.length);
+        this.updateFieldValue(selectionStart);
+    }
+    updateFieldValue(selectionStart) {
+        let newRawValue = this.applyMask(false, this.rawValue || "");
+        selectionStart = selectionStart == undefined ? this.rawValue.length : selectionStart;
+        this.inputManager.updateValueAndCursor(newRawValue, this.rawValue.length, selectionStart);
+    }
+    updateOptions(options) {
+        let value = this.value;
+        this.options = options;
+        this.value = value;
+    }
+    get canInputMoreNumbers() {
+        return this.inputManager.canInputMoreNumbers;
+    }
+    get inputSelection() {
+        return this.inputManager.inputSelection;
+    }
+    get rawValue() {
+        return this.inputManager.rawValue;
+    }
+    set rawValue(value) {
+        this.inputManager.rawValue = value;
+    }
+    get storedRawValue() {
+        return this.inputManager.storedRawValue;
+    }
+    get value() {
+        return this.clearMask(this.rawValue);
+    }
+    set value(value) {
+        this.rawValue = this.applyMask(true, "" + value);
+    }
+}
+
+class InputHandler {
+    constructor(htmlInputElement, options) {
+        this.inputService = new InputService(htmlInputElement, options);
+        this.htmlInputElement = htmlInputElement;
+    }
+    handleClick(event, chromeAndroid) {
+        let selectionRangeLength = Math.abs(this.inputService.inputSelection.selectionEnd - this.inputService.inputSelection.selectionStart);
+        //if there is no selection and the value is not null, the cursor position will be fixed. if the browser is chrome on android, the cursor will go to the end of the number.
+        if (selectionRangeLength == 0 && !isNaN(this.inputService.value)) {
+            this.inputService.fixCursorPosition(chromeAndroid);
+        }
+    }
+    handleCut(event) {
+        if (this.isReadOnly()) {
+            return;
+        }
+        setTimeout(() => {
+            this.inputService.updateFieldValue();
+            this.setValue(this.inputService.value);
+            this.onModelChange(this.inputService.value);
+        }, 0);
+    }
+    handleInput(event) {
+        if (this.isReadOnly()) {
+            return;
+        }
+        let keyCode = this.getNewKeyCode(this.inputService.storedRawValue, this.inputService.rawValue);
+        let rawValueLength = this.inputService.rawValue.length;
+        let rawValueSelectionEnd = this.inputService.inputSelection.selectionEnd;
+        let rawValueWithoutSuffixEndPosition = this.inputService.getRawValueWithoutSuffixEndPosition();
+        let storedRawValueLength = this.inputService.storedRawValue.length;
+        this.inputService.rawValue = this.inputService.storedRawValue;
+        if ((rawValueSelectionEnd != rawValueWithoutSuffixEndPosition || Math.abs(rawValueLength - storedRawValueLength) != 1) && storedRawValueLength != 0) {
+            this.setCursorPosition(event);
+            return;
+        }
+        if (rawValueLength < storedRawValueLength) {
+            if (this.inputService.value != 0) {
+                this.inputService.removeNumber(8);
+            }
+            else {
+                this.setValue(null);
+            }
+        }
+        if (rawValueLength > storedRawValueLength) {
+            switch (keyCode) {
+                case 43:
+                    this.inputService.changeToPositive();
+                    break;
+                case 45:
+                    this.inputService.changeToNegative();
+                    break;
+                default:
+                    if (!this.inputService.canInputMoreNumbers || (isNaN(this.inputService.value) && String.fromCharCode(keyCode).match(/\d/) == null)) {
+                        return;
+                    }
+                    this.inputService.addNumber(keyCode);
+            }
+        }
+        this.setCursorPosition(event);
+        this.onModelChange(this.inputService.value);
+    }
+    handleKeydown(event) {
+        if (this.isReadOnly()) {
+            return;
+        }
+        let keyCode = event.which || event.charCode || event.keyCode;
+        if (keyCode == 8 || keyCode == 46 || keyCode == 63272) {
+            event.preventDefault();
+            let selectionRangeLength = Math.abs(this.inputService.inputSelection.selectionEnd - this.inputService.inputSelection.selectionStart);
+            if (selectionRangeLength == this.inputService.rawValue.length || this.inputService.value == 0) {
+                this.setValue(null);
+                this.onModelChange(this.inputService.value);
+            }
+            if (selectionRangeLength == 0 && !isNaN(this.inputService.value)) {
+                this.inputService.removeNumber(keyCode);
+                this.onModelChange(this.inputService.value);
+            }
+            if ((keyCode === 8 || keyCode === 46) && selectionRangeLength != 0 && !isNaN(this.inputService.value)) {
+                this.inputService.removeNumber(keyCode);
+                this.onModelChange(this.inputService.value);
+            }
+        }
+    }
+    handleKeypress(event) {
+        if (this.isReadOnly()) {
+            return;
+        }
+        let keyCode = event.which || event.charCode || event.keyCode;
+        if (keyCode == undefined || [9, 13].indexOf(keyCode) != -1 || this.isArrowEndHomeKeyInFirefox(event)) {
+            return;
+        }
+        switch (keyCode) {
+            case 43:
+                this.inputService.changeToPositive();
+                break;
+            case 45:
+                this.inputService.changeToNegative();
+                break;
+            default:
+                if (this.inputService.canInputMoreNumbers && (!isNaN(this.inputService.value) || String.fromCharCode(keyCode).match(/\d/) != null)) {
+                    this.inputService.addNumber(keyCode);
+                }
+        }
+        event.preventDefault();
+        this.onModelChange(this.inputService.value);
+    }
+    handleKeyup(event) {
+        this.inputService.fixCursorPosition();
+    }
+    handlePaste(event) {
+        if (this.isReadOnly()) {
+            return;
+        }
+        setTimeout(() => {
+            this.inputService.updateFieldValue();
+            this.setValue(this.inputService.value);
+            this.onModelChange(this.inputService.value);
+        }, 1);
+    }
+    updateOptions(options) {
+        this.inputService.updateOptions(options);
+    }
+    getOnModelChange() {
+        return this.onModelChange;
+    }
+    setOnModelChange(callbackFunction) {
+        this.onModelChange = callbackFunction;
+    }
+    getOnModelTouched() {
+        return this.onModelTouched;
+    }
+    setOnModelTouched(callbackFunction) {
+        this.onModelTouched = callbackFunction;
+    }
+    setValue(value) {
+        this.inputService.value = value;
+    }
+    getNewKeyCode(oldString, newString) {
+        if (oldString.length > newString.length) {
+            return null;
+        }
+        for (let x = 0; x < newString.length; x++) {
+            if (oldString.length == x || oldString[x] != newString[x]) {
+                return newString.charCodeAt(x);
+            }
+        }
+    }
+    isArrowEndHomeKeyInFirefox(event) {
+        if ([35, 36, 37, 38, 39, 40].indexOf(event.keyCode) != -1 && (event.charCode == undefined || event.charCode == 0)) {
+            return true;
+        }
+        return false;
+    }
+    isReadOnly() {
+        return this.htmlInputElement && this.htmlInputElement.readOnly;
+    }
+    setCursorPosition(event) {
+        let rawValueWithoutSuffixEndPosition = this.inputService.getRawValueWithoutSuffixEndPosition();
+        setTimeout(function () {
+            event.target.setSelectionRange(rawValueWithoutSuffixEndPosition, rawValueWithoutSuffixEndPosition);
+        }, 0);
+    }
+}
+
+var CurrencyMaskDirective_1;
+const CURRENCYMASKDIRECTIVE_VALUE_ACCESSOR = {
+    provide: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NG_VALUE_ACCESSOR"],
+    useExisting: Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["forwardRef"])(() => CurrencyMaskDirective),
+    multi: true
+};
+let CurrencyMaskDirective = CurrencyMaskDirective_1 = class CurrencyMaskDirective {
+    constructor(currencyMaskConfig, elementRef, keyValueDiffers) {
+        this.currencyMaskConfig = currencyMaskConfig;
+        this.elementRef = elementRef;
+        this.keyValueDiffers = keyValueDiffers;
+        this.options = {};
+        this.optionsTemplate = {
+            align: "right",
+            allowNegative: true,
+            decimal: ".",
+            precision: 2,
+            prefix: "$ ",
+            suffix: "",
+            thousands: ","
+        };
+        if (currencyMaskConfig) {
+            this.optionsTemplate = currencyMaskConfig;
+        }
+        this.keyValueDiffer = keyValueDiffers.find({}).create();
+    }
+    ngAfterViewInit() {
+        this.elementRef.nativeElement.style.textAlign = this.options.align ? this.options.align : this.optionsTemplate.align;
+    }
+    ngDoCheck() {
+        if (this.keyValueDiffer.diff(this.options)) {
+            this.elementRef.nativeElement.style.textAlign = this.options.align ? this.options.align : this.optionsTemplate.align;
+            this.inputHandler.updateOptions(Object.assign({}, this.optionsTemplate, this.options));
+        }
+    }
+    ngOnInit() {
+        this.inputHandler = new InputHandler(this.elementRef.nativeElement, Object.assign({}, this.optionsTemplate, this.options));
+    }
+    handleBlur(event) {
+        this.inputHandler.getOnModelTouched().apply(event);
+    }
+    handleClick(event) {
+        this.inputHandler.handleClick(event, this.isChromeAndroid());
+    }
+    handleCut(event) {
+        if (!this.isChromeAndroid()) {
+            this.inputHandler.handleCut(event);
+        }
+    }
+    handleInput(event) {
+        if (this.isChromeAndroid()) {
+            this.inputHandler.handleInput(event);
+        }
+    }
+    handleKeydown(event) {
+        if (!this.isChromeAndroid()) {
+            this.inputHandler.handleKeydown(event);
+        }
+    }
+    handleKeypress(event) {
+        if (!this.isChromeAndroid()) {
+            this.inputHandler.handleKeypress(event);
+        }
+    }
+    handleKeyup(event) {
+        if (!this.isChromeAndroid()) {
+            this.inputHandler.handleKeyup(event);
+        }
+    }
+    handlePaste(event) {
+        if (!this.isChromeAndroid()) {
+            this.inputHandler.handlePaste(event);
+        }
+    }
+    isChromeAndroid() {
+        return /chrome/i.test(navigator.userAgent) && /android/i.test(navigator.userAgent);
+    }
+    registerOnChange(callbackFunction) {
+        this.inputHandler.setOnModelChange(callbackFunction);
+    }
+    registerOnTouched(callbackFunction) {
+        this.inputHandler.setOnModelTouched(callbackFunction);
+    }
+    setDisabledState(value) {
+        this.elementRef.nativeElement.disabled = value;
+    }
+    validate(abstractControl) {
+        let result = {};
+        if (abstractControl.value > this.max) {
+            result.max = true;
+        }
+        if (abstractControl.value < this.min) {
+            result.min = true;
+        }
+        return result != {} ? result : null;
+    }
+    writeValue(value) {
+        this.inputHandler.setValue(value);
+    }
+};
+CurrencyMaskDirective.ɵfac = function CurrencyMaskDirective_Factory(t) { return new (t || CurrencyMaskDirective)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](CURRENCY_MASK_CONFIG, 8), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["KeyValueDiffers"])); };
+CurrencyMaskDirective.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({ type: CurrencyMaskDirective, selectors: [["", "currencyMask", ""]], hostBindings: function CurrencyMaskDirective_HostBindings(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("blur", function CurrencyMaskDirective_blur_HostBindingHandler($event) { return ctx.handleBlur($event); })("click", function CurrencyMaskDirective_click_HostBindingHandler($event) { return ctx.handleClick($event); })("cut", function CurrencyMaskDirective_cut_HostBindingHandler($event) { return ctx.handleCut($event); })("input", function CurrencyMaskDirective_input_HostBindingHandler($event) { return ctx.handleInput($event); })("keydown", function CurrencyMaskDirective_keydown_HostBindingHandler($event) { return ctx.handleKeydown($event); })("keypress", function CurrencyMaskDirective_keypress_HostBindingHandler($event) { return ctx.handleKeypress($event); })("keyup", function CurrencyMaskDirective_keyup_HostBindingHandler($event) { return ctx.handleKeyup($event); })("paste", function CurrencyMaskDirective_paste_HostBindingHandler($event) { return ctx.handlePaste($event); });
+    } }, inputs: { options: "options", max: "max", min: "min" }, features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵProvidersFeature"]([
+            CURRENCYMASKDIRECTIVE_VALUE_ACCESSOR,
+            { provide: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NG_VALIDATORS"], useExisting: CurrencyMaskDirective_1, multi: true }
+        ])] });
+CurrencyMaskDirective.ctorParameters = () => [
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [CURRENCY_MASK_CONFIG,] }] },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["KeyValueDiffers"] }
+];
+Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])()
+], CurrencyMaskDirective.prototype, "max", void 0);
+Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])()
+], CurrencyMaskDirective.prototype, "min", void 0);
+Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])()
+], CurrencyMaskDirective.prototype, "options", void 0);
+Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"])("blur", ["$event"])
+], CurrencyMaskDirective.prototype, "handleBlur", null);
+Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"])("click", ["$event"])
+], CurrencyMaskDirective.prototype, "handleClick", null);
+Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"])("cut", ["$event"])
+], CurrencyMaskDirective.prototype, "handleCut", null);
+Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"])("input", ["$event"])
+], CurrencyMaskDirective.prototype, "handleInput", null);
+Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"])("keydown", ["$event"])
+], CurrencyMaskDirective.prototype, "handleKeydown", null);
+Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"])("keypress", ["$event"])
+], CurrencyMaskDirective.prototype, "handleKeypress", null);
+Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"])("keyup", ["$event"])
+], CurrencyMaskDirective.prototype, "handleKeyup", null);
+Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"])("paste", ["$event"])
+], CurrencyMaskDirective.prototype, "handlePaste", null);
+CurrencyMaskDirective = CurrencyMaskDirective_1 = Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__decorate"])([ Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__param"])(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"])()), Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__param"])(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(CURRENCY_MASK_CONFIG))
+], CurrencyMaskDirective);
+
+let CurrencyMaskModule = class CurrencyMaskModule {
+};
+CurrencyMaskModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: CurrencyMaskModule });
+CurrencyMaskModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function CurrencyMaskModule_Factory(t) { return new (t || CurrencyMaskModule)(); }, imports: [[
+            _angular_common__WEBPACK_IMPORTED_MODULE_3__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"]
+        ]] });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](CurrencyMaskDirective, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+        args: [{
+                selector: "[currencyMask]",
+                providers: [
+                    CURRENCYMASKDIRECTIVE_VALUE_ACCESSOR,
+                    { provide: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NG_VALIDATORS"], useExisting: CurrencyMaskDirective_1, multi: true }
+                ]
+            }]
+    }], function () { return [{ type: undefined, decorators: [{
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+            }, {
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+                args: [CURRENCY_MASK_CONFIG]
+            }] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["KeyValueDiffers"] }]; }, { options: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }], handleBlur: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"],
+            args: ["blur", ["$event"]]
+        }], handleClick: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"],
+            args: ["click", ["$event"]]
+        }], handleCut: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"],
+            args: ["cut", ["$event"]]
+        }], handleInput: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"],
+            args: ["input", ["$event"]]
+        }], handleKeydown: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"],
+            args: ["keydown", ["$event"]]
+        }], handleKeypress: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"],
+            args: ["keypress", ["$event"]]
+        }], handleKeyup: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"],
+            args: ["keyup", ["$event"]]
+        }], handlePaste: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"],
+            args: ["paste", ["$event"]]
+        }], max: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }], min: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }] }); })();
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](CurrencyMaskModule, { declarations: function () { return [CurrencyMaskDirective]; }, imports: function () { return [_angular_common__WEBPACK_IMPORTED_MODULE_3__["CommonModule"],
+        _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"]]; }, exports: function () { return [CurrencyMaskDirective]; } }); })();
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](CurrencyMaskModule, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
+        args: [{
+                imports: [
+                    _angular_common__WEBPACK_IMPORTED_MODULE_3__["CommonModule"],
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"]
+                ],
+                declarations: [
+                    CurrencyMaskDirective
+                ],
+                exports: [
+                    CurrencyMaskDirective
+                ]
+            }]
+    }], null, null); })();
+
+/*
+ * Public API Surface of currency-mask
+ */
+
+/**
+ * Generated bundle index. Do not edit.
+ */
+
+
+
+//# sourceMappingURL=ng2-currency-mask.js.map
+
+/***/ }),
+
 /***/ "./node_modules/rxjs/_esm2015/index.js":
 /*!*********************************************!*\
   !*** ./node_modules/rxjs/_esm2015/index.js ***!
@@ -95605,6 +96421,271 @@ __webpack_require__.r(__webpack_exports__);
 
 
 //# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./node_modules/text-mask-core/dist/textMaskCore.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/text-mask-core/dist/textMaskCore.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(e,r){ true?module.exports=r():undefined}(this,function(){return function(e){function r(n){if(t[n])return t[n].exports;var o=t[n]={exports:{},id:n,loaded:!1};return e[n].call(o.exports,o,o.exports,r),o.loaded=!0,o.exports}var t={};return r.m=e,r.c=t,r.p="",r(0)}([function(e,r,t){"use strict";function n(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(r,"__esModule",{value:!0});var o=t(3);Object.defineProperty(r,"conformToMask",{enumerable:!0,get:function(){return n(o).default}});var i=t(2);Object.defineProperty(r,"adjustCaretPosition",{enumerable:!0,get:function(){return n(i).default}});var a=t(5);Object.defineProperty(r,"createTextMaskInputElement",{enumerable:!0,get:function(){return n(a).default}})},function(e,r){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.placeholderChar="_",r.strFunction="function"},function(e,r){"use strict";function t(e){var r=e.previousConformedValue,t=void 0===r?o:r,i=e.previousPlaceholder,a=void 0===i?o:i,u=e.currentCaretPosition,l=void 0===u?0:u,s=e.conformedValue,f=e.rawValue,d=e.placeholderChar,c=e.placeholder,p=e.indexesOfPipedChars,v=void 0===p?n:p,h=e.caretTrapIndexes,m=void 0===h?n:h;if(0===l||!f.length)return 0;var y=f.length,g=t.length,b=c.length,C=s.length,P=y-g,k=P>0,x=0===g,O=P>1&&!k&&!x;if(O)return l;var T=k&&(t===s||s===c),w=0,M=void 0,S=void 0;if(T)w=l-P;else{var j=s.toLowerCase(),_=f.toLowerCase(),V=_.substr(0,l).split(o),A=V.filter(function(e){return j.indexOf(e)!==-1});S=A[A.length-1];var N=a.substr(0,A.length).split(o).filter(function(e){return e!==d}).length,E=c.substr(0,A.length).split(o).filter(function(e){return e!==d}).length,F=E!==N,R=void 0!==a[A.length-1]&&void 0!==c[A.length-2]&&a[A.length-1]!==d&&a[A.length-1]!==c[A.length-1]&&a[A.length-1]===c[A.length-2];!k&&(F||R)&&N>0&&c.indexOf(S)>-1&&void 0!==f[l]&&(M=!0,S=f[l]);for(var I=v.map(function(e){return j[e]}),J=I.filter(function(e){return e===S}).length,W=A.filter(function(e){return e===S}).length,q=c.substr(0,c.indexOf(d)).split(o).filter(function(e,r){return e===S&&f[r]!==e}).length,L=q+W+J+(M?1:0),z=0,B=0;B<C;B++){var D=j[B];if(w=B+1,D===S&&z++,z>=L)break}}if(k){for(var G=w,H=w;H<=b;H++)if(c[H]===d&&(G=H),c[H]===d||m.indexOf(H)!==-1||H===b)return G}else if(M){for(var K=w-1;K>=0;K--)if(s[K]===S||m.indexOf(K)!==-1||0===K)return K}else for(var Q=w;Q>=0;Q--)if(c[Q-1]===d||m.indexOf(Q)!==-1||0===Q)return Q}Object.defineProperty(r,"__esModule",{value:!0}),r.default=t;var n=[],o=""},function(e,r,t){"use strict";function n(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:l,r=arguments.length>1&&void 0!==arguments[1]?arguments[1]:u,t=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{};if(!(0,i.isArray)(r)){if(("undefined"==typeof r?"undefined":o(r))!==a.strFunction)throw new Error("Text-mask:conformToMask; The mask property must be an array.");r=r(e,t),r=(0,i.processCaretTraps)(r).maskWithoutCaretTraps}var n=t.guide,s=void 0===n||n,f=t.previousConformedValue,d=void 0===f?l:f,c=t.placeholderChar,p=void 0===c?a.placeholderChar:c,v=t.placeholder,h=void 0===v?(0,i.convertMaskToPlaceholder)(r,p):v,m=t.currentCaretPosition,y=t.keepCharPositions,g=s===!1&&void 0!==d,b=e.length,C=d.length,P=h.length,k=r.length,x=b-C,O=x>0,T=m+(O?-x:0),w=T+Math.abs(x);if(y===!0&&!O){for(var M=l,S=T;S<w;S++)h[S]===p&&(M+=p);e=e.slice(0,T)+M+e.slice(T,b)}for(var j=e.split(l).map(function(e,r){return{char:e,isNew:r>=T&&r<w}}),_=b-1;_>=0;_--){var V=j[_].char;if(V!==p){var A=_>=T&&C===k;V===h[A?_-x:_]&&j.splice(_,1)}}var N=l,E=!1;e:for(var F=0;F<P;F++){var R=h[F];if(R===p){if(j.length>0)for(;j.length>0;){var I=j.shift(),J=I.char,W=I.isNew;if(J===p&&g!==!0){N+=p;continue e}if(r[F].test(J)){if(y===!0&&W!==!1&&d!==l&&s!==!1&&O){for(var q=j.length,L=null,z=0;z<q;z++){var B=j[z];if(B.char!==p&&B.isNew===!1)break;if(B.char===p){L=z;break}}null!==L?(N+=J,j.splice(L,1)):F--}else N+=J;continue e}E=!0}g===!1&&(N+=h.substr(F,P));break}N+=R}if(g&&O===!1){for(var D=null,G=0;G<N.length;G++)h[G]===p&&(D=G);N=null!==D?N.substr(0,D+1):l}return{conformedValue:N,meta:{someCharsRejected:E}}}Object.defineProperty(r,"__esModule",{value:!0});var o="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};r.default=n;var i=t(4),a=t(1),u=[],l=""},function(e,r,t){"use strict";function n(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:f,r=arguments.length>1&&void 0!==arguments[1]?arguments[1]:s.placeholderChar;if(!o(e))throw new Error("Text-mask:convertMaskToPlaceholder; The mask property must be an array.");if(e.indexOf(r)!==-1)throw new Error("Placeholder character must not be used as part of the mask. Please specify a character that is not present in your mask as your placeholder character.\n\n"+("The placeholder character that was received is: "+JSON.stringify(r)+"\n\n")+("The mask that was received is: "+JSON.stringify(e)));return e.map(function(e){return e instanceof RegExp?r:e}).join("")}function o(e){return Array.isArray&&Array.isArray(e)||e instanceof Array}function i(e){return"string"==typeof e||e instanceof String}function a(e){return"number"==typeof e&&void 0===e.length&&!isNaN(e)}function u(e){return"undefined"==typeof e||null===e}function l(e){for(var r=[],t=void 0;t=e.indexOf(d),t!==-1;)r.push(t),e.splice(t,1);return{maskWithoutCaretTraps:e,indexes:r}}Object.defineProperty(r,"__esModule",{value:!0}),r.convertMaskToPlaceholder=n,r.isArray=o,r.isString=i,r.isNumber=a,r.isNil=u,r.processCaretTraps=l;var s=t(1),f=[],d="[]"},function(e,r,t){"use strict";function n(e){return e&&e.__esModule?e:{default:e}}function o(e){var r={previousConformedValue:void 0,previousPlaceholder:void 0};return{state:r,update:function(t){var n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:e,o=n.inputElement,s=n.mask,d=n.guide,m=n.pipe,g=n.placeholderChar,b=void 0===g?v.placeholderChar:g,C=n.keepCharPositions,P=void 0!==C&&C,k=n.showMask,x=void 0!==k&&k;if("undefined"==typeof t&&(t=o.value),t!==r.previousConformedValue){("undefined"==typeof s?"undefined":l(s))===y&&void 0!==s.pipe&&void 0!==s.mask&&(m=s.pipe,s=s.mask);var O=void 0,T=void 0;if(s instanceof Array&&(O=(0,p.convertMaskToPlaceholder)(s,b)),s!==!1){var w=a(t),M=o.selectionEnd,S=r.previousConformedValue,j=r.previousPlaceholder,_=void 0;if(("undefined"==typeof s?"undefined":l(s))===v.strFunction){if(T=s(w,{currentCaretPosition:M,previousConformedValue:S,placeholderChar:b}),T===!1)return;var V=(0,p.processCaretTraps)(T),A=V.maskWithoutCaretTraps,N=V.indexes;T=A,_=N,O=(0,p.convertMaskToPlaceholder)(T,b)}else T=s;var E={previousConformedValue:S,guide:d,placeholderChar:b,pipe:m,placeholder:O,currentCaretPosition:M,keepCharPositions:P},F=(0,c.default)(w,T,E),R=F.conformedValue,I=("undefined"==typeof m?"undefined":l(m))===v.strFunction,J={};I&&(J=m(R,u({rawValue:w},E)),J===!1?J={value:S,rejected:!0}:(0,p.isString)(J)&&(J={value:J}));var W=I?J.value:R,q=(0,f.default)({previousConformedValue:S,previousPlaceholder:j,conformedValue:W,placeholder:O,rawValue:w,currentCaretPosition:M,placeholderChar:b,indexesOfPipedChars:J.indexesOfPipedChars,caretTrapIndexes:_}),L=W===O&&0===q,z=x?O:h,B=L?z:W;r.previousConformedValue=B,r.previousPlaceholder=O,o.value!==B&&(o.value=B,i(o,q))}}}}}function i(e,r){document.activeElement===e&&(g?b(function(){return e.setSelectionRange(r,r,m)},0):e.setSelectionRange(r,r,m))}function a(e){if((0,p.isString)(e))return e;if((0,p.isNumber)(e))return String(e);if(void 0===e||null===e)return h;throw new Error("The 'value' provided to Text Mask needs to be a string or a number. The value received was:\n\n "+JSON.stringify(e))}Object.defineProperty(r,"__esModule",{value:!0});var u=Object.assign||function(e){for(var r=1;r<arguments.length;r++){var t=arguments[r];for(var n in t)Object.prototype.hasOwnProperty.call(t,n)&&(e[n]=t[n])}return e},l="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};r.default=o;var s=t(2),f=n(s),d=t(3),c=n(d),p=t(4),v=t(1),h="",m="none",y="object",g="undefined"!=typeof navigator&&/Android/i.test(navigator.userAgent),b="undefined"!=typeof requestAnimationFrame?requestAnimationFrame:setTimeout}])});
+
+/***/ }),
+
+/***/ "./node_modules/tslib/tslib.es6.js":
+/*!*****************************************!*\
+  !*** ./node_modules/tslib/tslib.es6.js ***!
+  \*****************************************/
+/*! exports provided: __extends, __assign, __rest, __decorate, __param, __metadata, __awaiter, __generator, __createBinding, __exportStar, __values, __read, __spread, __spreadArrays, __await, __asyncGenerator, __asyncDelegator, __asyncValues, __makeTemplateObject, __importStar, __importDefault, __classPrivateFieldGet, __classPrivateFieldSet */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__extends", function() { return __extends; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__assign", function() { return __assign; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__rest", function() { return __rest; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__decorate", function() { return __decorate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__param", function() { return __param; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__metadata", function() { return __metadata; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__awaiter", function() { return __awaiter; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__generator", function() { return __generator; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__createBinding", function() { return __createBinding; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__exportStar", function() { return __exportStar; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__values", function() { return __values; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__read", function() { return __read; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__spread", function() { return __spread; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__spreadArrays", function() { return __spreadArrays; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__await", function() { return __await; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__asyncGenerator", function() { return __asyncGenerator; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__asyncDelegator", function() { return __asyncDelegator; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__asyncValues", function() { return __asyncValues; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__makeTemplateObject", function() { return __makeTemplateObject; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__importStar", function() { return __importStar; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__importDefault", function() { return __importDefault; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__classPrivateFieldGet", function() { return __classPrivateFieldGet; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__classPrivateFieldSet", function() { return __classPrivateFieldSet; });
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+/* global Reflect, Promise */
+
+var extendStatics = function(d, b) {
+    extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return extendStatics(d, b);
+};
+
+function __extends(d, b) {
+    extendStatics(d, b);
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+}
+
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    }
+    return __assign.apply(this, arguments);
+}
+
+function __rest(s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+}
+
+function __decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+
+function __param(paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+}
+
+function __metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
+}
+
+function __awaiter(thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+}
+
+function __generator(thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+}
+
+function __createBinding(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}
+
+function __exportStar(m, exports) {
+    for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+
+function __values(o) {
+    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+    if (m) return m.call(o);
+    if (o && typeof o.length === "number") return {
+        next: function () {
+            if (o && i >= o.length) o = void 0;
+            return { value: o && o[i++], done: !o };
+        }
+    };
+    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+}
+
+function __read(o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+}
+
+function __spread() {
+    for (var ar = [], i = 0; i < arguments.length; i++)
+        ar = ar.concat(__read(arguments[i]));
+    return ar;
+}
+
+function __spreadArrays() {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+};
+
+function __await(v) {
+    return this instanceof __await ? (this.v = v, this) : new __await(v);
+}
+
+function __asyncGenerator(thisArg, _arguments, generator) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var g = generator.apply(thisArg, _arguments || []), i, q = [];
+    return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
+    function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
+    function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
+    function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r); }
+    function fulfill(value) { resume("next", value); }
+    function reject(value) { resume("throw", value); }
+    function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
+}
+
+function __asyncDelegator(o) {
+    var i, p;
+    return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
+    function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; } : f; }
+}
+
+function __asyncValues(o) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var m = o[Symbol.asyncIterator], i;
+    return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+    function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+    function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
+}
+
+function __makeTemplateObject(cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
+
+function __importStar(mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result.default = mod;
+    return result;
+}
+
+function __importDefault(mod) {
+    return (mod && mod.__esModule) ? mod : { default: mod };
+}
+
+function __classPrivateFieldGet(receiver, privateMap) {
+    if (!privateMap.has(receiver)) {
+        throw new TypeError("attempted to get private field on non-instance");
+    }
+    return privateMap.get(receiver);
+}
+
+function __classPrivateFieldSet(receiver, privateMap, value) {
+    if (!privateMap.has(receiver)) {
+        throw new TypeError("attempted to set private field on non-instance");
+    }
+    privateMap.set(receiver, value);
+    return value;
+}
+
 
 /***/ })
 
