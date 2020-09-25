@@ -40,3 +40,12 @@
 .secondary-button:active {
     background: #dedbff;
 }
+
+/* ////////////////// */
+.disabled * {
+    opacity: 0.5;
+    cursor: default;
+}
+.disabled *:hover {
+    background: #1400FF;
+}

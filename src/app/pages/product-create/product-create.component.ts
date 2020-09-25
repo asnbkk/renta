@@ -78,11 +78,12 @@ export class ProductCreateComponent implements OnInit {
   // ₸
 
   onSubmit(): void {
-    // let isPhoneValid = this.phonenumber(this.productModel.phone)
-    // if(isPhoneValid) {
-    //   this.productService.setProduct(this.productModel).subscribe()
-    // }
-    // else console.log('phone is not valid')
-    console.log(this.productModel)
+    let isPhoneValid = this.phonenumber(this.productModel.phone)
+    if(isPhoneValid) {
+      this.productService.setProduct(this.productModel)
+      .subscribe(
+        res => console.log('success', res))
+        error => console.log('error', error)
+    }
   }
 }
