@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { api_url } from '../../assets/env'
-import { ThrowStmt } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +14,7 @@ export class ProductService {
   }
 
   public selectedProduct
+  public selectedPreview
   
   public _url: string = api_url
   searchRes: [] = []
@@ -22,6 +22,9 @@ export class ProductService {
   constructor(private http: HttpClient) { 
     let selectedProduct = localStorage.getItem('selectedProduct')
     if(selectedProduct) this.selectedProduct = JSON.parse(selectedProduct)
+
+    let selectedPreview = localStorage.getItem('selectedPreview')
+    if(selectedPreview) this.selectedPreview = JSON.parse(selectedPreview)
 
     this.searchResChange.subscribe(data => {
       this.searchRes = data
@@ -39,6 +42,10 @@ export class ProductService {
   onProductSelect(product) {
     this.selectedProduct = product
     localStorage.setItem('selectedProduct', JSON.stringify(product))
+  }
+  onProductPreview(product) {
+    this.selectedPreview = product
+    localStorage.setItem('selectedPreview', JSON.stringify(product))
   }
   
   getProductInfo(productId): Observable<any> {

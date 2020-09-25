@@ -1,0 +1,88 @@
+<div *ngIf="!loader">
+    <div class="smalltitle">
+        <span>Главная</span>
+        -
+        <span>
+            {{prod.category.name}}
+        </span>
+        -
+        <span>
+            {{prod.subcategory.name}}
+        </span>
+    </div>
+    <div class="title">{{prod.name}}</div>
+    <div class="wrapper">
+        <div class="left">
+            <div class="img">
+                <img src="{{prod.image}}" alt="">
+                <div class="rentType">{{prod.typeOfRent}}</div>
+            </div>
+            <div class="price-list">
+                <div class="subtitle">Прайс-лист</div>
+            </div>
+            <div class="desc">
+                <div class="subtitle">Описание</div>
+                {{prod.description}}
+            </div>
+            <div class="comments">
+                <div class="subtitle">Отзывы</div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="subtitle" [ngStyle]="{'margin-top': '0'}">Ваш чек</div>
+            <div class="total">
+                <div class="total-item">
+                    <p>Стоймость ({{prod.price}}₸ x 2 дня)</p>
+                    <p>{{prod.price * 2}}₸</p>
+                </div>
+                <div class="total-item">
+                    <p>Сервисный сбор</p>
+                    <p>500₸</p>
+                </div>
+                <div class="total-bottom">
+                    <p>Итого</p>
+                    <p>{{prod.price * 2 + 500}}₸</p>
+                </div>
+            </div>
+            <div class="button-group">
+                <app-button [type]="'primary'" [text]="'Запросить аренду'"></app-button>
+                <app-button [type]="'secondary'" [text]="'Добавить в избранное'"></app-button>
+            </div>
+            <div class="landlor">
+                <div class="subtitle">Арендодатель</div>
+                <div class="landor_wrapper">
+                    <div class="landor_wrapper__img">
+                        <img src="../../../assets/img/user.png" alt="">
+                        <!-- надо добавить картинку для пользователя -->
+                    </div>
+                    <div class="landor_wrapper__text">
+                        <div class="landor_wrapper__text___top">
+                            <div class="landor_name">{{prod.user.name}}</div>
+                            <div class="landor_status">
+                                {{prod.user.email}}
+                            </div>
+                        </div>
+                        <div class="landor_text">
+                            {{prod.user.phone}}
+                            <!-- надо будет поменять на текст пользователя -->
+                        </div>
+                        <div class="landor_rating">
+                            <!-- рейтингл пользователя -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-notify">
+        <span>Так будет выглядеть ваше объявление</span>
+         <div class="bottom-notify_buttons">
+             <app-button [type]="'primary'" [text]="'Подать объявление'"></app-button>
+             <app-button [type]="'secondary'" routerLink="/product-create" [text]="'Вернуться к редактированию'"></app-button>
+         </div>
+    </div>
+</div>
+
+<div class="loader" *ngIf="loader">
+    <app-loader></app-loader>
+</div>

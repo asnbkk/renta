@@ -16,6 +16,7 @@ import { AdminSubcategoriesComponent } from './pages/admin-subcategories/admin-s
 import { AdminGroupsComponent } from './pages/admin-groups/admin-groups.component';
 import { AdminCitiesComponent } from './pages/admin-cities/admin-cities.component';
 import { AuthGuard } from './auth.guard';
+import { ProductPreviewComponent } from './pages/product-preview/product-preview.component';
 
 
 const routes: Routes = [
@@ -30,7 +31,7 @@ const routes: Routes = [
   { path: 'subcategory-details/:category/:subcategory/:id', component: SubcategoryDetailsComponent },
   { path: 'product-details/:product_id', component: ProductDetailsComponent },
   { path: 'product-create', component: ProductCreateComponent, canActivate: [AuthGuard]},
-  { path: 'preview', component: ProductDetailsComponent },
+  { path: 'preview', component: ProductPreviewComponent },
   { path: 'admin', component: AdminComponent, children: [
     {path: '', component: AdminProductsComponent},
     {path: 'categories', component: AdminCategoriesComponent},

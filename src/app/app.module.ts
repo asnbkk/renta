@@ -34,6 +34,7 @@ import { AdminCitiesComponent } from './pages/admin-cities/admin-cities.componen
 import { AuthGuard } from './auth.guard';
 import {TextMaskModule} from 'angular2-text-mask'
 import { CurrencyMaskModule } from "ng2-currency-mask";
+import { ProductPreviewComponent } from './pages/product-preview/product-preview.component';
 
 
 // import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -65,6 +66,7 @@ import { CurrencyMaskModule } from "ng2-currency-mask";
     AdminSubcategoriesComponent,
     AdminGroupsComponent,
     AdminCitiesComponent,
+    ProductPreviewComponent,
   ],
   imports: [
     BrowserModule,

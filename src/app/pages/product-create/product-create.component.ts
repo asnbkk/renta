@@ -17,7 +17,7 @@ export class ProductCreateComponent implements OnInit {
     private userService: UserService,
     private router: Router
   ) {
-
+    this.productModel = this.productService.selectedPreview
   }
 
   public categories = []
@@ -61,6 +61,17 @@ export class ProductCreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // this.categoryService.getCategories().subscribe(data => {
+    //   this.categories = data
+    //   data.forEach(cat => {
+    //     this.subcategories.push(...cat.subcategories)
+    //   });
+    //   let email = localStorage.getItem('email')
+    //   let username = localStorage.getItem('username')
+    //   if (email) this.productModel.user.email = email
+    //   if (username) this.productModel.user.name = username
+    //   console.log(this.productModel.user.name)
+    // })
     this.categoryService.getCategories().subscribe(data => {
       this.categories = data
       data.forEach(cat => {
@@ -93,7 +104,7 @@ export class ProductCreateComponent implements OnInit {
     this.productModel.subcategory.name = selectedSubcategory.name
     // console.log(this.productModel)
     this.router.navigate(['preview'])
-    this.productService.onProductSelect(this.productModel)
+    this.productService.onProductPreview(this.productModel)
   }
 
   onSubmit(): void {
