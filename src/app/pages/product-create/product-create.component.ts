@@ -17,6 +17,7 @@ export class ProductCreateComponent implements OnInit {
     private userService: UserService,
     private router: Router
   ) {
+    if(this.productService.selectedPreview  )
     this.productModel = this.productService.selectedPreview
   }
 
@@ -72,17 +73,15 @@ export class ProductCreateComponent implements OnInit {
     //   if (username) this.productModel.user.name = username
     //   console.log(this.productModel.user.name)
     // })
-    this.categoryService.getCategories().subscribe(data => {
-      this.categories = data
-      data.forEach(cat => {
+      let category = JSON.parse(localStorage.getItem('categories'))
+      this.categories = category
+      this.categories.forEach(cat => {
         this.subcategories.push(...cat.subcategories)
-      });
+      })
       let email = localStorage.getItem('email')
       let username = localStorage.getItem('username')
       if (email) this.productModel.user.email = email
       if (username) this.productModel.user.name = username
-      console.log(this.productModel.user.name)
-    })
   }
 
 
