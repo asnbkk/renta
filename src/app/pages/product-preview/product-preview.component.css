@@ -57,48 +57,51 @@
     grid-gap: 1rem;
 }
 .total {
-    padding: 0 0 2rem 0;
+    padding-bottom: 1rem;
     display: grid;
     grid-gap: 1rem;
+    grid-template-columns: auto 80px 1fr;
 }
-.total-item {
+.total_item {
+    align-items: center;
+    font-size: 14px;
     display: grid;
-    grid-template-columns: 1fr auto;
-    grid-gap: 1rem;
-    border-bottom: 1px solid #c2c2c2;
 }
-.total-item p {
-    margin-top: 0;
-    color: rgb(94, 94, 94);
+.total_item__label {
+    color: #575757;
 }
-.total-bottom {
+input {
+    height: 50px;
+    border: 1px solid #cacaca;
+    border-radius: 5px;
+    padding: 0 2rem;
     display: grid;
-    grid-gap: 1rem;
-    grid-template-columns: 1fr auto;
 }
-.total-bottom p {
-    font-weight: bold;
-    margin: 0;
-    font-size: 20px;
+.number {
+    width: 80px;
 }
-
 .landlor {
     margin-top: 2rem;
-    border-top: 1px solid silver;
+    /* border-top: 1px solid silver;     */
 }
 .landor_wrapper {
     display: grid;
     grid-template-columns: auto 1fr;
     grid-gap: 1rem;
+    align-items: center;
 }
 .landor_wrapper__img img {
     height: 70px;
+    display: grid;
     width: 70px;
 }
 .landor_wrapper__text {
     display: grid;
     align-items: center;
     grid-template-rows: auto auto 1fr;
+}
+.landor_name {
+    font-weight: bold;
 }
 .landor_text {
     font-size: 14px;
@@ -136,9 +139,6 @@
     grid-template-columns: repeat(3, 1fr);
     color: rgb(155, 155, 155);
     padding: 0 1rem 0.5rem 1rem;
-}
-.price-list_content {
-    
 }
 .price-list_content__item {
     height: 50px;
