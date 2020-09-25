@@ -46,6 +46,9 @@
     opacity: 0.3;
     cursor: default;
 }
-.disabled *:hover {
+.disabled .primary-button:hover {
     background: #1400FF;
+}
+.disabled .secondary-button:hover {
+    background: transparent;
 }

@@ -109,11 +109,10 @@ export class ProductCreateComponent implements OnInit {
   onSubmit(): void {
     let isPhoneValid = this.phonenumber(this.productModel.user.phone)
     if(isPhoneValid) {
-      console.log(this.productModel)
-      // this.productService.setProduct(this.productModel)
-      // .subscribe(
-      //   res => console.log('success', res))
-      //   error => console.log('error', error)
+      this.productService.setProduct(this.productModel).subscribe(
+        res => this.router.navigate(['personal', this.productModel.user.email]),
+        error => console.log(error)
+      )
     }
   }
 }

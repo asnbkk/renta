@@ -123,6 +123,17 @@
         <ng-template #disabledButton>
             <app-button [type]="'primary'" [text]="'Создать объявление'" [isDisabled]="true"></app-button>
         </ng-template>
-        <app-button (click)="onPreview()" [type]="'secondary'" [text]="'Предварительный просмотр'"></app-button>
+        <app-button 
+        *ngIf="(name.valid) &&
+        (description.valid) &&
+        (productModel.priceForDay || productModel.priceForHour || productModel.priceForWeek) &&
+        (category.valid) && (subcategory.valid) &&
+        (username.valid) &&
+        (phone.valid && phonenumber(productModel.user.phone) && (email.valid && emailValidation(productModel.user.email)));
+        else disabledSecondaryButton"
+        (click)="onPreview()" [type]="'secondary'" [text]="'Предварительный просмотр'"></app-button>
+        <ng-template #disabledSecondaryButton>
+            <app-button [type]="'secondary'" [text]="'Предварительный просмотр'" [isDisabled]="true"></app-button>
+        </ng-template>
     </div>
 </div>

@@ -103,7 +103,7 @@
     <div class="bottom-notify">
         <span>Так будет выглядеть ваше объявление</span>
          <div class="bottom-notify_buttons">
-             <app-button [type]="'primary'" [text]="'Подать объявление'"></app-button>
+             <app-button [type]="'primary'" [text]="'Подать объявление'" (click)="onSubmit()"></app-button>
              <app-button [type]="'secondary'" routerLink="/product-create" [text]="'Вернуться к редактированию'"></app-button>
          </div>
     </div>

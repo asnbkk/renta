@@ -35,6 +35,7 @@ import { AuthGuard } from './auth.guard';
 import {TextMaskModule} from 'angular2-text-mask'
 import { CurrencyMaskModule } from "ng2-currency-mask";
 import { ProductPreviewComponent } from './pages/product-preview/product-preview.component';
+import { PersonalPageComponent } from './pages/personal-page/personal-page.component';
 
 
 // import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -67,6 +68,7 @@ import { ProductPreviewComponent } from './pages/product-preview/product-preview
     AdminGroupsComponent,
     AdminCitiesComponent,
     ProductPreviewComponent,
+    PersonalPageComponent,
   ],
   imports: [
     BrowserModule,
