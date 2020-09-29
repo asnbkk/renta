@@ -12,6 +12,7 @@ export class ProductPreviewComponent implements OnInit {
   public id
   public prod
   public loader = false
+  public total: number
   public tempArray = []
   constructor(private location: Location, private prodService: ProductService,
               private router: Router) { }
@@ -27,7 +28,13 @@ export class ProductPreviewComponent implements OnInit {
       this.tempArray.push({title: 'За день', val: this.prod.priceForDay})
       this.tempArray.push({title: 'За неделю', val: this.prod.priceForWeek})
     }
-    console.log(this.tempArray)
+    this.total = this.tempArray[0].val
+    console.log('hello')
+  }
+
+  receiveTotal(value) {
+    console.log(value)
+    this.total += value
   }
 
   onSubmit(): void {

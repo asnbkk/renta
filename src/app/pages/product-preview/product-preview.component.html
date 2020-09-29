@@ -49,10 +49,12 @@
                         <app-rent-price-counte
                         *ngIf="item.val"
                         [order]="i"
+                        (total)="receiveTotal($event)"
                         [price]="item.val"
                         [period]="item.title"></app-rent-price-counte>
                     </div>
                 </div>
+                {{total}}
             </div>
             <!-- <div class="subtitle" [ngStyle]="{'margin-top': '0'}">Ваш конфигуратор</div>
             <div class="total">
