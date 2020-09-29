@@ -34,6 +34,7 @@ export class ProductPreviewComponent implements OnInit {
 
   receiveTotal(value) {
     console.log(value)
+    if(this.total + value >= 0)
     this.total += value
   }
 
