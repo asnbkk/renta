@@ -80,8 +80,11 @@ input {
 .number {
     width: 80px;
 }
+.right {
+    margin-top: -20px;
+}
 .landlor {
-    margin-top: 2rem;
+    /* margin-top: 2rem; */
     /* border-top: 1px solid silver;     */
 }
 .landor_wrapper {
@@ -133,18 +136,18 @@ input {
     grid-gap: 1rem;
 }
 /* ////////////////////// */
+.price-list {
+    padding-bottom: 1rem;
+}
 .price-list_label {
     display: grid;
     justify-content: space-between;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr) 80px;
     color: rgb(155, 155, 155);
-    padding: 0 1rem 0.5rem 1rem;
+    font-size: 13px;
+    padding-bottom: 0.5rem;
 }
-.price-list_content__item {
-    height: 50px;
-    padding: 0 1rem;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    border-top: 1px solid #b8b8b8;
-    align-items: center;
+.price-list_label :last-child {
+    text-align: end;
 }
+/* ///////////////////////// */

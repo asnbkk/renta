@@ -1,0 +1,16 @@
+.item{
+    height: 50px;
+    /* padding: 0 1rem; */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) 80px;
+    border-top: 1px solid #b8b8b8;
+    align-items: center;
+}
+.item :last-child {
+    text-align: end;
+}
+.item_qnt {
+    display: grid;
+    grid-template-columns: repeat(3, 28px);
+    justify-items: center;
+}

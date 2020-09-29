@@ -15,33 +15,9 @@
         <div class="left">
             <div class="img">
                 <img src="{{prod.image}}" alt="">
-                <div class="rentType">{{prod.typeOfRent}}</div>
+                <!-- <div class="rentType">{{prod.typeOfRent}}</div> -->
             </div>
-            <div class="price-list">
-                <div class="subtitle">Прайс-лист</div>
-                <div class="price-list_label">
-                    <span>Количество</span>
-                    <span>Период</span>
-                    <span>Стоймость</span>
-                </div>
-                <div class="price-list_content">
-                    <div class="price-list_content__item">
-                        <span>1</span>
-                        <span>За час</span>
-                        <span>{{prod.priceForHour}} ₸</span>
-                    </div>
-                    <div class="price-list_content__item">
-                        <span>1</span>
-                        <span>За сутки</span>
-                        <span>{{prod.priceForDay}} ₸</span>
-                    </div>
-                    <div class="price-list_content__item">
-                        <span>1</span>
-                        <span>За неделю</span>
-                        <span>{{prod.priceForWeek}} ₸</span>
-                    </div>
-                </div>
-            </div>
+            
             <div class="desc">
                 <div class="subtitle">Описание</div>
                 {{prod.description}}
@@ -51,6 +27,35 @@
             </div>
         </div>
         <div class="right">
+            <!-- <div class="right_top">
+                <div class="right_top__name">
+                    {{prod.name}}
+                </div>
+                <div class="right_top__price">
+                    123123
+                </div>
+            </div> -->
+            <div class="price-list">
+                <div class="subtitle">Стоймость аренды</div>
+                <div class="price-list_label">
+                    <!-- <span>Количество</span> -->
+                    <span>Период</span>
+                    <span>Стоймость</span>
+                    <span>Кол-во</span>
+                    <span>Итого</span>
+                </div>
+                <div class="price-list_content">
+                    <app-rent-price-counte 
+                    [price]="prod.priceForHour"
+                    [period]="'За час'"></app-rent-price-counte>
+                    <app-rent-price-counte 
+                    [price]="prod.priceForDay"
+                    [period]="'За сутки'"></app-rent-price-counte>
+                    <app-rent-price-counte 
+                    [price]="prod.priceForWeek"
+                    [period]="'За неделю'"></app-rent-price-counte>
+                </div>
+            </div>
             <!-- <div class="subtitle" [ngStyle]="{'margin-top': '0'}">Ваш конфигуратор</div>
             <div class="total">
                 <div class="total_item">
@@ -71,10 +76,10 @@
                 <option [value]="o._id" *ngFor="let o of options">{{o.name}}</option>
             </select>
             </div> -->
-            <div class="button-group">
+            <!-- <div class="button-group">
                 <app-button [type]="'primary'" [text]="'Запросить аренду'"></app-button>
                 <app-button [type]="'secondary'" [text]="'Добавить в избранное'"></app-button>
-            </div>
+            </div> -->
             <div class="landlor">
                 <div class="subtitle">Арендодатель</div>
                 <div class="landor_wrapper">

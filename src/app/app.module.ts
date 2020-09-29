@@ -36,6 +36,7 @@ import {TextMaskModule} from 'angular2-text-mask'
 import { CurrencyMaskModule } from "ng2-currency-mask";
 import { ProductPreviewComponent } from './pages/product-preview/product-preview.component';
 import { PersonalPageComponent } from './pages/personal-page/personal-page.component';
+import { RentPriceCounteComponent } from './components/rent-price-counte/rent-price-counte.component';
 
 
 // import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -69,6 +70,7 @@ import { PersonalPageComponent } from './pages/personal-page/personal-page.compo
     AdminCitiesComponent,
     ProductPreviewComponent,
     PersonalPageComponent,
+    RentPriceCounteComponent,
   ],
   imports: [
     BrowserModule,
