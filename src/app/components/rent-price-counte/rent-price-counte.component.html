@@ -1,10 +1,10 @@
-<div class="item">
+<div class="item" #divElements>
     <span>{{period}}</span>
     <span>{{price}} ₸</span>
     <div class="item_qnt">
-        <div class="dec">-</div>
-        <div class="counter">1</div>
-        <div class="inc">+</div>
+        <div class="item_qnt__button" (click)="onDecrement()">-</div>
+        <div class="counter">{{counter}}</div>
+        <div class="item_qnt__button" (click)="onIncrement()">+</div>
     </div>
-    <span>{{price}}</span>
+    <span>{{price * counter}} ₸</span>
 </div>

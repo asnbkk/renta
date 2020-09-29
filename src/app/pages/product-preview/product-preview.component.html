@@ -41,19 +41,17 @@
                     <!-- <span>Количество</span> -->
                     <span>Период</span>
                     <span>Стоймость</span>
-                    <span>Кол-во</span>
+                    <span>Количество</span>
                     <span>Итого</span>
                 </div>
-                <div class="price-list_content">
-                    <app-rent-price-counte 
-                    [price]="prod.priceForHour"
-                    [period]="'За час'"></app-rent-price-counte>
-                    <app-rent-price-counte 
-                    [price]="prod.priceForDay"
-                    [period]="'За сутки'"></app-rent-price-counte>
-                    <app-rent-price-counte 
-                    [price]="prod.priceForWeek"
-                    [period]="'За неделю'"></app-rent-price-counte>
+                <div #divElements class="price-list_content">
+                    <div *ngFor="let item of tempArray; let i = index">
+                        <app-rent-price-counte
+                        *ngIf="item.val"
+                        [order]="i"
+                        [price]="item.val"
+                        [period]="item.title"></app-rent-price-counte>
+                    </div>
                 </div>
             </div>
             <!-- <div class="subtitle" [ngStyle]="{'margin-top': '0'}">Ваш конфигуратор</div>

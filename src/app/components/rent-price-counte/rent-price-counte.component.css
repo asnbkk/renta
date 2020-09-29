@@ -13,4 +13,16 @@
     display: grid;
     grid-template-columns: repeat(3, 28px);
     justify-items: center;
+    align-items: center;
+}
+.item_qnt__button {
+    cursor: pointer;
+    display: grid;
+    background: rgb(238, 238, 238);
+    /* border-radius: 50%; */
+    border-radius: 5px;
+    width: 28px;
+    height: 28px;
+    align-items: center;
+    justify-content: center;
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, Output, ViewChild, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-rent-price-counte',
@@ -8,9 +8,22 @@ import { Component, Input, OnInit } from '@angular/core';
 export class RentPriceCounteComponent implements OnInit {
   @Input() price
   @Input() period
+  @Input() order
+  public counter = 0
   constructor() { }
 
+  @ViewChild('divElements')
+  public divElements: ElementRef;
+
   ngOnInit(): void {
+    if(this.order == 0) this.counter = 1
   }
 
+  onIncrement() {
+    this.counter ++
+  }
+  onDecrement() {
+    if(this.counter > 0)
+      this.counter --
+  }
 }

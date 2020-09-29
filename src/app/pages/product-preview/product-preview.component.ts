@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {Location} from '@angular/common';
 import { ProductService } from 'src/app/services/product.service';
 import { Router } from '@angular/router';
@@ -12,21 +12,30 @@ export class ProductPreviewComponent implements OnInit {
   public id
   public prod
   public loader = false
+  public tempArray = []
   constructor(private location: Location, private prodService: ProductService,
               private router: Router) { }
+
+  @ViewChild('divElements')
+  public divElements: ElementRef;
 
   ngOnInit(): void {
     let preview = this.prodService.selectedPreview
     if(preview) {
       this.prod = preview
+      this.tempArray.push({title: 'За час', val: this.prod.priceForHour})
+      this.tempArray.push({title: 'За день', val: this.prod.priceForDay})
+      this.tempArray.push({title: 'За неделю', val: this.prod.priceForWeek})
     }
+    console.log(this.tempArray)
   }
 
   onSubmit(): void {
-      this.prodService.setProduct(this.prod).subscribe(
-        res => this.router.navigate(['personal', this.prod.user.email]),
-        error => console.log(error)
-      )
+    console.log(this.divElements.nativeElement.childNodes[0])
+      // this.prodService.setProduct(this.prod).subscribe(
+      //   res => this.router.navigate(['personal', this.prod.user.email]),
+      //   error => console.log(error)
+      // )
   }
 
   goBack() {
