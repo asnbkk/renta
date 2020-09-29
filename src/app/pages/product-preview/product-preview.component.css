@@ -150,4 +150,12 @@ input {
 .price-list_label :last-child {
     text-align: end;
 }
+.price-list_total {
+    text-align: end;
+    margin-top: 1rem;
+}
+.price-list_total strong {
+    font-size: 24px;
+    font-weight: bold;
+}
 /* ///////////////////////// */

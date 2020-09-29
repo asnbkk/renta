@@ -54,7 +54,9 @@
                         [period]="item.title"></app-rent-price-counte>
                     </div>
                 </div>
-                {{total}}
+                <div class="price-list_total">
+                    <span><strong>Итого: {{total}} ₸</strong></span>
+                </div>
             </div>
             <!-- <div class="subtitle" [ngStyle]="{'margin-top': '0'}">Ваш конфигуратор</div>
             <div class="total">
@@ -76,10 +78,10 @@
                 <option [value]="o._id" *ngFor="let o of options">{{o.name}}</option>
             </select>
             </div> -->
-            <!-- <div class="button-group">
+            <div class="button-group">
                 <app-button [type]="'primary'" [text]="'Запросить аренду'"></app-button>
                 <app-button [type]="'secondary'" [text]="'Добавить в избранное'"></app-button>
-            </div> -->
+            </div>
             <div class="landlor">
                 <div class="subtitle">Арендодатель</div>
                 <div class="landor_wrapper">
