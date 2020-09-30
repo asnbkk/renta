@@ -6,8 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./personal-page.component.css']
 })
 export class PersonalPageComponent implements OnInit {
-
-  constructor() { }
+  public username
+  constructor() { 
+    this.username = localStorage.getItem('username') || 'Пользователь'
+  }
 
   ngOnInit(): void {
   }

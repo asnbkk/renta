@@ -12,11 +12,14 @@ export class HeaderComponent implements OnInit {
   public category: boolean = false
   public token = localStorage.getItem('token')
   // public username
+  public email
   
   constructor(private router: Router, private categoryService: CategoryService, private userService: UserService) { 
+    this.email = localStorage.getItem('email') || ''
+    
     router.events.subscribe((val) => {
       this.category = false
-  });
+    });
 
   // this.username = localStorage.getItem('username')
   }

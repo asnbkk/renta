@@ -39,11 +39,11 @@ export class ProductPreviewComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.divElements.nativeElement.childNodes[0])
-      // this.prodService.setProduct(this.prod).subscribe(
-      //   res => this.router.navigate(['personal', this.prod.user.email]),
-      //   error => console.log(error)
-      // )
+    // console.log(this.divElements.nativeElement.childNodes[0])
+      this.prodService.setProduct(this.prod).subscribe(
+        res => this.router.navigate(['personal', this.prod.user.email]),
+        error => console.log(error)
+      )
   }
 
   goBack() {
