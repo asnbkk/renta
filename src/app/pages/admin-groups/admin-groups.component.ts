@@ -8,8 +8,14 @@ import { Component, OnInit } from '@angular/core';
 export class AdminGroupsComponent implements OnInit {
 
   constructor() { }
-
+  groupModel = {
+    name: ''
+  }
   ngOnInit(): void {
+  }
+
+  onSubmit() {
+
   }
 
 }

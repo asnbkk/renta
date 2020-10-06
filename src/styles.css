@@ -9,6 +9,14 @@ body {
 input {
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
+    height: 50px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    padding: 0 2rem;
+    display: grid;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
 :focus {
     outline: none;

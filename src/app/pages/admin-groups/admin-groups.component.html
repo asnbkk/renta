@@ -1,1 +1,6 @@
-<p>admin-groups works!</p>
+<div class="subtitle">Группы</div>
+<div class="input-item">
+    <div class="label">Название</div>
+    <input type="text" placeholder="Коллекция" name="name" [(ngModel)]="groupModel.name">
+    <app-button [text]="'Создать'" [type]="'primary'" (click)="onSubmit()"></app-button>
+</div>

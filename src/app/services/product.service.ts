@@ -61,4 +61,9 @@ export class ProductService {
   onDeleteSearchRes() {
     this.searchResChange.next(null)
   }
+
+  onGroupCreate(prodName): Observable<any> {
+    return this.http.post(this._url + 'api/products/group', prodName, this.httpHeaders)
+    //hello argun
+  }
 }
