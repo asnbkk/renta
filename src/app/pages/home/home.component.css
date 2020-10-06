@@ -55,13 +55,16 @@ strong {
 
 
 .home_how {
-    margin-top: 106px;
+    /* margin-top: 106px; */
 }
 .home_how__content {
-    margin-top: 51px;
+    grid-gap: 3rem;
+    padding-bottom: 5rem;
+    padding-top: 2rem;
+    /* margin-top: 51px; */
     display: grid;
     /* grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); */
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 1fr 1fr 1fr;
     justify-content: space-between;
 }
 
