@@ -18,6 +18,7 @@ import { AdminCitiesComponent } from './pages/admin-cities/admin-cities.componen
 import { AuthGuard } from './auth.guard';
 import { ProductPreviewComponent } from './pages/product-preview/product-preview.component';
 import { PersonalPageComponent } from './pages/personal-page/personal-page.component';
+import { AdminGuard } from './admin.guard';
 
 
 const routes: Routes = [
@@ -34,7 +35,7 @@ const routes: Routes = [
   { path: 'product-create', component: ProductCreateComponent, canActivate: [AuthGuard]},
   { path: 'preview', component: ProductPreviewComponent },
   { path: 'personal/:email', component: PersonalPageComponent },
-  { path: 'admin', component: AdminComponent, children: [
+  { path: 'admin', component: AdminComponent,canActivate: [AdminGuard], children: [
     {path: '', component: AdminProductsComponent},
     {path: 'categories', component: AdminCategoriesComponent},
     {path: 'subcategories', component: AdminSubcategoriesComponent},

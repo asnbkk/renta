@@ -17,7 +17,7 @@ strong {
 }
 .social {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto auto auto;
     grid-gap: 25px;
     justify-content: end;
     align-items: center;
@@ -39,6 +39,9 @@ strong {
     background: #e0e0e0;
     transition: 0.1s;
 }
+.icon:active {
+    background: #d0d0d0;
+}
 .home_popular {
     margin-top: 51px;
     display: grid;
@@ -46,8 +49,9 @@ strong {
     grid-gap: 1rem;
 }
 .home_subtitle {
-    color: #3D3D3D;
-    font-size: 16px;
+    /* color: #3D3D3D; */
+    font-size: 18px;
+    font-weight: bold;
 }
 .home_popular__right {
     width: 90%;

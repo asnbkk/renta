@@ -22,5 +22,9 @@ export class HomeComponent implements OnInit {
     this.categoryService.getCategories().subscribe(data => {
       localStorage.setItem('categories', JSON.stringify(data))
     })
+
+    fetch('https://api.ipify.org/?format=json')
+      .then(result => result.json())
+      .then(data => console.log(data.ip))
   }  
 }
