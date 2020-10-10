@@ -152,7 +152,8 @@ export class ProductCreateComponent implements OnInit {
   onPreview() {
     this.findCategorySubcategoryName()
     this.router.navigate(['preview'])
-    this.productService.onProductPreview(this.pModel.value)
+    console.log(this.pModel)
+    // this.productService.onProductPreview(this.pModel.value)
   }
 
   onSubmit(): void {
