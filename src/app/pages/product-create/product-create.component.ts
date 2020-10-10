@@ -111,7 +111,12 @@ export class ProductCreateComponent implements OnInit {
       })
       let email = localStorage.getItem('email')
       let username = localStorage.getItem('username')
-      
+      this.pModel.patchValue({
+        user: {
+          email: email,
+          name: username
+        }
+      })
   }
 
 
