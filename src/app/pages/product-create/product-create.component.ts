@@ -19,8 +19,8 @@ export class ProductCreateComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder
   ) {
-    if(this.productService.selectedPreview  )
-    this.productModel = this.productService.selectedPreview
+    // if(this.productService.selectedPreview)
+    // this.pModel = this.productService.selectedPreview
   }
 
   public categories = []
@@ -48,28 +48,36 @@ export class ProductCreateComponent implements OnInit {
       phone: ['', Validators.required]
     })
   })
-  
-  public productModel = {
-    name: '',
-    description: '',
-    category: {
-      name: '',
-      _id: ''
-    },
-    subcategory: {
-      name: '',
-      _id: ''
-    },
-    priceForHour: null,
-    priceForDay: null,
-    priceForWeek: null,
-    keywords: '',
-    image: '',
-    user: {
-      email: '', 
-      name: '', 
-      phone: ''
-    }
+
+  get name() {
+    return this.pModel.get('name')
+  }
+  get description() {
+    return this.pModel.get('description')
+  }
+  get category() {
+    return this.pModel.get('category')
+  }
+  get subcategory() {
+    return this.pModel.get('subcategory')
+  }
+  get priceForHour() {
+    return this.pModel.get('priceForHour')
+  }
+  get priceForDay() {
+    return this.pModel.get('priceForDay')
+  }
+  get priceForWeek() {
+    return this.pModel.get('priceForWeek')
+  }
+  get username() {
+    return this.pModel.get('user.name')
+  }
+  get phone() {
+    return this.pModel.get('user.phone')
+  }
+  get email() {
+    return this.pModel.get('user.email')
   }
 
   mask: any[] = ['+', '7', ' ', '(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
@@ -103,33 +111,34 @@ export class ProductCreateComponent implements OnInit {
       })
       let email = localStorage.getItem('email')
       let username = localStorage.getItem('username')
-      if (email) this.productModel.user.email = email
-      if (username) this.productModel.user.name = username
+      
   }
 
 
   onBlur(): void {
-    if (this.productModel.category._id !== '') {
-      let category = this.categories.find(c => c._id === this.productModel.category._id)
+    let _category = this.pModel.get('category._id').value
+    if (_category !== '') {
+      let category = this.categories.find(c => c._id === _category)
       this.subcategories = [...category.subcategories]
     }
   }
 
   onPreview() {
-    let category = this.productModel.category._id
-    let categoryList = JSON.parse(localStorage.getItem('categories'))
-    let selectedCategory = categoryList.find(o => o._id == category)
-    this.productModel.category.name = selectedCategory.name
+    // let category = this.productModel.category._id
+    // let categoryList = JSON.parse(localStorage.getItem('categories'))
+    // let selectedCategory = categoryList.find(o => o._id == category)
+    // this.productModel.category.name = selectedCategory.name
 
-    let subcategory = this.productModel.subcategory._id
-    let selectedSubcategory = selectedCategory.subcategories.find(o => o._id == subcategory)
-    this.productModel.subcategory.name = selectedSubcategory.name
-    this.router.navigate(['preview'])
-    this.productService.onProductPreview(this.productModel)
+    // let subcategory = this.productModel.subcategory._id
+    // let selectedSubcategory = selectedCategory.subcategories.find(o => o._id == subcategory)
+    // this.productModel.subcategory.name = selectedSubcategory.name
+    // this.router.navigate(['preview'])
+    // this.productService.onProductPreview(this.productModel)
   }
 
   onSubmit(): void {
     console.log(this.pModel.value)
+    this.pModel.reset()
     //TODO: find name of category && subcategory via _id
     // let isPhoneValid = this.phonenumber(this.productModel.user.phone)
     // if(isPhoneValid) {
