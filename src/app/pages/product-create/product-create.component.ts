@@ -19,7 +19,9 @@ export class ProductCreateComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder
   ) {
-    // if(this.productService.selectedPreview)
+    if (this.productService.selectedPreview)
+      console.log('selectedPreview')
+      //TODO: convert driven form to reactive form
     // this.pModel = this.productService.selectedPreview
   }
 
@@ -88,7 +90,7 @@ export class ProductCreateComponent implements OnInit {
   }
   emailValidation(email) {
     let _email = /\S+@\S+\.\S+/
-    if(!_email.test(email)) return false
+    if (!_email.test(email)) return false
     else return true
   }
 
@@ -104,19 +106,19 @@ export class ProductCreateComponent implements OnInit {
     //   if (username) this.productModel.user.name = username
     //   console.log(this.productModel.user.name)
     // })
-      let category = JSON.parse(localStorage.getItem('categories'))
-      this.categories = category
-      this.categories.forEach(cat => {
-        this.subcategories.push(...cat.subcategories)
-      })
-      let email = localStorage.getItem('email')
-      let username = localStorage.getItem('username')
-      this.pModel.patchValue({
-        user: {
-          email: email,
-          name: username
-        }
-      })
+    let category = JSON.parse(localStorage.getItem('categories'))
+    this.categories = category
+    this.categories.forEach(cat => {
+      this.subcategories.push(...cat.subcategories)
+    })
+    let email = localStorage.getItem('email')
+    let username = localStorage.getItem('username')
+    this.pModel.patchValue({
+      user: {
+        email: email,
+        name: username
+      }
+    })
   }
 
 
@@ -128,23 +130,35 @@ export class ProductCreateComponent implements OnInit {
     }
   }
 
-  onPreview() {
-    // let category = this.productModel.category._id
-    // let categoryList = JSON.parse(localStorage.getItem('categories'))
-    // let selectedCategory = categoryList.find(o => o._id == category)
-    // this.productModel.category.name = selectedCategory.name
+  findCategorySubcategoryName() {
+    let category = this.pModel.get('category._id').value
+    let categoryList = JSON.parse(localStorage.getItem('categories'))
+    let selectedCategory = categoryList.find(o => o._id == category)
+    console.log(selectedCategory)
 
-    // let subcategory = this.productModel.subcategory._id
-    // let selectedSubcategory = selectedCategory.subcategories.find(o => o._id == subcategory)
-    // this.productModel.subcategory.name = selectedSubcategory.name
-    // this.router.navigate(['preview'])
-    // this.productService.onProductPreview(this.productModel)
+    let subcategory = this.pModel.get('subcategory._id').value
+    let selectedSubcategory = selectedCategory.subcategories.find(o => o._id == subcategory)
+
+    this.pModel.patchValue({
+      category: {
+        name: selectedCategory.name
+      },
+      subcategory: {
+        name: selectedSubcategory.name
+      }
+    })
+  }
+
+  onPreview() {
+    this.findCategorySubcategoryName()
+    this.router.navigate(['preview'])
+    this.productService.onProductPreview(this.pModel.value)
   }
 
   onSubmit(): void {
+    this.findCategorySubcategoryName()
     console.log(this.pModel.value)
     this.pModel.reset()
-    //TODO: find name of category && subcategory via _id
     // let isPhoneValid = this.phonenumber(this.productModel.user.phone)
     // if(isPhoneValid) {
     //   this.productService.setProduct(this.productModel).subscribe(
