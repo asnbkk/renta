@@ -19,6 +19,8 @@ import { AuthGuard } from './auth.guard';
 import { ProductPreviewComponent } from './pages/product-preview/product-preview.component';
 import { PersonalPageComponent } from './pages/personal-page/personal-page.component';
 import { AdminGuard } from './admin.guard';
+import { PersonalAdsComponent } from './pages/personal-ads/personal-ads.component';
+import { PersonalSettingsComponent } from './pages/personal-settings/personal-settings.component';
 
 
 const routes: Routes = [
@@ -34,7 +36,10 @@ const routes: Routes = [
   { path: 'product-details/:product_id', component: ProductDetailsComponent },
   { path: 'product-create', component: ProductCreateComponent, canActivate: [AuthGuard]},
   { path: 'preview', component: ProductPreviewComponent },
-  { path: 'personal/:email', component: PersonalPageComponent },
+  { path: 'personal/:email', component: PersonalPageComponent, children: [
+    {path: '', component: PersonalAdsComponent},
+    {path: 'settings', component: PersonalSettingsComponent}
+  ]},
   { path: 'admin', component: AdminComponent,canActivate: [AdminGuard], children: [
     {path: '', component: AdminProductsComponent},
     {path: 'categories', component: AdminCategoriesComponent},

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { FormsModule } from '@angular/forms'
+import { ReactiveFormsModule, FormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -37,6 +37,8 @@ import { CurrencyMaskModule } from "ng2-currency-mask";
 import { ProductPreviewComponent } from './pages/product-preview/product-preview.component';
 import { PersonalPageComponent } from './pages/personal-page/personal-page.component';
 import { RentPriceCounteComponent } from './components/rent-price-counte/rent-price-counte.component';
+import { PersonalAdsComponent } from './pages/personal-ads/personal-ads.component';
+import { PersonalSettingsComponent } from './pages/personal-settings/personal-settings.component';
 
 
 // import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -71,11 +73,14 @@ import { RentPriceCounteComponent } from './components/rent-price-counte/rent-pr
     ProductPreviewComponent,
     PersonalPageComponent,
     RentPriceCounteComponent,
+    PersonalAdsComponent,
+    PersonalSettingsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     TextMaskModule,

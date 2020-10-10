@@ -1,7 +1,12 @@
 <div class="wrapper">    
-    <div class="sidebar"></div>
+    <div class="sidebar">
+        <div class="sidebar_item" routerLink="/personal/{{email}}" routerLinkActive="active"
+        [routerLinkActiveOptions]= "{exact: true}">Мои объявления</div>
+        <div class="sidebar_item" routerLink="settings" routerLinkActive="active">Настройки профиля</div>
+    </div>
     <div class="content">
         <div class="subtitle">Личный кабинет</div>
         <div class="title">Добро пожаловать, {{username}}</div>
+        <router-outlet></router-outlet>
     </div>
 </div>

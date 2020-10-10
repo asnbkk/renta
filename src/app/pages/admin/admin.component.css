@@ -3,9 +3,8 @@
     grid-template-columns: 1fr 4fr;
     grid-gap: 3rem;
 }
-.title {
-    font-size: 24px;
-    font-weight: bold;
+.subtitle {
+    color: #9e9e9e;
 }
 .sidebar_item {
     height: 50px;

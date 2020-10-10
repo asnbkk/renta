@@ -7,15 +7,26 @@
 }
 .wrapper {
     display: grid;
-    margin-left: 250px;
+    grid-template-columns: 1fr 4fr;
+    grid-gap: 3rem;
 }
 .sidebar {
-    width: 350px;
-    height: 100vh;
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0px;
-    background: lightcyan;
     /* background: red; */
+}
+.sidebar_item {
+    height: 50px;
+    display: grid;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.1s;
+    padding: 0 1rem;
+    border-radius: 5px;
+}
+.sidebar_item:hover:not(.active) {
+    background: #e9e9ff;
+    transition: 0.1s;
+}
+.active {
+    background: blue;
+    color: #fff;
 }

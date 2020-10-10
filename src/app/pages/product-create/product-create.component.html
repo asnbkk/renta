@@ -1,5 +1,6 @@
 <div class="title">Создание объявления</div>
 <div class="subtitle">Основная информация</div>
+<form>
 <div class="input-group">
     <div class="input-item">
         <div class="label">Название объявления</div>
@@ -137,3 +138,78 @@
         </ng-template>
     </div>
 </div>
+</form>
+<hr/>
+<div class="title">Создание объявления</div>
+<div class="subtitle">Основная информация</div>
+<form [formGroup]="pModel">
+    <div class="input-group">
+        <div class="input-item">
+            <div class="label">Название объявления</div>
+            <input formControlName="name" placeholder="name">
+        </div>
+        <div class="input-item" [ngStyle]="{'align-items': 'start'}">
+            <div class="label" [ngStyle]="{'margin-top': '17px'}">Подробное описание</div>
+            <textarea formControlName="description" rows="5"></textarea>
+        </div>
+        <div class="input-item">
+            <div class="label">Категория и подкатегория</div>
+            <div class="input-item_row">
+                <div formGroupName="category">
+                    <select (change)="onBlur()" formControlName="_id">
+                        <option value="" disabled>Выберите категорию</option>
+                        <option [ngValue]="c._id" *ngFor="let c of categories">{{c.name}}</option>
+                    </select>
+                </div>
+                <div formGroupName="subcategory">
+                    <select formControlName="_id">
+                        <option value="" disabled>Выберите подкатегорию</option>
+                        <option [ngValue]="s._id" *ngFor="let s of subcategories">{{s.name}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="input-item">
+            <div class="label">Прайс-лист с периодом</div>
+            <div class="input-item_row" [ngStyle]="{'grid-template-columns' : '1fr 1fr 1fr'}">
+                <input type="text" currencyMask formControlName="priceForHour"
+                [options]="{ align: 'left', prefix: '', precision: '0', suffix: ' ₸', thousands: ' ', decimal: '' }" 
+                placeholder="За час">
+                <input type="text" currencyMask formControlName="priceForDay"
+                [options]="{ align: 'left', prefix: '', precision: '0', suffix: ' ₸', thousands: ' ', decimal: '' }" 
+                placeholder="За день">
+                <input type="text" currencyMask formControlName="priceForWeek"
+                [options]="{ align: 'left', prefix: '', precision: '0', suffix: ' ₸', thousands: ' ', decimal: '' }" 
+                placeholder="За неделю">
+            </div>
+        </div>
+        <div class="input-item">
+            <div class="label">Изображение</div>
+            <input type="text" formControlName="image">
+        </div>  
+        <div class="subtitle" [ngStyle]="{'margin-top': '2rem'}">Контактные данные</div>
+        <div class="input-group" formGroupName="user">
+            <div class="input-item">
+                <div class="label">Ваше имя</div>
+                <input type="text" formControlName="name">
+            </div>
+            <div class="input-item">
+                <div class="label">Номер телефона и e-mail</div>
+                <div class="input-item_row">
+                    <input type="text" name="phone" [textMask]="{mask: mask}"
+                    placeholder="+7 (___) ___-____" formControlName="phone">
+                    <input type="text" name="email" placeholder="Е-mail" formControlName="email">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="button-group">
+        <div></div>
+        <div class="button">
+            <app-button *ngIf="pModel.valid" [type]="'primary'"  [text]="'Создать объявление'" (click)="onSubmit()"></app-button>
+            <app-button *ngIf="pModel.valid" (click)="onPreview()" [type]="'secondary'" [text]="'Предварительный просмотр'"></app-button>
+            <app-button *ngIf="pModel.invalid" [type]="'primary'" [text]="'Создать объявление'" [isDisabled]="true"></app-button>
+            <app-button *ngIf="pModel.invalid" [type]="'secondary'" [text]="'Предварительный просмотр'" [isDisabled]="true"></app-button>
+        </div>
+    </div>
+</form>

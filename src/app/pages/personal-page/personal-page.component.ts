@@ -7,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonalPageComponent implements OnInit {
   public username
+  public email
   constructor() { 
     this.username = localStorage.getItem('username') || 'Пользователь'
+    this.email = localStorage.getItem('email') || ''
   }
 
   ngOnInit(): void {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/services/category.service';
 import { ProductService } from 'src/app/services/product.service';
@@ -15,7 +16,8 @@ export class ProductCreateComponent implements OnInit {
     private categoryService: CategoryService,
     private productService: ProductService,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private fb: FormBuilder
   ) {
     if(this.productService.selectedPreview  )
     this.productModel = this.productService.selectedPreview
@@ -23,6 +25,30 @@ export class ProductCreateComponent implements OnInit {
 
   public categories = []
   public subcategories = []
+
+  pModel = this.fb.group({
+    name: ['', Validators.required],
+    description: ['', Validators.required],
+    category: this.fb.group({
+      name: [''],
+      _id: ['', Validators.required]
+    }),
+    subcategory: this.fb.group({
+      name: [''],
+      _id: ['', Validators.required]
+    }),
+    priceForHour: [null, Validators.required],
+    priceForDay: [null, Validators.required],
+    priceForWeek: [null, Validators.required],
+    keywords: '',
+    image: ['', Validators.required],
+    user: this.fb.group({
+      email: ['', Validators.required],
+      name: ['', Validators.required],
+      phone: ['', Validators.required]
+    })
+  })
+  
   public productModel = {
     name: '',
     description: '',
@@ -44,9 +70,6 @@ export class ProductCreateComponent implements OnInit {
       name: '', 
       phone: ''
     }
-    // email: '',
-    // username: '',
-    // phone: ''
   }
 
   mask: any[] = ['+', '7', ' ', '(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
@@ -101,18 +124,19 @@ export class ProductCreateComponent implements OnInit {
     let subcategory = this.productModel.subcategory._id
     let selectedSubcategory = selectedCategory.subcategories.find(o => o._id == subcategory)
     this.productModel.subcategory.name = selectedSubcategory.name
-    // console.log(this.productModel)
     this.router.navigate(['preview'])
     this.productService.onProductPreview(this.productModel)
   }
 
   onSubmit(): void {
-    let isPhoneValid = this.phonenumber(this.productModel.user.phone)
-    if(isPhoneValid) {
-      this.productService.setProduct(this.productModel).subscribe(
-        res => this.router.navigate(['personal', this.productModel.user.email]),
-        error => console.log(error)
-      )
-    }
+    console.log(this.pModel.value)
+    //TODO: find name of category && subcategory via _id
+    // let isPhoneValid = this.phonenumber(this.productModel.user.phone)
+    // if(isPhoneValid) {
+    //   this.productService.setProduct(this.productModel).subscribe(
+    //     res => this.router.navigate(['personal', this.productModel.user.email]),
+    //     error => console.log(error)
+    //   )
+    // }
   }
 }
