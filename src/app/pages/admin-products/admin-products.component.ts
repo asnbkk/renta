@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -6,14 +6,20 @@ import { ProductService } from 'src/app/services/product.service';
   templateUrl: './admin-products.component.html',
   styleUrls: ['./admin-products.component.css']
 })
-export class AdminProductsComponent implements OnInit {
+export class AdminProductsComponent implements OnInit, AfterViewInit {
   public ads = []
-  constructor(private productService: ProductService) { }
-
-  ngOnInit(): void {
-    this.getAds()
+  loading: boolean = true
+  constructor(private productService: ProductService) {
   }
 
+  ngOnInit(): void {
+      this.getAds()
+  }
+
+  ngAfterViewInit() {
+    this.loading = false
+  }
+  
   getAds() {
     this.productService.getAdminProducts().subscribe(data => {
       this.ads = data

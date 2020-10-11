@@ -10,3 +10,12 @@
     padding: 1rem;
     border-radius: 5px;
 }
+.loader {
+    font-size: 18px;
+    font-weight: bold;
+    color: #505050;
+    display: grid;
+    justify-content: center;
+    height: 300px;
+    align-items: center;
+}

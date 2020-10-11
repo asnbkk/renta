@@ -2,8 +2,11 @@
 <div class="filter">
     ой тут типа фильтр, понял да ае
 </div>
-<div class="content">
+<div class="content" *ngIf="!loading">
     <ng-container *ngFor="let a of ads">
         <app-product-card [data]="a" [admin]="true"></app-product-card>
     </ng-container>
+</div>
+<div class="loader" *ngIf="loading">
+    I'm loading now.
 </div>
