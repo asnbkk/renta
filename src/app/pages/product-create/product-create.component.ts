@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/services/category.service';
 import { ProductService } from 'src/app/services/product.service';
@@ -22,7 +22,7 @@ export class ProductCreateComponent implements OnInit {
     if (this.productService.selectedPreview)
       console.log('selectedPreview')
       //TODO: convert driven form to reactive form
-    // this.pModel = this.productService.selectedPreview
+      
   }
 
   public categories = []
@@ -84,9 +84,11 @@ export class ProductCreateComponent implements OnInit {
 
   mask: any[] = ['+', '7', ' ', '(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
   phonenumber(inputtxt) {
-    let phoneno = /^(\+7|7|8)?[\s\-]?\(?[789][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/gm;
-    if (inputtxt.match(phoneno)) return true;
-    return false;
+    if(inputtxt) {
+      let phoneno = /^(\+7|7|8)?[\s\-]?\(?[789][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/gm;
+      if (inputtxt.match(phoneno)) return true;
+      return false;
+    }
   }
   emailValidation(email) {
     let _email = /\S+@\S+\.\S+/
