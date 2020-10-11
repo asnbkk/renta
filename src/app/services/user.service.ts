@@ -24,11 +24,11 @@ export class UserService {
   }
 
   login(user): Observable<any> {
-    return this.http.post(this._url + '/api/user/login', { user: user }, this.httpHeaders)
+    return this.http.post(this._url + 'api/user/login', { user: user }, this.httpHeaders)
   }
 
   registration(user): Observable<any> {
-    return this.http.post(this._url + '/api/user/signup', { user: user }, this.httpHeaders)
+    return this.http.post(this._url + 'api/user/signup', { user: user }, this.httpHeaders)
   }
 
   logout() {

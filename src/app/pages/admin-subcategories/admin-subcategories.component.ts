@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from 'src/app/services/category.service';
+import { SubcategoryService } from 'src/app/services/subcategory.service';
 
 @Component({
   selector: 'app-admin-subcategories',
@@ -12,7 +13,7 @@ export class AdminSubcategoriesComponent implements OnInit {
     category: '',
     name: ''
   }
-  constructor(private categoryService: CategoryService) { }
+  constructor(private categoryService: CategoryService, private subcategoryService: SubcategoryService) { }
 
   ngOnInit(): void {
     this.categoryService.getCategories().subscribe(data => {
@@ -20,6 +21,6 @@ export class AdminSubcategoriesComponent implements OnInit {
     })
   }
   onSubmit() {
-    this.categoryService.setSubcategory(this.subcategoryModel.category, this.subcategoryModel.name).subscribe()
+    this.subcategoryService.setSubcategory(this.subcategoryModel.category, this.subcategoryModel.name).subscribe()
   }
 }

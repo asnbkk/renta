@@ -6,24 +6,18 @@ import { api_url } from '../../assets/env'
 @Injectable({
   providedIn: 'root'
 })
-export class CategoryService {
+export class SubcategoryService {
 
-  public passedCategory
-
+  
   private httpHeaders = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
     })
   }
   public _url: string = api_url
-  constructor(private http: HttpClient) { 
-  }
+  constructor(private http: HttpClient) {}
 
-  getCategories(): Observable<any> {
-    return this.http.get(this._url + 'api/categories')
-  }
-
-  setCategory(category): Observable<any> {
-    return this.http.post(this._url + 'api/categories', { category },this.httpHeaders)
+  setSubcategory(category_id, name): Observable<any> {
+    return this.http.post(this._url + 'api/subcategories', {category_id, name}, this.httpHeaders)
   }
 }
