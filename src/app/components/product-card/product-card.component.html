@@ -1,4 +1,4 @@
-<div class="item">
+<div class="item" *ngIf="!admin">
     <div class="img">
         <img src="{{data.image}}" alt="">
     </div>
@@ -28,4 +28,11 @@
                 </span>
         </div>
     </div>
+</div>
+<div class="admin" *ngIf="admin">
+    <div class="admin_text">
+        <div class="admin_text__name">{{data.name}}</div>
+        <div class="admin_text__subtext">{{data.category.name}} - {{data.subcategory.name}}</div>
+    </div>
+    <div class="admin_price"></div>
 </div>

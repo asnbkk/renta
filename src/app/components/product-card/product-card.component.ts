@@ -9,11 +9,14 @@ import { Router } from '@angular/router';
 export class ProductCardComponent implements OnInit {
   constructor(private router: Router) { }
   private _data
+  @Input() admin: boolean
   ngOnInit(): void {
   }
 
   @Input()
   set data(value) {
+    if(value.category == null) value.category = {name: '', _id: ''}
+    if(value.subcategory == null) value.subcategory = {name: '', _id: ''}
     this._data = value
   }
   

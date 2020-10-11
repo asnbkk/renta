@@ -7,12 +7,11 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./admin-products.component.css']
 })
 export class AdminProductsComponent implements OnInit {
-  private ads = []
+  public ads = []
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
     this.getAds()
-    console.log(this.ads)
   }
 
   getAds() {

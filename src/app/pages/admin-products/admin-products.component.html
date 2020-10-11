@@ -1,1 +1,9 @@
 <div class="title">Объявления</div>
+<div class="filter">
+    ой тут типа фильтр, понял да ае
+</div>
+<div class="content">
+    <ng-container *ngFor="let a of ads">
+        <app-product-card [data]="a" [admin]="true"></app-product-card>
+    </ng-container>
+</div>
