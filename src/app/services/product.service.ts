@@ -66,4 +66,8 @@ export class ProductService {
     return this.http.post(this._url + 'api/products/group', prodName, this.httpHeaders)
     //hello argun
   }
+
+  getAdminProducts(): Observable<any> {
+    return this.http.get(this._url + 'api/products')
+  }
 }
