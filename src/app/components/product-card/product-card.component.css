@@ -131,10 +131,15 @@ strong {
     border-radius: 5px;
 }
 .admin:hover {
-    background: #e9e9ff;
+    background: #f1f1f1;
+}
+.admin:hover .admin_text__name {
+    color: blue;
+    /* background: #e9e9ff; */
 }
 .admin:active {
-    background: #dcdcff;
+    background: #eeeeee;
+    /* background: #dcdcff; */
 }
 .admin_text__name {
     font-size: 18px;
