@@ -19,10 +19,29 @@ export class ProductCreateComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder
   ) {
-    if (this.productService.selectedPreview)
-      console.log('selectedPreview')
-      //TODO: convert driven form to reactive form
-      
+    let model = this.productService.selectedPreview
+    if (model)
+    this.pModel.patchValue({
+      name: model.name,
+      description: model.description,
+      category: {
+        name: model.category.name,
+        _id: model.category._id
+      },
+      subcategory: {
+        name: model.subcategory.name,
+        _id: model.subcategory._id
+      },
+      priceForHour: model.priceForHour,
+      priceForDay: model.priceForDay,
+      priceForWeek: model.priceForWeek,
+      image: model.image,
+      user: {
+        email: model.user.email,
+        name: model.user.name,
+        phone: model.user.phone
+      }
+    })
   }
 
   public categories = []
@@ -154,13 +173,11 @@ export class ProductCreateComponent implements OnInit {
   onPreview() {
     this.findCategorySubcategoryName()
     this.router.navigate(['preview'])
-    console.log(this.pModel)
-    // this.productService.onProductPreview(this.pModel.value)
+    this.productService.onProductPreview(this.pModel.value, this.pModel)
   }
 
   onSubmit(): void {
     this.findCategorySubcategoryName()
-    console.log(this.pModel.value)
     this.pModel.reset()
     // let isPhoneValid = this.phonenumber(this.productModel.user.phone)
     // if(isPhoneValid) {

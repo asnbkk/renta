@@ -43,7 +43,9 @@ export class ProductService {
     this.selectedProduct = product
     localStorage.setItem('selectedProduct', JSON.stringify(product))
   }
-  onProductPreview(product) {
+  public formGroup
+  onProductPreview(product, formGroup) {
+    this.formGroup = formGroup
     this.selectedPreview = product
     localStorage.setItem('selectedPreview', JSON.stringify(product))
   }
@@ -65,5 +67,9 @@ export class ProductService {
   onGroupCreate(prodName): Observable<any> {
     return this.http.post(this._url + 'api/products/group', prodName, this.httpHeaders)
     //hello argun
+  }
+
+  getAdminProducts(): Observable<any> {
+    return this.http.get(this._url + 'api/products')
   }
 }
