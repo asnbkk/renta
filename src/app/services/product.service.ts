@@ -43,9 +43,7 @@ export class ProductService {
     this.selectedProduct = product
     localStorage.setItem('selectedProduct', JSON.stringify(product))
   }
-  public formGroup
-  onProductPreview(product, formGroup) {
-    this.formGroup = formGroup
+  onProductPreview(product) {
     this.selectedPreview = product
     localStorage.setItem('selectedPreview', JSON.stringify(product))
   }

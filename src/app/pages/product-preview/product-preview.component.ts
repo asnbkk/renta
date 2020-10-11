@@ -44,6 +44,7 @@ export class ProductPreviewComponent implements OnInit {
         res => this.router.navigate(['personal', this.prod.user.email]),
         error => console.log(error)
       )
+      this.prodService.onProductPreview(null)
   }
 
   goBack() {
