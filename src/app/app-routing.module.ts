@@ -26,7 +26,7 @@ import { PersonalSettingsComponent } from './pages/personal-settings/personal-se
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'category', component: CategoryComponent, children: [
-    {path: '', redirectTo: '/category/5f0cc0310280f43c8aa6c3ba', pathMatch: 'full'},
+    // {path: '', redirectTo: '/category/5f0cc0310280f43c8aa6c3ba', pathMatch: 'full'},
     {path: ':id', component: SubcategoryListComponent }
   ]},
   { path: 'search', component: SearchPageComponent },
