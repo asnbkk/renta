@@ -61,6 +61,7 @@ export class ProductCreateComponent implements OnInit {
     priceForHour: [null, Validators.required],
     priceForDay: [null, Validators.required],
     priceForWeek: [null, Validators.required],
+    //TODO: validation of price, there is shit
     keywords: '',
     image: ['', Validators.required],
     user: this.fb.group({
@@ -181,12 +182,12 @@ export class ProductCreateComponent implements OnInit {
     this.productService.onProductPreview(null)
     this.pModel.reset()
 
-    // let isPhoneValid = this.phonenumber(this.productModel.user.phone)
-    // if(isPhoneValid) {
-    //   this.productService.setProduct(this.productModel).subscribe(
-    //     res => this.router.navigate(['personal', this.productModel.user.email]),
-    //     error => console.log(error)
-    //   )
-    // }
+    let isPhoneValid = this.phonenumber(this.phone)
+    if(isPhoneValid) {
+      this.productService.setProduct(this.pModel.value).subscribe(
+        res => this.router.navigate(['personal', this.email]),
+        error => console.log(error)
+      )
+    }
   }
 }
