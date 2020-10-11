@@ -8279,12 +8279,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     __webpack_require__.d(__webpack_exports__, "root_url", function () {
       return root_url;
-    });
+    }); // let root_url = 'http://localhost:3000/'
+    // let api_url = 'http://localhost:3000/'
 
-    var root_url = 'http://localhost:3000/';
-    var api_url = 'http://localhost:3000/'; // let root_url = 'https://arend.kz/'
-    // let api_url = 'https://arend.kz/'
 
+    var root_url = 'https://arend.kz/';
+    var api_url = 'https://arend.kz/';
     /***/
   },
 
